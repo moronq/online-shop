@@ -1,0 +1,60 @@
+@import "src/constants.scss";
+
+.headerBody {
+  background-color: #ECF1F2;
+  padding: 10px 0;
+}
+
+.headerBodyContainer {
+  max-width: $containerWidth;
+  display: flex;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto;
+  min-height: 70px;
+  align-items: center;
+}
+
+.headerBodyLogo {
+
+}
+
+.headerBodySearch {
+  padding-left: 158px;
+  &Form {
+    background-color: rgba(7, 7, 7, 0.03);
+    border-radius: 3px;
+    position: relative;
+    border: 1px solid rgba(4, 4, 4, 0.5);
+  }
+
+  &Input {
+    background-color: transparent;
+    height: 41px;
+    width: 377px;
+    border-radius: 3px;
+    padding: 0 20px 0 50px;
+    &::placeholder{
+      color: rgba(0, 0, 0, 0.5);
+
+    }
+  }
+
+  &Button {
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 41px;
+    width: 41px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
+.headerBodyCart {
+  display: flex;
+  align-items: center;
+}

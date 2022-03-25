@@ -1,11 +1,11 @@
 import React from 'react'
 import './App.scss';
-import NavBar from "./Components/NavBar/NavBar";
+import Header from "./Components/Header/Header";
 
 function App() {
   return (
     <div className="App">
-      <NavBar className/>
+      <Header/>
     </div>
   );
 }
