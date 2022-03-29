@@ -23,7 +23,7 @@ const HeaderBody = () => {
                 <div className={styles.headerBodyLocation}>
                     <a href="#"><img src={location} alt=""/>Москва</a>
                     <div>
-                        <p>8-800-777-49-67</p>
+                        <a href="tel:88007774967">8-800-777-49-67</a>
                         <button>Заказать звонок</button>
                         <img src={arrowBottom} alt=""/>
                     </div>
