@@ -1,0 +1,337 @@
+@import "src/constants.scss";
+
+.Header {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.topHeaderMenu {
+  background-color: $mainDarkColor;
+}
+
+.topHeaderMenuContainer {
+  max-width: $containerWidth;
+  padding: 10px 15px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 70px;
+}
+
+.navBar{
+  margin: 0 15px 0 5px;
+}
+
+.navBarItemLink{
+  color: white;
+  &:hover{
+    text-decoration: underline;
+  }
+  &:active{
+    background-color: transparent;
+  }
+}
+
+.navBarList {
+  color: white;
+  display: flex;
+  @include adaptive-value("column-gap", 60, 20, 1);
+  row-gap: 5px;
+  flex-wrap: wrap;
+}
+
+.userLink {
+  color: white;
+  @media(max-width: 830px){
+    display: none;
+  }
+}
+
+.userLinkBlock {
+  display: inline-flex;
+  align-items: center;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.userLink {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 0 14px;
+}
+.navBarItem{
+text-align: center;
+
+}
+
+.userImage {
+  vertical-align: center;
+  margin-top: 4px;
+}
+//------------MidHeaderMenu--------------------------
+
+.midHeaderMenu{
+  background-color: #ECF1F2;
+}
+.midHeaderMenuContainer{
+  max-width: $containerWidth;
+  margin: 0 auto;
+  padding: 10px 15px;
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.userMenu{
+  display: flex;
+  justify-content: space-between;
+  flex: 0 1 621px;
+}
+
+.imageLogo{
+  margin-right: 10px;
+}
+
+.searchBar{
+  height: 41px;
+  border: 1px solid #040404;
+  border-radius: 3px;
+  display: flex;
+  flex: 0 1 377px;
+  margin-right: 10px;
+  position: relative;
+  &Input{
+    height: 100%;
+    background-color: transparent;
+    border-radius: 3px;
+    padding: 0 0 0 40px;
+  }
+  &Button{
+    position: absolute;
+    //border: 1px solid red;
+    top: 0px;
+    left: 0px;
+    height: 39px;
+    width: 40px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &Image{
+    //border: 1px solid red;
+  }
+}
+.userMenuLocation{
+  //margin-right: 35px;
+  display: flex;
+  align-items: center;
+  &City{
+    margin-left: 9px;
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+.userMenuNumber {
+  display: flex;
+  justify-content: space-between;
+  flex: 0 1 186px;
+  position: relative;
+
+}
+.userMenuCallback{
+  color: $mainOrangeColor;
+  font-weight: bold;
+  font-size: 18px;
+}
+.userMenuMainNumber {
+  color: black;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.userMenuCallOption {
+  display: flex;
+  min-height: 47px;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.userMenuOrder{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  &Text{
+    color: $mainOrangeColor;
+  }
+  @media(max-width: 1150px){
+    display: none;
+  }
+}
+
+.userMenuFavorite{
+  margin-left: 5px;
+}
+
+.userMenuFavorite,
+.cartImage,
+.userMenuPhoneImage{
+  align-self: center;
+}
+
+.userMenuPhoneImage{
+  fill: black;
+}
+
+.userMenuCart{
+  position: relative;
+  top: 8px;
+  margin-left: 5px;
+  @media(max-width: 830px){
+    top: 0;
+  }
+}
+
+.userMenuOrder span {
+  line-height: 20px;
+  &:first-child{
+    margin-left: 1px;
+    letter-spacing: 2px;
+  }
+}
+
+.cartCount {
+  position: absolute;
+  top: -2px;
+  left: 23px;
+  background-color: $mainOrangeColor;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  color: white;
+  font-size: 8px;
+  text-align: center;
+  vertical-align: center;
+  line-height: 14px;
+}
+
+.userMenuFlexContainer {
+  display: flex;
+  flex: 0 1 306px;
+  justify-content: space-between;
+  margin: 0 10px;
+}
+.userMenuNumberChooseButton{
+  align-self: flex-start;
+  margin-top: 5px;
+}
+
+.spoilerNumberList{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: all 0.2s ease 0s;
+  &Hidden {
+    margin-bottom: -100%;
+  }
+}
+
+.spoilerNumberItem:not(:last-child){
+  margin-bottom: 10px;
+}
+
+.spoilerNumberContainer{
+  position: absolute;
+  padding: 10px;
+  overflow: hidden;
+  background-color: white;
+  top: 25px;
+  left: -10px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(20, 20, 20, 0.1);
+  transition: all 0.2s ease 0s;
+  z-index: 999;
+  &Hidden {
+    padding: 0 10px;
+  }
+}
+
+.userMenuMainNumber{
+  white-space: nowrap;
+}
+
+.userMenuNumberChooseButton{
+  transition: all 0.6s ease 0s;
+  transform-origin: 50% 30% 0;
+  &Rotated {
+    transform: rotate(540deg);
+  //transform: scaleY(-1);
+  }
+}
+
+.userMenuNumber {
+  @media (max-width: 830px){
+    display: none;
+  }
+}
+
+.userMenuPhone{
+  align-self: center;
+  margin-left: 5px;
+  @media(min-width: 830px){
+    display: none;
+  }
+}
+
+//----------NavBarBottom--------------------------
+
+.bottomHeaderMenu {
+  background-color: $mainDarkColor;
+  color: white;
+  display: flex;
+  &Container{
+    max-width: $containerWidth;
+    margin: 0 auto;
+    padding: 0px 15px;
+    min-height: 100%;
+    flex: 1 1 auto;
+    display: flex;
+  }
+}
+
+.navBarBottomList {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  min-height: 100%;
+}
+
+.navBarBottomItem {
+  padding: 0px 5px;
+  position: relative;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  &:hover{
+    cursor: pointer;
+    &::after {
+      content: '';
+      position: absolute;
+      width: calc(100% - 10px);
+      height: 2px;
+      background-color: $mainOrangeColor;
+      bottom: 1px;
+      left: 5px;
+    }
+  }
+}
+
+//-------------------------------
+
+
+
+

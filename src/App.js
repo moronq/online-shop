@@ -1,11 +1,12 @@
 import React from 'react'
-import './App.scss';
-import NavBar from "./Components/NavBar/NavBar";
+import styles from './App.scss';
+import Header from "./Components/Header/Header";
+import cn from "classnames"
 
 function App() {
   return (
-    <div className="App">
-      <NavBar className/>
+    <div className={styles.App}>
+      <Header/>
     </div>
   );
 }
