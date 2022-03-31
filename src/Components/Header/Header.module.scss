@@ -33,6 +33,9 @@
 }
 
 .navBarList {
+  @media (max-width: 650px) {
+    display: none;
+  }
   color: white;
   display: flex;
   @include adaptive-value("column-gap", 60, 20, 1);
@@ -290,6 +293,9 @@ text-align: center;
 //----------NavBarBottom--------------------------
 
 .bottomHeaderMenu {
+  @media(max-width: 650px){
+    display: none;
+  }
   background-color: $mainDarkColor;
   color: white;
   display: flex;
@@ -330,8 +336,102 @@ text-align: center;
   }
 }
 
-//-------------------------------
+//---------------Burger----------------
 
+.burgerMenuButton{
+  @media (min-width: 650px) {
+    display: none;
+  }
+  position: relative;
+  width: 40px;
+  height: 30px;
+}
+.burgerMenuButton:before,
+.burgerMenuButton:after{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 10%;
+  background-color: white;
+  z-index: 10;
+}
 
+.burgerMenuButton:after{
+  bottom: 0;
+}
 
+.burgerMenuButtonSpan{
+  width: 100%;
+  height: 10%;
+  background-color: white;
+  position: absolute;
+  top: 45%;
+  z-index: 10;
+}
 
+.burgerMenu {
+  position: fixed;
+  width: 100vw;
+  height: 200vw;
+  top: 0;
+  left: 0;
+  z-index: 3;
+}
+
+.burgerMenuHidden{
+  display: none;
+}
+
+.burgerMenuBackground{
+  position: fixed;
+  width: 100vw;
+  height: 200vw;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0, 0.5);
+  z-index: 4;
+}
+
+.burgerMenuContainer {
+  background-color: $mainDarkColor;
+  position: fixed;
+  top: 0;
+  left: 20%;
+  height: 100%;
+  width: 100%;
+  padding: 70px 0 0 30px;
+  overflow: auto;
+  z-index: 10;
+  :before {
+    content: '';
+    position: fixed;
+    width: 100%;
+    height: 70px;
+    background-color: $mainDarkColor;
+    top: 0;
+    left: 20%;
+    z-index: 10;
+  }
+}
+
+.burgerMenuList {
+  display: flex;
+  flex-direction: column;
+  font-size: 24px;
+  row-gap: 40px;
+  width: 77%;
+}
+.burgerMenuLink{
+  color: white;
+}
+
+.burgerMenuItemStuff{
+  display: flex;
+  justify-content: space-between;
+}
+.burgerMenuItemStuffArrow {
+  transform: rotate(-90deg);
+  color: white;
+  align-self: center;
+  margin-right: 20px;
+}
