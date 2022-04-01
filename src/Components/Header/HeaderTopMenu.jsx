@@ -1,30 +1,27 @@
 import styles from "./Header.module.scss";
 import user from "../../img/icons/user.svg";
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import MenuBurger from "./MenuBurger";
 import NavBarItems from "./NavBarItems";
+import UserMenuOption from "./UserMenuOption";
+import cn from 'classnames'
 
 const HeaderTopMenu = () => {
-
-    let [isBurgerActive, setIsBurgerActive] = useState(false)
-
-    const onBurgerClick = () => {
-        setIsBurgerActive(prev => !prev)
-    }
 
     return (
         <div className={styles.topHeaderMenu}>
             <div className={styles.topHeaderMenuContainer}>
                 <nav className={styles.navBar}>
                     <ul className={styles.navBarList}>
-                        <NavBarItems isBurgerActive={isBurgerActive}/>
+                        <NavBarItems/>
                     </ul>
                 </nav>
+                <UserMenuOption/>
                 <a className={styles.userLinkBlock}>
                     <img className={styles.userImage} width={'22px'} src={user}/>
                     <span className={styles.userLink}>Личный кабинет</span>
                 </a>
-                <MenuBurger isBurgerActive={isBurgerActive} onBurgerClick={onBurgerClick}/>
+                <MenuBurger/>
             </div>
         </div>
     )

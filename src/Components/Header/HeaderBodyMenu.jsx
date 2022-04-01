@@ -7,6 +7,7 @@ import favorite from "../../img/icons/favorite.svg";
 import phone from "../../img/icons/phone.svg";
 import cart from "../../img/icons/cart.svg";
 import React, {useState} from "react";
+import UserMenuOption from "./UserMenuOption";
 
 const HeaderBodyMenu = () => {
 
@@ -31,9 +32,6 @@ const HeaderBodyMenu = () => {
                         <span className={styles.userMenuLocationCity}>Москва</span>
                     </a>
                     <div className={styles.userMenuFlexContainer}>
-                        <a className={styles.userMenuPhone} href="">
-                            <img className={styles.userMenuPhoneImage} width={'23px'} src={phone} alt=""/>
-                        </a>
                         <div className={styles.userMenuNumber}>
                             <div className={styles.userMenuCallOption}>
                                 <a className={styles.userMenuMainNumber} href="tel:88007774967">8-800-777-49-67</a>
@@ -67,13 +65,7 @@ const HeaderBodyMenu = () => {
                                 </ul>
                             </div>
                         </div>
-                        <a className={styles.userMenuFavorite} href="">
-                            <img className={styles.userMenuFavoriteImage} width={'28px'} src={favorite} alt=""/>
-                        </a>
-                        <div className={styles.userMenuCart}>
-                            <img className={styles.cartImage} width={'31.5px'} src={cart} alt=""/>
-                            <span className={styles.cartCount}>0</span>
-                        </div>
+                        <UserMenuOption/>
                     </div>
                     <div className={styles.userMenuOrder}>
                         <span>0р.</span>

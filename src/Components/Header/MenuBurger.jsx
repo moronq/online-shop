@@ -2,25 +2,45 @@ import React, {useState} from 'react';
 import styles from "./Header.module.scss"
 import NavBarItems from "./NavBarItems";
 import cn from 'classnames'
+import arrowBack from '../../img/icons/arrow-back.svg'
 
 
-const MenuBurger = ({isBurgerActive, onBurgerClick}) => {
+const MenuBurger = () => {
+
+    let [isBurgerActive, setIsBurgerActive] = useState(false)
+    let [isKatalogActive, setIsKatalogActive] = useState(false)
+
+    const onBurgerClick = () => {
+        setIsBurgerActive(prev => !prev)
+        setIsKatalogActive(false)
+    }
+    const onKatalogClick = () => {
+        setIsKatalogActive(true)
+    }
 
     return (
         <>
-            <div className={styles.burgerMenuButton} onClick={onBurgerClick}>
+            <div className={`${styles.burgerMenuButton} ${isBurgerActive ? styles.burgerMenuButtonClose : ''}`}
+                 onClick={onBurgerClick}>
                 <span className={styles.burgerMenuButtonSpan}/>
             </div>
-            <div className={`${isBurgerActive ? styles.burgerMenu : styles.burgerMenuHidden}`}>
-                <div onClick={onBurgerClick} className={styles.burgerMenuBackground}></div>
-                <div className={styles.burgerMenuContainer}>
+            {isKatalogActive &&
+                <div className={styles.burgerMenuButtonBack} onClick={() => setIsKatalogActive(false)}>
+                    <img src={arrowBack} className={styles.burgerMenuButtonSpanBackArrow} width="20"/>
+                    <span className={styles.burgerMenuButtonSpanBack}>Назад</span>
+                </div>
+            }
+            <div className={`${styles.burgerMenu} ${isBurgerActive ? '' : styles.burgerMenuHidden}`}>
+                <div onClick={onBurgerClick} className={styles.burgerMenuBackground}/>
+                <div className={`${styles.burgerMenuContainer} ${isBurgerActive ? '' : styles.burgerMenuContainerHidden}`}>
                     <nav className={styles.burgerMenuNavigation}>
                         <ul className={styles.burgerMenuList}>
                             <li className={styles.burgerMenuItem}>
                                 <a className={styles.burgerMenuLink} href="">Личный кабинет</a>
                             </li>
-                            <li className={cn(styles.burgerMenuItem, styles.burgerMenuItemStuff)}>
-                                <a className={styles.burgerMenuLink} href="">Каталог товаров</a>
+                            <li onClick={onKatalogClick}
+                                className={cn(styles.burgerMenuItem, styles.burgerMenuItemStuff)}>
+                                <a className={styles.burgerMenuLink}>Каталог товаров</a>
                                 <svg className={styles.burgerMenuItemStuffArrow} width="16" height="10"
                                      viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -29,6 +49,28 @@ const MenuBurger = ({isBurgerActive, onBurgerClick}) => {
                                 </svg>
                             </li>
                             <NavBarItems isBurgerActive={isBurgerActive}/>
+                        </ul>
+                    </nav>
+                </div>
+                <div
+                    className={`${styles.burgerMenuContainer} ${isKatalogActive ? '' : styles.burgerMenuContainerHidden}`}>
+                    <nav className={styles.burgerMenuNavigation}>
+                        <ul className={styles.burgerMenuList}>
+                            <li className={styles.burgerMenuItem}>
+                                <a className={styles.burgerMenuLink} href="">Каталог ножей</a>
+                            </li>
+                            <li className={styles.burgerMenuItem}>
+                                <a className={styles.burgerMenuLink} href="">Клинковое оружие</a>
+                            </li>
+                            <li className={styles.burgerMenuItem}>
+                                <a className={styles.burgerMenuLink} href="">Сувенирные изделия</a>
+                            </li>
+                            <li className={styles.burgerMenuItem}>
+                                <a className={styles.burgerMenuLink} href="">Фонари ARMYTEK</a>
+                            </li>
+                            <li className={styles.burgerMenuItem}>
+                                <a className={styles.burgerMenuLink} href="">Сопуствующие товары</a>
+                            </li>
                         </ul>
                     </nav>
                 </div>
