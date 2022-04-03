@@ -1,11 +1,19 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from "../Body.module.scss";
 import contentKnifePreview from "../../../img/content/content-knife-preview.jpg";
 import star from "../../../img/icons/star.svg";
 import cartWhite from "../../../img/icons/cart-white.svg";
 import compare from "../../../img/icons/compare.svg";
 
-const ContentItem = ({title, price, steel}) => {
+const ContentItem = ({id, el, title, price, steel, addItemToCart, addedItemsToCart, removeItemFromCart}) => {
+
+    let addToCart = () => {
+        addItemToCart(el)
+    }
+    let removeFromCart = () => {
+        removeItemFromCart(el)
+    }
+
     return (
         <li className={styles.contentItem}>
             <div className={styles.contentItemPreview} href="">
@@ -54,8 +62,13 @@ const ContentItem = ({title, price, steel}) => {
                         </button>
                     </div>
                 </div>
-                <button className={styles.contentItemButtonCart}>
-                    <span className={styles.contentItemButtonCartText}>В корзину</span>
+                <button onClick={addedItemsToCart.includes(el) ? removeFromCart : addToCart}
+                        className={`${styles.contentItemButtonCart} ${addedItemsToCart.includes(el)
+                            ? styles.contentItemButtonCartRemove : ''}`}>
+                    <span
+                        className={styles.contentItemButtonCartText}>{addedItemsToCart.includes(el)
+                        ? 'Убрать из корзины' : 'В корзину'}
+                    </span>
                     <img className={styles.contentItemButtonCartImage} width={'19'} src={cartWhite} alt={'cart'}/>
                 </button>
             </div>

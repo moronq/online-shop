@@ -1,0 +1,58 @@
+@import "src/constants.scss";
+
+.footerBackground {
+  background-color: $mainDarkColor;
+}
+
+.footerContainer{
+  max-width: $containerWidth;
+  padding: 105px 15px;
+  margin: 0 auto;
+}
+
+.footerFirstFloor{
+  position: relative;
+  &:after {
+    content: '';
+    width: 99%;
+    height: 2px;
+    background-color: rgba(255,255,255, 0.5);
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+.footerFirstFloor{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.footerList{
+  padding-right: 140px;
+}
+
+.footerListContainer{
+  flex: 1 1 367px;
+  margin-bottom: 30px;
+}
+
+.footerListTitle{
+  color: white;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.footerListItem:not(:last-child){
+  margin-bottom: 30px;
+}
+
+.footerListItemLink{
+  color: white;
+  opacity: 0.8;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.5;
+}
+

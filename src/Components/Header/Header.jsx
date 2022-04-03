@@ -1,19 +1,26 @@
-import React, {useState} from "react"
+import React from "react"
 import styles from "./Header.module.scss"
-import cn from 'classnames'
 import HeaderTopMenu from "./HeaderTopMenu";
 import HeaderBodyMenu from "./HeaderBodyMenu";
 import HeaderBottomMenu from "./HeaderBottomMenu";
+import {connect} from "react-redux";
 
-const Header = () => {
-
+const Header = ({addedItemsToCart}) => {
     return (
         <header className={styles.Header}>
-            <HeaderTopMenu/>
-            <HeaderBodyMenu/>
+            <HeaderTopMenu addedItemsToCart={addedItemsToCart}/>
+            <HeaderBodyMenu addedItemsToCart={addedItemsToCart}/>
             <HeaderBottomMenu/>
         </header>
     )
 }
 
-export default Header
+let mapStateToProps =(state)=>{
+    return {
+        addedItemsToCart: state.catalogPage.addedItemsToCart,
+    }
+}
+
+const HeaderContainer = connect(mapStateToProps,{})(Header)
+
+export default HeaderContainer

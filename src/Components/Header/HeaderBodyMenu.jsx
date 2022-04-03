@@ -7,9 +7,8 @@ import favorite from "../../img/icons/favorite.svg";
 import phone from "../../img/icons/phone.svg";
 import cart from "../../img/icons/cart.svg";
 import React, {useState} from "react";
-import UserMenuOption from "./UserMenuOption";
 
-const HeaderBodyMenu = () => {
+const HeaderBodyMenu = ({addedItemsToCart}) => {
 
     let [isSpoilerActive, setIsSpoilerActive] = useState(false)
 
@@ -29,7 +28,7 @@ const HeaderBodyMenu = () => {
                 <div className={styles.userMenu}>
                     <a className={styles.userMenuLocation} href="">
                         <img src={location} width={'17px'} alt="your city"/>
-                        <span className={styles.userMenuLocationCity}>Москва</span>
+                        <span className={styles.userMenuLocationCity}>Санкт-Петербург</span>
                     </a>
                     <div className={styles.userMenuFlexContainer}>
                         <div className={styles.userMenuNumber}>
@@ -65,7 +64,17 @@ const HeaderBodyMenu = () => {
                                 </ul>
                             </div>
                         </div>
-                        <UserMenuOption/>
+                        {/*<UserMenuOption/>*/}
+                        <a className={styles.userMenuPhone} href="">
+                            <img className={styles.userMenuPhoneImage} width={'23px'} src={phone} alt=""/>
+                        </a>
+                        <a className={styles.userMenuFavorite} href="">
+                            <img className={styles.userMenuFavoriteImage} width={'28px'} src={favorite} alt=""/>
+                        </a>
+                        <a href='#' className={styles.userMenuCart}>
+                            <img className={styles.cartImage} width={'31.5px'} src={cart} alt=""/>
+                            <span className={styles.cartCount}>{addedItemsToCart.length}</span>
+                        </a>
                     </div>
                     <div className={styles.userMenuOrder}>
                         <span>0р.</span>
