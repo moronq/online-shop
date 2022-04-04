@@ -96,7 +96,11 @@ text-align: center;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  @media (max-width: 650px) {
+    flex-direction: column;
+    height: 120px;
+    justify-content: space-around;
+  }
 }
 .userMenu{
   display: flex;
@@ -116,6 +120,12 @@ text-align: center;
   flex: 0 1 377px;
   margin-right: 10px;
   position: relative;
+  @media (max-width: 650px) {
+    flex: 1 0 auto;
+    margin-top: 10px;
+    width: 100%;
+    margin-right: 0;
+  }
   &Input{
     height: 100%;
     background-color: transparent;
@@ -139,9 +149,12 @@ text-align: center;
   }
 }
 .userMenuLocation{
-  //margin-right: 35px;
+  @media (max-width: 700px) {
+    display: none;
+  }
   display: flex;
   align-items: center;
+  flex: 0 1 auto;
   &City{
     margin-left: 9px;
     color: black;
@@ -154,12 +167,12 @@ text-align: center;
   justify-content: space-between;
   flex: 0 1 186px;
   position: relative;
-
 }
 .userMenuCallback{
   color: $mainOrangeColor;
   font-weight: bold;
   font-size: 18px;
+  white-space: nowrap;
 }
 .userMenuMainNumber {
   color: black;
@@ -170,8 +183,9 @@ text-align: center;
 .userMenuCallOption {
   display: flex;
   min-height: 47px;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: column;
+  row-gap: 7px;
 }
 
 .userMenuOrder{
@@ -181,8 +195,17 @@ text-align: center;
   justify-content: space-between;
   &Text{
     color: $mainOrangeColor;
+    white-space: nowrap;
   }
   @media(max-width: 1150px){
+    display: none;
+  }
+}
+
+.userMenuPhone,
+.userMenuFavorite,
+.userMenuCart{
+  @media (max-width: 650px) {
     display: none;
   }
 }
@@ -204,14 +227,34 @@ text-align: center;
 .userMenuPhoneImage{
   fill: black;
 }
+.userMenuPhoneTop{
+  display: flex;
+  align-items: center;
+}
+
+.userMenuFavoriteTop{
+  display: flex;
+}
 
 .userMenuCart{
   position: relative;
-  top: 8px;
+  align-self: center;
   margin-left: 5px;
   @media(max-width: 830px){
     top: 0;
   }
+}
+
+.userMenuCartTop,
+.userMenuFavoriteTop,
+.userMenuPhoneTop {
+  @media (min-width: 650px){
+    display: none;
+  }
+}
+
+.userMenuCartTop{
+  position: relative;
 }
 
 .userMenuOrder span {
@@ -244,7 +287,7 @@ text-align: center;
   margin: 0 10px;
 }
 .userMenuNumberChooseButton{
-  align-self: flex-start;
+  align-self: center;
   margin-top: 5px;
 }
 
@@ -268,7 +311,7 @@ text-align: center;
   padding: 10px;
   overflow: hidden;
   background-color: white;
-  top: 25px;
+  top: 30px;
   left: -10px;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(20, 20, 20, 0.1);
@@ -409,10 +452,14 @@ text-align: center;
   top: 0;
   left: 0;
   z-index: 3;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease 0s;
 }
 
-.burgerMenuHidden{
-  display: none;
+.burgerMenuActive{
+  opacity: 1;
+  pointer-events: all;
 }
 
 .burgerMenuBackground{
@@ -450,6 +497,7 @@ text-align: center;
     top: 0;
     left: 20%;
     z-index: 9;
+    transition: all 1s ease 0s;
   }
 }
 

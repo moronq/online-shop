@@ -30,7 +30,7 @@ const MenuBurger = () => {
                     <span className={styles.burgerMenuButtonSpanBack}>Назад</span>
                 </div>
             }
-            <div className={`${styles.burgerMenu} ${isBurgerActive ? '' : styles.burgerMenuHidden}`}>
+            <div className={`${styles.burgerMenu} ${isBurgerActive ? styles.burgerMenuActive : ''}`}>
                 <div onClick={onBurgerClick} className={styles.burgerMenuBackground}/>
                 <div className={`${styles.burgerMenuContainer} ${isBurgerActive ? '' : styles.burgerMenuContainerHidden}`}>
                     <nav className={styles.burgerMenuNavigation}>

@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import styles from './App.scss';
 import Header from "./Components/Header/Header";
-import cn from "classnames"
 import Body from "./Components/Body/Body";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
 
@@ -10,6 +10,7 @@ function App() {
         <div className={styles.App}>
             <Header/>
             <Body/>
+            <Footer/>
         </div>
     );
 }

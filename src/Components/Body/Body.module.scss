@@ -51,7 +51,6 @@
 
 .bodyNavigatePathItem:not(:last-child) {
   position: relative;
-
   &:after,
   &:before {
     content: '';
@@ -100,9 +99,15 @@
 .contentItemsList{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
   max-width: 1185px;
   gap: 30px;
+  @media (max-width: 1619.5px){
+    justify-content: space-around;
+  }
+  @media (max-width: 810px){
+    justify-content: center;
+  }
 }
 
 .contentFilter {
@@ -119,7 +124,10 @@
   flex-direction: column;
   position: relative;
   padding-bottom: 10px;
-  margin-right: auto;
+  //margin-right: auto;
+  @media (max-width: 1215px){
+    margin-right: 0;
+  }
   &:after {
     content: '';
     position: absolute;
@@ -208,6 +216,10 @@
   border-radius: 3px;
   box-shadow: 0 4px 20px rgba(232, 170, 49, 0.43);
   gap: 16px;
+  &Remove {
+    background: #a5a5a5;
+    box-shadow: 0 4px 20px rgba(165, 165, 165, 0.43);
+  }
 }
 
 .contentItemButtonCartText{
@@ -233,6 +245,9 @@
   flex-direction: column;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   background-color: #fefefe;
+  @media (max-width: 1215px) {
+    display: none;
+  }
 }
 
 .contentFilterTitle{
