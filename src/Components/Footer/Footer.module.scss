@@ -6,11 +6,22 @@
 
 .footerContainer{
   max-width: $containerWidth;
-  padding: 105px 15px;
+  padding: 105px 15px 75px;
   margin: 0 auto;
+  @media (max-width: 900px){
+    padding: 30px 15px 10px;
+  }
 }
 
 .footerFirstFloor{
+  column-gap: 10px;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 35px;
+  @media (max-width: 900px){
+    flex-direction: column;
+    justify-content: center;
+  }
   position: relative;
   &:after {
     content: '';
@@ -22,18 +33,21 @@
   }
 }
 
-.footerFirstFloor{
-  display: flex;
-  justify-content: flex-start;
-}
-
-.footerList{
-  padding-right: 140px;
-}
 
 .footerListContainer{
   flex: 1 1 367px;
   margin-bottom: 30px;
+  overflow: hidden;
+  @media (max-width: 900px) {
+    align-self: center;
+    min-width: 375px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 1 auto;
+    margin-bottom: 0;
+  }
 }
 
 .footerListTitle{
@@ -42,10 +56,45 @@
   font-weight: 600;
   font-size: 18px;
   margin-bottom: 30px;
+  @media (max-width: 900px) {
+    font-size: 24px;
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px 0;
+    margin-bottom: 0;
+    position: relative;
+  }
+}
+
+.footerList{
+  @media (max-width: 900px){
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    transition: all 1s ease 0s;
+    padding: 10px 0;
+  }
+  &Hidden{
+    margin-bottom: -302px;
+    padding: 0;
+  }
 }
 
 .footerListItem:not(:last-child){
   margin-bottom: 30px;
+}
+
+.footerListItem {
+  display: flex;
+  max-width: 260px;
+  @media (max-width: 900px) {
+    max-width: 100%;
+    text-align: center;
+  }
 }
 
 .footerListItemLink{
@@ -54,5 +103,57 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 1.5;
+  &:hover{
+    text-decoration: underline;
+  }
+  @media (max-width: 900px) {
+    font-size: 20px;
+  }
+}
+.footerImage{
+  fill: white;
+  vertical-align: center;
+  align-self: flex-start;
+  margin-top: 7px;
+  margin-right: 25px;
+  @media (max-width: 900px) {
+    margin-right: 10px;
+  }
+}
+
+.spoilerButton {
+  display: none;
+  @media (max-width: 900px) {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+  }
+}
+.spoilerIcon{
+  display: none;
+  transition: transform 0.9s ease 0s;
+  @media (max-width: 900px){
+    display: block;
+  }
+}
+
+.spoilerIconFlipped{
+  transform: rotate(540deg);
+}
+
+.footerDesktop{
+  @media (max-width: 900px){
+    display: none;
+  }
+}
+
+.footerMobile{
+  @media (min-width: 900px){
+    display: none;
+  }
 }
 
