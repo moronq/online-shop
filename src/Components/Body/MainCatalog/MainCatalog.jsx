@@ -1,13 +1,13 @@
 import React from 'react';
-import styles from './Body.module.scss';
-import ContentItem from "./ContentItem/ContentItem";
-import FilterPrice from "./FilterElements/FilterPrice";
-import FilterSteel from "./FilterElements/FilterSteel";
+import styles from '../Body.module.scss';
+import ContentItem from "../common/ContentItem/ContentItem";
+import FilterPrice from "../common/FilterElements/FilterPrice";
+import FilterSteel from "../common/FilterElements/FilterSteel";
 import {connect} from "react-redux";
-import {addItemToCart, removeItemFromCart} from "../../redux/catalogReducer";
+import {addItemToCart, removeItemFromCart} from "../../../redux/catalogReducer";
 
 
-const Body = (props) => {
+const MainCatalog = (props) => {
 
     let catalogItems = props.catalog.map(el => <ContentItem key={el.id}
                                                             removeItemFromCart = {props.removeItemFromCart}
@@ -68,6 +68,6 @@ let mapStateToProps = (state) => {
     }
 }
 
-const BodyContainer = connect(mapStateToProps, {addItemToCart, removeItemFromCart})(Body)
+const BodyContainer = connect(mapStateToProps, {addItemToCart, removeItemFromCart})(MainCatalog)
 
 export default BodyContainer;

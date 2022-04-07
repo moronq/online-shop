@@ -1,16 +1,29 @@
 import React from 'react';
 import styles from "./Header.module.scss";
+import {NavLink} from "react-router-dom";
+
+const navBarItems = [
+    {title:'Каталог ножей', link:'maincatalog'},
+    {title:'Клинковое оружие', link:'bladeweapon'},
+    {title:'Сувенирные изделия', link:'souvenirs'},
+    {title:'Фонари ARMYTEK', link:'flashlight'},
+    {title:'Сопуствующие товары', link:'accessories'},
+]
 
 const HeaderBottomMenu = () => {
     return (
         <div className={styles.bottomHeaderMenu}>
             <nav className={styles.bottomHeaderMenuContainer}>
                 <ul className={styles.navBarBottomList}>
-                    <li className={styles.navBarBottomItem}>Каталог ножей</li>
-                    <li className={styles.navBarBottomItem}>Клинковое оружие</li>
-                    <li className={styles.navBarBottomItem}>Сувенирные изделия</li>
-                    <li className={styles.navBarBottomItem}>Фонари ARMYTEK</li>
-                    <li className={styles.navBarBottomItem}>Сопуствующие товары</li>
+                    {navBarItems.map((el,index)=><li key={index} className={styles.navBarBottomItem}>
+                        <NavLink to={el.link} className={(navData) =>
+                            navData.isActive ? styles.activeLink + ' ' + styles.navBarBottomItemLink
+                                : styles.navBarBottomItemLink
+                        }>
+                            {el.title}
+                        </NavLink>
+                    </li>)}
+
                 </ul>
             </nav>
         </div>

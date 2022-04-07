@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import styles from "../Body.module.scss";
-import contentKnifePreview from "../../../img/content/content-knife-preview.jpg";
-import star from "../../../img/icons/star.svg";
-import cartWhite from "../../../img/icons/cart-white.svg";
-import compare from "../../../img/icons/compare.svg";
+import styles from "../../Body.module.scss";
+import contentKnifePreview from "../../../../img/content/content-knife-preview.jpg";
+import star from "../../../../img/icons/star.svg";
+import cartWhite from "../../../../img/icons/cart-white.svg";
+import compare from "../../../../img/icons/compare.svg";
 
 const ContentItem = ({id, el, title, price, steel, addItemToCart, addedItemsToCart, removeItemFromCart}) => {
 
