@@ -18,14 +18,14 @@ const FooterList = ({title, list, image}) => {
             </p>
             <div className={styles.footerDesktop}>
                 <ul className={styles.footerList}>
-                    {list.map((el, index) => <li className={styles.footerListItem}>{image ? <img className={styles.footerImage} src={image[index]} alt={'logo'}/>  : ''}<a className={styles.footerListItemLink} href="">
+                    {list.map((el, index) => <li key={index} className={styles.footerListItem}>{image ? <img className={styles.footerImage} src={image[index]} alt={'logo'}/>  : ''}<a className={styles.footerListItemLink} href="">
                         {el}</a></li>
                     )}
                 </ul>
             </div>
             <div className={styles.footerMobile}>
                 <ul className={`${styles.footerList} ${isSpoilerActive ? '' : styles.footerListHidden}`}>
-                    {list.map((el, index) => <li className={styles.footerListItem}>{image ? <img className={styles.footerImage} src={image[index]} alt={'logo'}/>  : ''}<a className={styles.footerListItemLink} href="">
+                    {list.map((el, index) => <li key={index} className={styles.footerListItem}>{image ? <img className={styles.footerImage} src={image[index]} alt={'logo'}/>  : ''}<a className={styles.footerListItemLink} href="">
                         {el}</a></li>
                     )}
                 </ul>

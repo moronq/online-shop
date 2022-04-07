@@ -376,23 +376,41 @@ text-align: center;
 }
 
 .navBarBottomItem {
-  padding: 0px 5px;
+  padding: 0 5px;
   position: relative;
   min-height: 70px;
   display: flex;
   align-items: center;
+  &::after {
+    content: '';
+    position: absolute;
+    width: calc(100% - 10px);
+    height: 2px;
+    background-color: $mainOrangeColor;
+    bottom: 1px;
+    left: 5px;
+    transform: scaleX(0);
+    transition: all 0.2s ease 0s;
+  }
   &:hover{
     cursor: pointer;
     &::after {
       content: '';
-      position: absolute;
-      width: calc(100% - 10px);
-      height: 2px;
-      background-color: $mainOrangeColor;
-      bottom: 1px;
-      left: 5px;
+      transform: scaleX(1);
     }
   }
+}
+
+.navBarBottomItemLink{
+  color: white;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+}
+
+.activeLink{
+  color: $mainOrangeColor;
 }
 
 //---------------Burger----------------

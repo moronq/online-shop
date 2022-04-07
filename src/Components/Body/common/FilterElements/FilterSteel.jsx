@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import styles from "../Body.module.scss";
-import arrow from "../../../img/icons/arrow-bottom.svg";
+import styles from "../../Body.module.scss";
+import arrow from "../../../../img/icons/arrow-bottom.svg";
 
 const FilterSteel = () => {
 

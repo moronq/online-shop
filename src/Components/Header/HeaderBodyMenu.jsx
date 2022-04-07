@@ -7,6 +7,7 @@ import favorite from "../../img/icons/favorite.svg";
 import phone from "../../img/icons/phone.svg";
 import cart from "../../img/icons/cart.svg";
 import React, {useState} from "react";
+import {NavLink} from "react-router-dom";
 
 const HeaderBodyMenu = ({addedItemsToCart}) => {
 
@@ -19,7 +20,7 @@ const HeaderBodyMenu = ({addedItemsToCart}) => {
     return(
         <div className={styles.midHeaderMenu}>
             <div className={styles.midHeaderMenuContainer}>
-                <a className={styles.imageLogo} href="#"><img src={logo} alt=""/></a>
+                <NavLink to={'/'} className={styles.imageLogo}><img src={logo} alt=""/></NavLink>
                 <form className={styles.searchBar} action="">
                     <input className={styles.searchBarInput} placeholder={'Поиск'} type="text"/>
                     <button className={styles.searchBarButton} type={'submit'}><img
