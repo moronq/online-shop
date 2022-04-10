@@ -1,24 +1,33 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from '../Body.module.scss';
 import ContentItem from "../common/ContentItem/ContentItem";
 import FilterPrice from "../common/FilterElements/FilterPrice";
 import FilterSteel from "../common/FilterElements/FilterSteel";
 import {connect} from "react-redux";
-import {addItemToCart, removeItemFromCart} from "../../../redux/catalogReducer";
+import {addItemToCart, removeItemFromCart, } from "../../../redux/catalogReducer";
+import Paginator from "../common/Paginator/Paginator";
 
 
 const MainCatalog = (props) => {
 
-    let catalogItems = props.catalog.map(el => <ContentItem key={el.id}
-                                                            removeItemFromCart = {props.removeItemFromCart}
-                                                            el={el}
-                                                            addedItemsToCart={props.addedItemsToCart}
-                                                            addItemToCart={props.addItemToCart}
-                                                            id={el.id}
-                                                            title={el.title}
-                                                            price={el.price}
-                                                            steel={el.steel}/>
-                                                            )
+    let [currentPage, setCurrentPage] = useState(1)
+
+    useEffect(()=>{
+        window.scrollTo({
+            top: 0,
+        })
+    }, [currentPage])
+
+    let totalItemsCount = props.catalog.length
+    let startPageItem = (currentPage - 1) * props.pageSize
+    let endPageItem = (currentPage * props.pageSize) - 1
+
+    let catalogItems = props.catalog
+        .slice(startPageItem, endPageItem + 1)
+        .map(el => <ContentItem key={el.id} removeItemFromCart={props.removeItemFromCart} el={el}
+                                addedItemsToCart={props.addedItemsToCart} addItemToCart={props.addItemToCart} id={el.id}
+                                title={el.title} price={el.price} steel={el.steel}/>
+        )
 
     return (
         <main className={styles.body}>
@@ -55,6 +64,11 @@ const MainCatalog = (props) => {
                         </ul>
                     </section>
                 </div>
+                <Paginator totalItemsCount={totalItemsCount}
+                           pageSize={props.pageSize}
+                           setCurrentPage={setCurrentPage}
+                           currentPage={currentPage}
+                />
             </div>
         </main>
     );
@@ -65,6 +79,7 @@ let mapStateToProps = (state) => {
         catalog: state.catalogPage.catalog,
         favorite: state.catalogPage.favorite,
         addedItemsToCart: state.catalogPage.addedItemsToCart,
+        pageSize: state.catalogPage.pageSize,
     }
 }
 

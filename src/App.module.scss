@@ -6,4 +6,11 @@
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContent{
+  margin-bottom: 30px;
+  flex: 1 0 auto;
 }
