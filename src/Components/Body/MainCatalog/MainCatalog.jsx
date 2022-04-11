@@ -33,7 +33,7 @@ const MainCatalog = (props) => {
                                 title={el.title} price={el.price} steel={el.steel}/>
         )
 
-    let totalItemsCount = catalogItems.length
+    let totalItemsCount = searchedItems.length
 
     return (
         <main className={styles.body}>
