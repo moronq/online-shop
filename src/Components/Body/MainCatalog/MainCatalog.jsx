@@ -22,7 +22,11 @@ const MainCatalog = (props) => {
     let startPageItem = (currentPage - 1) * props.pageSize
     let endPageItem = (currentPage * props.pageSize) - 1
 
-    let catalogItems = props.catalog
+    let searchedItems = props.catalog.filter(item=>{
+        return item.title.toLowerCase().includes(props.searchValue.toLowerCase())
+    })
+
+    let catalogItems = searchedItems
         .slice(startPageItem, endPageItem + 1)
         .map(el => <ContentItem key={el.id} removeItemFromCart={props.removeItemFromCart} el={el}
                                 addedItemsToCart={props.addedItemsToCart} addItemToCart={props.addItemToCart} id={el.id}
@@ -60,7 +64,7 @@ const MainCatalog = (props) => {
                     </aside>
                     <section className={styles.contentContainerList}>
                         <ul className={styles.contentItemsList}>
-                            {catalogItems}
+                            {catalogItems.length ? catalogItems : <li className={styles.lostSearching}>Ничего не найдено</li> }
                         </ul>
                     </section>
                 </div>

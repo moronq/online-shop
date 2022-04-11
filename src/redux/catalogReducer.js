@@ -1,6 +1,5 @@
 const ADD_TO_CART = 'ADD_TO_CART'
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
-const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 
 let names = ['Лиса', 'Заяц', 'Волк', 'Медведь', 'Собака', 'Ёж', 'Убийца', 'Не нож', 'Бобер',]
 let steel = ['100Х13М', '95x18', 'ELMAX', 'K340', 'M390']
