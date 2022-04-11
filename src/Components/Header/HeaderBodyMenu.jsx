@@ -8,24 +8,28 @@ import phone from "../../img/icons/phone.svg";
 import cart from "../../img/icons/cart.svg";
 import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
+import Input from "./Input";
 
-const HeaderBodyMenu = ({addedItemsToCart}) => {
+const HeaderBodyMenu = ({addedItemsToCart, searchValue, setSearchValue}) => {
 
     let [isSpoilerActive, setIsSpoilerActive] = useState(false)
+
+    let price = 0
+
+    for (let i = 0; i < addedItemsToCart.length; i++) {
+        price = price + addedItemsToCart[i].price
+    }
+
 
     const toggleSpoilerActive = () => {
         setIsSpoilerActive(prev => !prev)
     }
 
-    return(
+    return (
         <div className={styles.midHeaderMenu}>
             <div className={styles.midHeaderMenuContainer}>
                 <NavLink to={'/'} className={styles.imageLogo}><img src={logo} alt=""/></NavLink>
-                <form className={styles.searchBar} action="">
-                    <input className={styles.searchBarInput} placeholder={'Поиск'} type="text"/>
-                    <button className={styles.searchBarButton} type={'submit'}><img
-                        className={styles.searchBarImage} src={search}/></button>
-                </form>
+                <Input searchValue={searchValue} setSearchValue={setSearchValue}/>
                 <div className={styles.userMenu}>
                     <a className={styles.userMenuLocation} href="">
                         <img src={location} width={'17px'} alt="your city"/>
@@ -65,7 +69,6 @@ const HeaderBodyMenu = ({addedItemsToCart}) => {
                                 </ul>
                             </div>
                         </div>
-                        {/*<UserMenuOption/>*/}
                         <a className={styles.userMenuPhone} href="">
                             <img className={styles.userMenuPhoneImage} width={'23px'} src={phone} alt=""/>
                         </a>
@@ -78,7 +81,7 @@ const HeaderBodyMenu = ({addedItemsToCart}) => {
                         </a>
                     </div>
                     <div className={styles.userMenuOrder}>
-                        <span>0р.</span>
+                        <span className={styles.price}>{price}р.</span>
                         <span className={styles.userMenuOrderText}>Оформить заказ</span>
                     </div>
                 </div>
