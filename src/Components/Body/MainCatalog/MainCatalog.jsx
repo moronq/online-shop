@@ -18,7 +18,7 @@ const MainCatalog = (props) => {
         })
     }, [currentPage])
 
-    let totalItemsCount = props.catalog.length
+
     let startPageItem = (currentPage - 1) * props.pageSize
     let endPageItem = (currentPage * props.pageSize) - 1
 
@@ -32,6 +32,8 @@ const MainCatalog = (props) => {
                                 addedItemsToCart={props.addedItemsToCart} addItemToCart={props.addItemToCart} id={el.id}
                                 title={el.title} price={el.price} steel={el.steel}/>
         )
+
+    let totalItemsCount = catalogItems.length
 
     return (
         <main className={styles.body}>
