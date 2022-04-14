@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styles from '../Body.module.scss';
 import ContentItem from "../common/ContentItem/ContentItem";
-import FilterPrice from "../common/FilterElements/FilterPrice";
+import FilterPrice from "../common/FilterElements/FilterPrice/FilterPrice";
 import FilterSteel from "../common/FilterElements/FilterSteel";
 import {connect} from "react-redux";
 import {addItemToCart, removeItemFromCart, } from "../../../redux/catalogReducer";
