@@ -9,8 +9,6 @@ import {Route, Routes} from "react-router";
 
 function App() {
 
-
-
     let[searchValue, setSearchValue] = useState('')
 
     return (

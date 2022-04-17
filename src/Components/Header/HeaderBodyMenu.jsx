@@ -9,8 +9,13 @@ import cart from "../../img/icons/cart.svg";
 import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
 import Input from "./Input";
+import {useSelector} from "react-redux";
 
-const HeaderBodyMenu = ({addedItemsToCart, searchValue, setSearchValue}) => {
+const HeaderBodyMenu = () => {
+
+    const addedItemsToCart = useSelector(state => state.catalogPage.addedItemsToCart)
+    const searchValue = useSelector(state => state.catalogPage.searchValue)
+
 
     let [isSpoilerActive, setIsSpoilerActive] = useState(false)
 
@@ -29,7 +34,7 @@ const HeaderBodyMenu = ({addedItemsToCart, searchValue, setSearchValue}) => {
         <div className={styles.midHeaderMenu}>
             <div className={styles.midHeaderMenuContainer}>
                 <NavLink to={'/'} className={styles.imageLogo}><img src={logo} alt=""/></NavLink>
-                <Input searchValue={searchValue} setSearchValue={setSearchValue}/>
+                <Input searchValue={searchValue}/>
                 <div className={styles.userMenu}>
                     <a className={styles.userMenuLocation} href="">
                         <img src={location} width={'17px'} alt="your city"/>

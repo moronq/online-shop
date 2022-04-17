@@ -3,24 +3,16 @@ import styles from "./Header.module.scss"
 import HeaderTopMenu from "./HeaderTopMenu";
 import HeaderBodyMenu from "./HeaderBodyMenu";
 import HeaderBottomMenu from "./HeaderBottomMenu";
-import {connect} from "react-redux";
 
-const Header = ({addedItemsToCart, searchValue, setSearchValue}) => {
+const Header = () => {
+
     return (
         <header className={styles.Header}>
-            <HeaderTopMenu addedItemsToCart={addedItemsToCart}/>
-            <HeaderBodyMenu addedItemsToCart={addedItemsToCart} searchValue={searchValue} setSearchValue={setSearchValue}/>
+            <HeaderTopMenu/>
+            <HeaderBodyMenu/>
             <HeaderBottomMenu/>
         </header>
     )
 }
 
-let mapStateToProps =(state)=>{
-    return {
-        addedItemsToCart: state.catalogPage.addedItemsToCart,
-    }
-}
-
-const HeaderContainer = connect(mapStateToProps,{})(Header)
-
-export default HeaderContainer
+export default Header

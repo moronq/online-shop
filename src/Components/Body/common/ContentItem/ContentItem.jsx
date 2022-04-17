@@ -4,14 +4,19 @@ import contentKnifePreview from "../../../../img/content/content-knife-preview.j
 import star from "../../../../img/icons/star.svg";
 import cartWhite from "../../../../img/icons/cart-white.svg";
 import compare from "../../../../img/icons/compare.svg";
+import {useDispatch, useSelector} from "react-redux";
+import {addItemToCart, removeItemFromCart} from "../../../../redux/catalogReducer";
 
-const ContentItem = ({id, el, title, price, steel, addItemToCart, addedItemsToCart, removeItemFromCart}) => {
+const ContentItem = ({id, el, title, price, steel}) => {
+
+    const addedItemsToCart = useSelector(state => state.catalogPage.addedItemsToCart)
+    const dispatch = useDispatch()
 
     let addToCart = () => {
-        addItemToCart(el)
+        dispatch(addItemToCart(el))
     }
     let removeFromCart = () => {
-        removeItemFromCart(el)
+        dispatch(removeItemFromCart(el))
     }
 
     return (
