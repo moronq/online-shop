@@ -10,6 +10,13 @@ import Paginator from "../common/Paginator/Paginator";
 
 const MainCatalog = (props) => {
 
+    const MIN_PRICE = 0
+    const maxPriceItem = props.catalog.reduce((prev, current) => prev.price > current.price ? prev : current)
+    const MAX_PRICE = maxPriceItem.price
+
+    const [minInputValue, setMinInputValue] = useState(MIN_PRICE)
+    const [maxInputValue, setMaxInputValue] = useState(MAX_PRICE)
+
     let [currentPage, setCurrentPage] = useState(1)
 
     useEffect(()=>{
@@ -22,18 +29,34 @@ const MainCatalog = (props) => {
     let startPageItem = (currentPage - 1) * props.pageSize
     let endPageItem = (currentPage * props.pageSize) - 1
 
+    let priceFilteredCatalog = props.catalog.filter(item=>{
+        if(item.price>=minInputValue && item.price<=maxInputValue){
+            return item
+        }
+    })
+
     let searchedItems = props.catalog.filter(item=>{
         return item.title.toLowerCase().includes(props.searchValue.toLowerCase())
     })
-
-    let catalogItems = searchedItems
-        .slice(startPageItem, endPageItem + 1)
-        .map(el => <ContentItem key={el.id} removeItemFromCart={props.removeItemFromCart} el={el}
-                                addedItemsToCart={props.addedItemsToCart} addItemToCart={props.addItemToCart} id={el.id}
-                                title={el.title} price={el.price} steel={el.steel}/>
-        )
-
-    let totalItemsCount = searchedItems.length
+    let catalogItems
+    let totalItemsCount
+    if(props.searchValue){
+        totalItemsCount= searchedItems.length
+        catalogItems = searchedItems
+            .slice(startPageItem, endPageItem + 1)
+            .map(el => <ContentItem key={el.id} removeItemFromCart={props.removeItemFromCart} el={el}
+                                    addedItemsToCart={props.addedItemsToCart} addItemToCart={props.addItemToCart} id={el.id}
+                                    title={el.title} price={el.price} steel={el.steel}/>
+            )
+    } else {
+        totalItemsCount = priceFilteredCatalog.length
+        catalogItems = priceFilteredCatalog
+            .slice(startPageItem, endPageItem + 1)
+            .map(el => <ContentItem key={el.id} removeItemFromCart={props.removeItemFromCart} el={el}
+                               addedItemsToCart={props.addedItemsToCart} addItemToCart={props.addItemToCart} id={el.id}
+                               title={el.title} price={el.price} steel={el.steel}/>
+            )
+    }
 
     return (
         <main className={styles.body}>
@@ -61,7 +84,12 @@ const MainCatalog = (props) => {
                 <div className={styles.contentContainer}>
                     <aside className={styles.contentFilter}>
                         <h3 className={styles.contentFilterTitle}>Фильтр товаров</h3>
-                        <FilterPrice catalog={props.catalog}/>
+                        <FilterPrice catalog={props.catalog} minInputValue={minInputValue}
+                                     maxInputValue={maxInputValue}
+                                     setMaxInputValue={setMaxInputValue}
+                                     setMinInputValue={setMinInputValue}
+                                     MIN_PRICE={MIN_PRICE}
+                                     MAX_PRICE={MAX_PRICE}/>
                         <FilterSteel/>
                     </aside>
                     <section className={styles.contentContainerList}>

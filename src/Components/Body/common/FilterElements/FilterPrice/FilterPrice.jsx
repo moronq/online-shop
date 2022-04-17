@@ -2,17 +2,14 @@ import React, {useEffect, useRef, useState} from 'react';
 import styles from "./FilterPrice.module.scss";
 import arrow from "../../../../../img/icons/arrow-bottom.svg";
 
-const FilterPrice = ({catalog}) => {
+const FilterPrice = ({minInputValue, maxInputValue, setMaxInputValue, setMinInputValue, MIN_PRICE, MAX_PRICE}) => {
     const PRICE_GAP = 100
 
-    const maxPriceItem = catalog.reduce((prev, current) => prev.price > current.price ? prev : current)
-    const maxPrice = maxPriceItem.price
 
     const [isSpoilerActive, setIsSpoilerActive] = useState(false)
-    const [minInputValue, setMinInputValue] = useState(0)
-    const [maxInputValue, setMaxInputValue] = useState(maxPrice)
-    const [minSliderValue, setMinSliderValue] = useState(0)
-    const [maxSliderValue, setMaxSliderValue] = useState(maxPrice)
+
+    const [minSliderValue, setMinSliderValue] = useState(MIN_PRICE)
+    const [maxSliderValue, setMaxSliderValue] = useState(MAX_PRICE)
 
     const progress = useRef(null)
 
@@ -84,13 +81,13 @@ const FilterPrice = ({catalog}) => {
     const onInputMax = (e) => {
         let maxVal = e.target.value
         if (e.key === 'Enter') {
-            if ((maxVal - minInputValue >= PRICE_GAP) && maxVal <= maxPrice) {
+            if ((maxVal - minInputValue >= PRICE_GAP) && maxVal <= MAX_PRICE) {
                 progress.current.style.right = 100 - (maxVal / e.target.max) * 100 + '%'
                 setMaxSliderValue(maxVal)
-            } else if (maxVal > maxPrice) {
+            } else if (maxVal > MAX_PRICE) {
                 progress.current.style.right = 0
-                setMaxSliderValue(maxPrice)
-                setMaxInputValue(maxPrice)
+                setMaxSliderValue(MAX_PRICE)
+                setMaxInputValue(MAX_PRICE)
             } else if (maxVal - minInputValue < PRICE_GAP) {
                 let currentValue = +minInputValue + PRICE_GAP
                 progress.current.style.right = 100 - (currentValue / e.target.max) * 100 + '%'
@@ -113,12 +110,12 @@ const FilterPrice = ({catalog}) => {
             <div
                 className={`${styles.filterPriceSliderPart} ${isSpoilerActive ? '' : styles.filterPriceSliderPartHidden}`}>
                 <div className={styles.filterPriceForm}>
-                    <input className={styles.inputMin} type="number" value={minInputValue} max={maxPrice}
+                    <input className={styles.inputMin} type="number" value={minInputValue} max={MAX_PRICE}
                            onBlur={(e) => onInputBlur(e)}
                            onFocus={(e) => onFocusInput(e)}
                            onKeyDown={(e) => onInputMin(e)}
                            onChange={(e) => setMinInputValue(e.target.value)}/>
-                    <input className={styles.inputMax} type="number" value={maxInputValue} max={maxPrice}
+                    <input className={styles.inputMax} type="number" value={maxInputValue} max={MAX_PRICE}
                            onBlur={(e) => onInputBlur(e)}
                            onFocus={(e) => onFocusInput(e)}
                            onKeyDown={(e) => onInputMax(e)}
@@ -128,9 +125,9 @@ const FilterPrice = ({catalog}) => {
                     <div ref={progress} className={styles.filterPriceSliderProgress}/>
                 </div>
                 <div className={styles.rangeInput}>
-                    <input type='range' className={styles.rangeMin} min={0} max={maxPrice} value={minSliderValue}
+                    <input type='range' className={styles.rangeMin} min={0} max={MAX_PRICE} value={minSliderValue}
                            step={'100'} onChange={(e) => onRangeMinSlider(e)}/>
-                    <input type='range' className={styles.rangeMax} min={0} max={maxPrice} value={maxSliderValue}
+                    <input type='range' className={styles.rangeMax} min={0} max={MAX_PRICE} value={maxSliderValue}
                            step={'100'} onChange={(e) => onRangeMaxSlider(e)}/>
                 </div>
             </div>
