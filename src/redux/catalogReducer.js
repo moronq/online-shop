@@ -70,7 +70,7 @@ const catalogReducer = (state = initialState, action) => {
             case SET_FILTER_PRICE_CATALOG:
                 return {
                     ...state,
-                    filterPriceCatalog: state.catalog.filter(item=>{
+                    filterPriceCatalog: state.searchCatalog.filter(item=>{
                         if(item.price>=state.minInputValue && item.price<=state.maxInputValue){
                             return item
                         }
@@ -99,6 +99,7 @@ export const setSearchValue = (text) => ({type: SET_SEARCH_VALUE, text})
 export const setSearchCatalog = () => ({type: SET_SEARCH_CATALOG})
 export const setMinInputValue = (minValue) => ({type: SET_MIN_VALUE, minValue})
 export const setMaxInputValue = (maxValue) => ({type: SET_MAX_VALUE, maxValue})
+export const setFilterPriceCatalog = () => ({type: SET_FILTER_PRICE_CATALOG})
 export const addItemToFavorite = (id) => {
 }
 export const removeItemFromFavorite = (id) => {

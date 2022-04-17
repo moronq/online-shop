@@ -3,19 +3,26 @@ import styles from '../Body.module.scss';
 import ContentItem from "../common/ContentItem/ContentItem";
 import FilterPrice from "../common/FilterElements/FilterPrice/FilterPrice";
 import FilterSteel from "../common/FilterElements/FilterSteel";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import Paginator from "../common/Paginator/Paginator";
+import {setFilterPriceCatalog} from "../../../redux/catalogReducer";
 
 
 const MainCatalog = () => {
 
     const catalog = useSelector(state => state.catalogPage.catalog)
     const pageSize = useSelector(state => state.catalogPage.pageSize)
+    const filterPriceCatalog = useSelector(state => state.catalogPage.filterPriceCatalog)
     const searchCatalog = useSelector(state => state.catalogPage.searchCatalog)
     const MIN_PRICE = useSelector(state=>state.catalogPage.MIN_PRICE)
     const MAX_PRICE = useSelector(state=>state.catalogPage.MAX_PRICE)
+    const dispatch = useDispatch()
 
     let [currentPage, setCurrentPage] = useState(1)
+
+    useEffect(()=>{
+        dispatch(setFilterPriceCatalog())
+    },[searchCatalog])
 
     useEffect(()=>{
         window.scrollTo({
@@ -23,26 +30,15 @@ const MainCatalog = () => {
         })
     }, [currentPage])
 
-
     let startPageItem = (currentPage - 1) * pageSize
     let endPageItem = (currentPage * pageSize) - 1
 
-
-    let totalItemsCount = searchCatalog.length
-    let catalogItems = searchCatalog
+    let totalItemsCount = filterPriceCatalog.length
+    let catalogItems = filterPriceCatalog
             .slice(startPageItem, endPageItem + 1)
             .map(el => <ContentItem key={el.id} el={el} id={el.id}
                                     title={el.title} price={el.price} steel={el.steel}/>
             )
-
-// else {
-//         totalItemsCount = priceFilteredCatalog.length
-//         catalogItems = priceFilteredCatalog
-//             .slice(startPageItem, endPageItem + 1)
-//             .map(el => <ContentItem key={el.id}  el={el} id={el.id}
-//                                title={el.title} price={el.price} steel={el.steel}/>
-//             )
-//     }
 
     return (
         <main className={styles.body}>
