@@ -66,8 +66,8 @@
   height: 2px;
   background-color: $mainDarkColor;
   position: absolute;
-  left: 25%;
-  right: 25%;
+  left: 0;
+  right: 0;
 }
 
 .inputMin,
@@ -107,7 +107,8 @@ input[type='range']::-webkit-slider-thumb{
   width: 18px;
   border-radius: 50%;
   pointer-events: auto;
-  background-color: $mainOrangeColor;
+  background-color: $mainDarkColor;
+  border: 3px solid $mainOrangeColor;
 }
 input[type='range']::-moz-range-thumb{
   -moz-appearance: none;

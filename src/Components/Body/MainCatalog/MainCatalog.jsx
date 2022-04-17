@@ -61,7 +61,7 @@ const MainCatalog = (props) => {
                 <div className={styles.contentContainer}>
                     <aside className={styles.contentFilter}>
                         <h3 className={styles.contentFilterTitle}>Фильтр товаров</h3>
-                        <FilterPrice/>
+                        <FilterPrice catalog={props.catalog}/>
                         <FilterSteel/>
                     </aside>
                     <section className={styles.contentContainerList}>
