@@ -22,6 +22,7 @@ const FilterSteel = () => {
                 </button>
             </div>
             <div
+
                 className={styles.filterSteelSpoilerPart}>
                 <ul className={`${styles.filterSteelList} ${isSpoilerActive ? '' : styles.filterSteelListHidden}`}>
                     <li className={styles.filterSteelItem}>

@@ -3,8 +3,11 @@ import user from "../../img/icons/user.svg";
 import React, {useRef, useState} from "react";
 import MenuBurger from "./MenuBurger";
 import NavBarItems from "./NavBarItems";
+import {useSelector} from "react-redux";
 
-const HeaderTopMenu = ({addedItemsToCart}) => {
+const HeaderTopMenu = () => {
+
+    const addedItemsToCart = useSelector(state => state.catalogPage.addedItemsToCart)
 
     return (
         <div className={styles.topHeaderMenu}>
