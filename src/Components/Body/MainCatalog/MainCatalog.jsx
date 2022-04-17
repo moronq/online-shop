@@ -12,15 +12,8 @@ const MainCatalog = () => {
     const catalog = useSelector(state => state.catalogPage.catalog)
     const pageSize = useSelector(state => state.catalogPage.pageSize)
     const searchCatalog = useSelector(state => state.catalogPage.searchCatalog)
-
-
-    const MIN_PRICE = 0
-    const maxPriceItem = catalog.length ? catalog.reduce((prev, current) => prev.price > current.price ? prev : current) : {price: MIN_PRICE}
-    const MAX_PRICE = maxPriceItem.price
-
-
-    const [minInputValue, setMinInputValue] = useState(MIN_PRICE)
-    const [maxInputValue, setMaxInputValue] = useState(MAX_PRICE)
+    const MIN_PRICE = useSelector(state=>state.catalogPage.MIN_PRICE)
+    const MAX_PRICE = useSelector(state=>state.catalogPage.MAX_PRICE)
 
     let [currentPage, setCurrentPage] = useState(1)
 
@@ -34,11 +27,6 @@ const MainCatalog = () => {
     let startPageItem = (currentPage - 1) * pageSize
     let endPageItem = (currentPage * pageSize) - 1
 
-    // let priceFilteredCatalog = catalog.filter(item=>{
-    //     if(item.price>=minInputValue && item.price<=maxInputValue){
-    //         return item
-    //     }
-    // })
 
     let totalItemsCount = searchCatalog.length
     let catalogItems = searchCatalog
@@ -82,10 +70,7 @@ const MainCatalog = () => {
                 <div className={styles.contentContainer}>
                     <aside className={styles.contentFilter}>
                         <h3 className={styles.contentFilterTitle}>Фильтр товаров</h3>
-                        <FilterPrice catalog={catalog} minInputValue={minInputValue}
-                                     maxInputValue={maxInputValue}
-                                     setMaxInputValue={setMaxInputValue}
-                                     setMinInputValue={setMinInputValue}
+                        <FilterPrice catalog={catalog}
                                      MIN_PRICE={MIN_PRICE}
                                      MAX_PRICE={MAX_PRICE}/>
                         <FilterSteel/>

@@ -16,7 +16,6 @@ const HeaderBodyMenu = () => {
     const addedItemsToCart = useSelector(state => state.catalogPage.addedItemsToCart)
     const searchValue = useSelector(state => state.catalogPage.searchValue)
 
-
     let [isSpoilerActive, setIsSpoilerActive] = useState(false)
 
     let price = 0

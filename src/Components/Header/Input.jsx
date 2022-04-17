@@ -13,17 +13,9 @@ const Input = ({searchValue}) => {
         dispatch(setSearchCatalog())
     }
 
-    const onKeyDownInput =(e)=>{
-        if (e.key === 'Enter') {
-            dispatch(setSearchValue(e.target.value))
-            dispatch(setSearchCatalog())
-        }
-    }
-
     return (
         <form className={styles.searchBar} action="">
             <input className={styles.searchBarInput} value={searchValue}
-                   onKeyDown={onKeyDownInput}
                    onChange={(e)=>{onInputChange(e)}} placeholder={'Поиск'} type="text"/>
             <button className={styles.searchBarButton} onClick={(e)=>e.preventDefault()} type={'submit'}><img
                 className={styles.searchBarImage} src={search}/></button>
