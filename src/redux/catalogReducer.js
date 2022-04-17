@@ -1,6 +1,7 @@
 const ADD_TO_CART = 'ADD_TO_CART'
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 const SET_SEARCH_VALUE = 'SET_SEARCH_VALUE'
+const SET_SEARCH_CATALOG = 'SET_SEARCH_CATALOG'
 
 let names = ['Лиса', 'Заяц', 'Волк', 'Медведь', 'Собака', 'Ёж', 'Убийца', 'Не нож', 'Бобер',]
 let steel = ['100Х13М', '95x18', 'ELMAX', 'K340', 'M390']
@@ -19,6 +20,7 @@ for (let i = 1; i < 100; i++) {
 
 let initialState = {
     catalog: catalog,
+    searchCatalog: catalog,
     favorite: [],
     addedItemsToCart: [],
     pageSize: 12,
@@ -43,8 +45,15 @@ const catalogReducer = (state = initialState, action) => {
             case SET_SEARCH_VALUE:
             return {
                 ...state,
-                searchValue: action.text,
+                searchValue: action.text
             }
+            case SET_SEARCH_CATALOG:
+                return {
+                    ...state,
+                    searchCatalog: state.catalog.filter(item=>{
+                        return item.title.toLowerCase().includes(state.searchValue.toLowerCase())
+                    })
+                }
         default:
             return state
     }
@@ -55,6 +64,7 @@ export default catalogReducer
 export const addItemToCart = (item) => ({type: ADD_TO_CART, item})
 export const removeItemFromCart = (item) => ({type: REMOVE_FROM_CART, item})
 export const setSearchValue = (text) => ({type: SET_SEARCH_VALUE, text})
+export const setSearchCatalog = () => ({type: SET_SEARCH_CATALOG})
 export const addItemToFavorite = (id) => {
 }
 export const removeItemFromFavorite = (id) => {
