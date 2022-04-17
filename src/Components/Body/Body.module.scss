@@ -277,81 +277,15 @@
   font-size: 20px;
   font-weight: 700;
 }
-
-.filterPrice {
-  display: flex;
-  flex-direction: column;
-  padding: 0 30px;
-  overflow: hidden;
-}
-
-.filterPriceSliderPart{
-  margin-bottom: 0;
-  transition: margin-bottom 1s ease 0s;
-}
-
-.filterPriceSliderPartHidden{
-  margin-bottom: -44%;
-}
-
-.filterTitleContainer{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 -30px;
-  padding: 25px 30px 32px 30px;
-  &:hover{
-    cursor: pointer;
-  }
-}
-
-.filterSliderImage{
-  margin-top: 2px;
-  transition: all 0.6s ease 0s;
-  &Opened{
-    transform: rotate(540deg);
-
-  }
-}
-
-.filterPriceTitle{
-  color: $mainDarkColor;
-  font-weight: 600;
-  font-size: 20px;
-}
-
 .filterSliderButton{
   background-color: transparent;
 }
-.filterPriceForm{
-  outline: 1px solid #CBCBCB;
-  border-radius: 2px;
-  height: 42px;
-  width: 312px;
-  display: flex;
-  justify-content: space-between;
-}
+
 .filterPriceInputLeft{
   border-right: 1px solid #CBCBCB;
 }
-.filterPriceInputLeft,
-.filterPriceInputRight {
-  width: 100%;
-  padding: 10px 35px;
-  text-align: center;
-}
 
-.filterPriceScrollContainer{
-  height: 90px;
-  padding-top: 29px;
-}
 
-.filterPriceBarOrange{
-  display: inline-block;
-  height: 2px;
-  width: 100%;
-  background-color: $mainOrangeColor;
-}
 
 .filterSteel{
   display: flex;

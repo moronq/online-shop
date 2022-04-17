@@ -5,7 +5,11 @@ import MainCatalog from "./Components/Body/MainCatalog/MainCatalog";
 import Footer from "./Components/Footer/Footer";
 import {Route, Routes} from "react-router";
 
+
+
 function App() {
+
+
 
     let[searchValue, setSearchValue] = useState('')
 
