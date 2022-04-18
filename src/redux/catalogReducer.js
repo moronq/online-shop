@@ -21,6 +21,17 @@ for (let i = 1; i < 100; i++) {
     catalog.push(item)
 }
 
+let checkboxesFilter = []
+
+for(let i=0; i<catalog.length; i++){
+    catalog.forEach(el=>{
+        if(checkboxesFilter.includes(el.steel)){
+        } else {
+            checkboxesFilter.push(el.steel)
+        }
+    })
+}
+
 const maxPriceItem = catalog.length ? catalog.reduce((prev, current) => prev.price > current.price ? prev : current) : {price: 0}
 const minPriceItem = catalog.length ? catalog.reduce((prev, current) => prev.price < current.price ? prev : current) : {price: 0}
 const MIN_PRICE = minPriceItem.price
@@ -38,6 +49,8 @@ let initialState = {
     maxInputValue: MAX_PRICE,
     MAX_PRICE: MAX_PRICE,
     MIN_PRICE: MIN_PRICE,
+    checkboxesFilter: checkboxesFilter,
+    selectedCheckboxes: [],
 }
 
 const catalogReducer = (state = initialState, action) => {
