@@ -1,28 +1,25 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import styles from '../Body.module.scss';
 import ContentItem from "../common/ContentItem/ContentItem";
 import FilterPrice from "../common/FilterElements/FilterPrice/FilterPrice";
 import FilterSteel from "../common/FilterElements/FilterSteel";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import Paginator from "../common/Paginator/Paginator";
-import {setFilterPriceCatalog} from "../../../redux/catalogReducer";
 
 
 const MainCatalog = () => {
 
     const catalog = useSelector(state => state.catalogPage.catalog)
     const pageSize = useSelector(state => state.catalogPage.pageSize)
-    const filterPriceCatalog = useSelector(state => state.catalogPage.filterPriceCatalog)
-    const searchCatalog = useSelector(state => state.catalogPage.searchCatalog)
-    const MIN_PRICE = useSelector(state=>state.catalogPage.MIN_PRICE)
-    const MAX_PRICE = useSelector(state=>state.catalogPage.MAX_PRICE)
-    const dispatch = useDispatch()
+    const minInputValue = useSelector(state => state.catalogPage.minInputValue)
+    const maxInputValue = useSelector(state => state.catalogPage.maxInputValue)
+    const searchValue = useSelector(state => state.catalogPage.searchValue)
+    const selectedCheckboxes = useSelector(state => state.catalogPage.selectedCheckboxes)
+
 
     let [currentPage, setCurrentPage] = useState(1)
-
-    useEffect(()=>{
-        dispatch(setFilterPriceCatalog())
-    },[searchCatalog])
+    const [, updateState] = useState()
+    const forceUpdate = useCallback(() => updateState({}), [])
 
     useEffect(()=>{
         window.scrollTo({
@@ -30,11 +27,38 @@ const MainCatalog = () => {
         })
     }, [currentPage])
 
+    let catalogMain = [...catalog]
+
+    if(searchValue.length>0){
+        catalogMain = catalogMain.filter(item => {
+            return item.title.toLowerCase().includes(searchValue.toLowerCase())
+        })
+    }
+
+    if(minInputValue || maxInputValue){
+        catalogMain = catalogMain.filter(item => {
+            if (item.price >= minInputValue && item.price <= maxInputValue) {
+                return item
+            }
+        })
+    }
+
+    if(selectedCheckboxes.length>0){
+        catalogMain = catalogMain.filter((el)=>{
+            return (
+                selectedCheckboxes.includes(el.steel)
+            )
+        })
+    }
+    if(!selectedCheckboxes){
+        return catalogMain
+    }
+
     let startPageItem = (currentPage - 1) * pageSize
     let endPageItem = (currentPage * pageSize) - 1
 
-    let totalItemsCount = filterPriceCatalog.length
-    let catalogItems = filterPriceCatalog
+    let totalItemsCount = catalogMain.length
+    let catalogItems = catalogMain
             .slice(startPageItem, endPageItem + 1)
             .map(el => <ContentItem key={el.id} el={el} id={el.id}
                                     title={el.title} price={el.price} steel={el.steel}/>
@@ -66,10 +90,8 @@ const MainCatalog = () => {
                 <div className={styles.contentContainer}>
                     <aside className={styles.contentFilter}>
                         <h3 className={styles.contentFilterTitle}>Фильтр товаров</h3>
-                        <FilterPrice catalog={catalog}
-                                     MIN_PRICE={MIN_PRICE}
-                                     MAX_PRICE={MAX_PRICE}/>
-                        <FilterSteel/>
+                        <FilterPrice catalog={catalog}/>
+                        <FilterSteel forceUpdate={forceUpdate}/>
                     </aside>
                     <section className={styles.contentContainerList}>
                         <ul className={styles.contentItemsList}>
