@@ -2,13 +2,15 @@ import React, {useEffect, useRef, useState} from 'react';
 import styles from "./FilterPrice.module.scss";
 import arrow from "../../../../../img/icons/arrow-bottom.svg";
 import {useDispatch, useSelector} from "react-redux";
-import {setFilterPriceCatalog, setMaxInputValue, setMinInputValue} from "../../../../../redux/catalogReducer";
+import {setMaxInputValue, setMinInputValue} from "../../../../../redux/catalogReducer";
 
-const FilterPrice = ({MIN_PRICE, MAX_PRICE}) => {
+const FilterPrice = () => {
     const PRICE_GAP = 100
 
     const minInputValue = useSelector(state => state.catalogPage.minInputValue)
     const maxInputValue = useSelector(state => state.catalogPage.maxInputValue)
+    const MIN_PRICE = useSelector(state=>state.catalogPage.MIN_PRICE)
+    const MAX_PRICE = useSelector(state=>state.catalogPage.MAX_PRICE)
 
     const dispatch = useDispatch()
 
@@ -28,10 +30,8 @@ const FilterPrice = ({MIN_PRICE, MAX_PRICE}) => {
         let className = e.target.className
         if (value === '' && className === styles.inputMin) {
             dispatch(setMinInputValue(0))
-            dispatch(setFilterPriceCatalog())
         } else if (value === '' && className === styles.inputMax) {
             dispatch(setMaxInputValue(0))
-            dispatch(setFilterPriceCatalog())
         }
     }
 
@@ -40,10 +40,8 @@ const FilterPrice = ({MIN_PRICE, MAX_PRICE}) => {
         let className = e.target.className
         if (value === '0' && className === styles.inputMin) {
             dispatch(setMinInputValue(''))
-            dispatch(setFilterPriceCatalog())
         } else if (value === '0' && className === styles.inputMax) {
             dispatch(setMaxInputValue(''))
-            dispatch(setFilterPriceCatalog())
         }
     }
 
@@ -55,7 +53,6 @@ const FilterPrice = ({MIN_PRICE, MAX_PRICE}) => {
         } else {
             progress.current.style.left = ((minVal-MIN_PRICE) / (MAX_PRICE-MIN_PRICE)) * 100 + '%'
             dispatch(setMinInputValue(minVal));
-            dispatch(setFilterPriceCatalog())
         }
     }
 
@@ -67,7 +64,6 @@ const FilterPrice = ({MIN_PRICE, MAX_PRICE}) => {
         } else {
             progress.current.style.right =((MAX_PRICE-maxVal) / (MAX_PRICE-MIN_PRICE)) * 100 + '%'
             dispatch(setMaxInputValue(maxVal));
-            dispatch(setFilterPriceCatalog())
         }
     }
 
@@ -81,11 +77,9 @@ const FilterPrice = ({MIN_PRICE, MAX_PRICE}) => {
                 progress.current.style.left = 0
                 setMinSliderValue(MIN_PRICE)
                 dispatch(setMinInputValue(MIN_PRICE))
-                dispatch(setFilterPriceCatalog())
             } else {
                 let currentMinValue = minInputValue + PRICE_GAP
                 dispatch(setMinInputValue(currentMinValue))
-                dispatch(setFilterPriceCatalog())
                 progress.current.style.left = ((currentMinValue-MIN_PRICE) / (MAX_PRICE-MIN_PRICE)) * 100 + '%'
                 setMinSliderValue(currentMinValue)
             }
@@ -102,13 +96,11 @@ const FilterPrice = ({MIN_PRICE, MAX_PRICE}) => {
                 progress.current.style.right = 0
                 setMaxSliderValue(MAX_PRICE)
                 dispatch(setMaxInputValue(MAX_PRICE))
-                dispatch(setFilterPriceCatalog())
             } else if (maxVal - minInputValue < PRICE_GAP) {
                 let currentValue = +minInputValue + PRICE_GAP
                 progress.current.style.right = ((MAX_PRICE-currentValue) / (MAX_PRICE-MIN_PRICE)) * 100 + '%'
                 setMaxSliderValue(currentValue)
                 dispatch(setMaxInputValue(currentValue))
-                dispatch(setFilterPriceCatalog())
             }
         }
     }

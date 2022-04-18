@@ -1,14 +1,24 @@
 import React, {useState} from 'react';
 import styles from "../../Body.module.scss";
 import arrow from "../../../../img/icons/arrow-bottom.svg";
+import {useDispatch, useSelector} from "react-redux";
+import {removeSelectedCheckboxes, setSelectedCheckboxes} from "../../../../redux/catalogReducer";
 
-const FilterSteel = () => {
-
+const FilterSteel = ({forceUpdate}) => {
 
     let [isSpoilerActive, setIsSpoilerActive] = useState(false)
 
+    const checkboxesFilter = useSelector(state => state.catalogPage.checkboxesFilter)
+    const dispatch = useDispatch()
+
     const onPriceSpoilerClick = () => {
         setIsSpoilerActive(prev => !prev)
+    }
+
+    const handleCheckbox =(e, el)=>{
+        let statusInput = e.target.checked
+        statusInput ? dispatch(setSelectedCheckboxes(el)) : dispatch(removeSelectedCheckboxes(el))
+        forceUpdate()
     }
 
     return (
@@ -25,26 +35,15 @@ const FilterSteel = () => {
 
                 className={styles.filterSteelSpoilerPart}>
                 <ul className={`${styles.filterSteelList} ${isSpoilerActive ? '' : styles.filterSteelListHidden}`}>
-                    <li className={styles.filterSteelItem}>
-                        <input className={styles.filterSteelCheckbox} type="checkbox" id="100Х13М" name="100Х13М"/>
-                        <label className={styles.filterSteelLabel} htmlFor="100Х13М">100Х13М</label>
-                    </li>
-                    <li className={styles.filterSteelItem}>
-                        <input className={styles.filterSteelCheckbox} type="checkbox" id="95Х18" name="95Х18"/>
-                        <label htmlFor="95Х18">95Х18</label>
-                    </li>
-                    <li className={styles.filterSteelItem}>
-                        <input className={styles.filterSteelCheckbox} type="checkbox" id="ELMAX" name="ELMAX"/>
-                        <label htmlFor="ELMAX">ELMAX</label>
-                    </li>
-                    <li className={styles.filterSteelItem}>
-                        <input className={styles.filterSteelCheckbox} type="checkbox" id="К340" name="К340"/>
-                        <label htmlFor="К340">К340</label>
-                    </li>
-                    <li className={styles.filterSteelItem}>
-                        <input className={styles.filterSteelCheckbox} type="checkbox" id="М390" name="М390"/>
-                        <label htmlFor="М390">М390</label>
-                    </li>
+                    {checkboxesFilter.map((el, index)=>{
+                        return (
+                            <li key={index} className={styles.filterSteelItem}>
+                                <input className={styles.filterSteelCheckbox} type="checkbox" id={el} name={el}
+                                onChange={(e)=>handleCheckbox(e, el)}/>
+                                <label className={styles.filterSteelLabel} htmlFor={el}>{el}</label>
+                            </li>
+                        )
+                    })}
                 </ul>
             </div>
         </div>

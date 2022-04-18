@@ -2,7 +2,7 @@ import React from 'react';
 import styles from "./Header.module.scss";
 import search from "../../img/icons/search.svg";
 import {useDispatch} from "react-redux";
-import {setSearchCatalog, setSearchValue} from "../../redux/catalogReducer";
+import {setSearchValue} from "../../redux/catalogReducer";
 
 const Input = ({searchValue}) => {
 
@@ -10,7 +10,6 @@ const Input = ({searchValue}) => {
 
     const onInputChange = (e)=>{
         dispatch(setSearchValue(e.target.value))
-        dispatch(setSearchCatalog())
     }
 
     return (
