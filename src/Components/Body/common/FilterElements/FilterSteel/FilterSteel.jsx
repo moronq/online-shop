@@ -4,7 +4,7 @@ import arrow from "../../../../../img/icons/arrow-bottom.svg";
 import {useDispatch, useSelector} from "react-redux";
 import {removeSelectedCheckboxes, setSelectedCheckboxes} from "../../../../../redux/catalogReducer";
 
-const FilterSteel = ({forceUpdate}) => {
+const FilterSteel = ({forceUpdate, setCurrentPage}) => {
 
     let [isSpoilerActive, setIsSpoilerActive] = useState(false)
 
@@ -18,6 +18,7 @@ const FilterSteel = ({forceUpdate}) => {
     const handleCheckbox =(e, el)=>{
         let statusInput = e.target.checked
         statusInput ? dispatch(setSelectedCheckboxes(el)) : dispatch(removeSelectedCheckboxes(el))
+        setCurrentPage(1)
         forceUpdate()
     }
 

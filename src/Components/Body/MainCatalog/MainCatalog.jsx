@@ -108,7 +108,7 @@ const MainCatalog = () => {
                     <aside className={styles.contentFilter}>
                         <h3 className={styles.contentFilterTitle}>Фильтр товаров</h3>
                         <FilterPrice catalog={catalog}/>
-                        <FilterSteel forceUpdate={forceUpdate}/>
+                        <FilterSteel forceUpdate={forceUpdate} setCurrentPage={setCurrentPage}/>
                     </aside>
                     <section className={styles.contentContainerList}>
                         <ul className={styles.contentItemsList}>
