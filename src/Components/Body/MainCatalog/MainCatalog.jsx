@@ -21,21 +21,28 @@ const MainCatalog = () => {
     const [, updateState] = useState()
     const forceUpdate = useCallback(() => updateState({}), [])
 
-    useEffect(()=>{
+    const [sortCatalogByOption, setSortCatalogByOption] = useState('')
+
+    let catalogMain = [...catalog]
+
+    useEffect(() => {
         window.scrollTo({
             top: 0,
         })
     }, [currentPage])
 
-    let catalogMain = [...catalog]
+    const sortCatalog = (e) => {
+        let value = e.target.value
+        setSortCatalogByOption(value)
+    }
 
-    if(searchValue.length>0){
+    if (searchValue.length > 0) {
         catalogMain = catalogMain.filter(item => {
             return item.title.toLowerCase().includes(searchValue.toLowerCase())
         })
     }
 
-    if(minInputValue || maxInputValue){
+    if (minInputValue || maxInputValue) {
         catalogMain = catalogMain.filter(item => {
             if (item.price >= minInputValue && item.price <= maxInputValue) {
                 return item
@@ -43,15 +50,27 @@ const MainCatalog = () => {
         })
     }
 
-    if(selectedCheckboxes.length>0){
-        catalogMain = catalogMain.filter((el)=>{
+    if (selectedCheckboxes.length > 0) {
+        catalogMain = catalogMain.filter((el) => {
             return (
                 selectedCheckboxes.includes(el.steel)
             )
         })
     }
-    if(!selectedCheckboxes){
+    if (!selectedCheckboxes) {
         return catalogMain
+    }
+
+    if (sortCatalogByOption === 'price_up') {
+        catalogMain.sort((a, b) => {
+            return (a.price - b.price)
+        })
+    }
+
+    if (sortCatalogByOption === 'price_down') {
+        catalogMain.sort((a, b) => {
+            return (a.price - b.price)
+        }).reverse()
     }
 
     let startPageItem = (currentPage - 1) * pageSize
@@ -59,10 +78,10 @@ const MainCatalog = () => {
 
     let totalItemsCount = catalogMain.length
     let catalogItems = catalogMain
-            .slice(startPageItem, endPageItem + 1)
-            .map(el => <ContentItem key={el.id} el={el} id={el.id}
-                                    title={el.title} price={el.price} steel={el.steel}/>
-            )
+        .slice(startPageItem, endPageItem + 1)
+        .map(el => <ContentItem key={el.id} el={el} id={el.id}
+                                title={el.title} price={el.price} steel={el.steel}/>
+        )
 
     return (
         <main className={styles.body}>
@@ -79,13 +98,13 @@ const MainCatalog = () => {
                             </li>
                         </ul>
                     </div>
-                    <form className={styles.bodySort} action="select">
-                        <select className={styles.bodySortCategory} type="list">
-                            <option value="">По популярности</option>
-                            <option value="">По возрастанию цены</option>
-                            <option value="">По убыванию цены</option>
+                    <div className={styles.bodySort} action="select">
+                        <select onChange={(e) => sortCatalog(e)} className={styles.bodySortCategory} type="list">
+                            <option value="popular">По популярности</option>
+                            <option value="price_up">По возрастанию цены</option>
+                            <option value="price_down">По убыванию цены</option>
                         </select>
-                    </form>
+                    </div>
                 </div>
                 <div className={styles.contentContainer}>
                     <aside className={styles.contentFilter}>
@@ -95,7 +114,8 @@ const MainCatalog = () => {
                     </aside>
                     <section className={styles.contentContainerList}>
                         <ul className={styles.contentItemsList}>
-                            {catalogItems.length ? catalogItems : <li className={styles.lostSearching}>Ничего не найдено</li> }
+                            {catalogItems.length ? catalogItems :
+                                <li className={styles.lostSearching}>Ничего не найдено</li>}
                         </ul>
                     </section>
                 </div>
