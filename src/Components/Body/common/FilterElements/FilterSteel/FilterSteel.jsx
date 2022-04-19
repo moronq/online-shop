@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import styles from "../../Body.module.scss";
-import arrow from "../../../../img/icons/arrow-bottom.svg";
+import styles from "../../../Body.module.scss";
+import arrow from "../../../../../img/icons/arrow-bottom.svg";
 import {useDispatch, useSelector} from "react-redux";
-import {removeSelectedCheckboxes, setSelectedCheckboxes} from "../../../../redux/catalogReducer";
+import {removeSelectedCheckboxes, setSelectedCheckboxes} from "../../../../../redux/catalogReducer";
 
 const FilterSteel = ({forceUpdate}) => {
 
@@ -31,9 +31,7 @@ const FilterSteel = ({forceUpdate}) => {
                         src={arrow} alt=""/>
                 </button>
             </div>
-            <div
-
-                className={styles.filterSteelSpoilerPart}>
+            <div className={styles.filterSteelSpoilerPart}>
                 <ul className={`${styles.filterSteelList} ${isSpoilerActive ? '' : styles.filterSteelListHidden}`}>
                     {checkboxesFilter.map((el, index)=>{
                         return (
