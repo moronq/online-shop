@@ -115,29 +115,31 @@ const FilterPrice = () => {
                         src={arrow} alt=""/>
                 </button>
             </div>
-            <div
-                className={`${styles.filterPriceSliderPart} ${isSpoilerActive ? '' : styles.filterPriceSliderPartHidden}`}>
-                <div className={styles.filterPriceForm}>
-                    <input className={styles.inputMin} type="number" value={minInputValue} max={MAX_PRICE} min={MIN_PRICE}
-                           onBlur={(e) => onInputBlur(e)}
-                           onFocus={(e) => onFocusInput(e)}
-                           onKeyDown={(e) => onInputMin(e)}
-                           onChange={(e) => dispatch(setMinInputValue(e.target.value))}/>
-                    <input className={styles.inputMax} type="number" value={maxInputValue} max={MAX_PRICE} min={MIN_PRICE}
-                           onBlur={(e) => onInputBlur(e)}
-                           onFocus={(e) => onFocusInput(e)}
-                           onKeyDown={(e) => onInputMax(e)}
-                           onChange={(e) => dispatch(setMaxInputValue(e.target.value))}/>
+            <div className={styles.filterPriceSliderPart}>
+                <div className={`${styles.filterPriceSliderList} ${isSpoilerActive? '' : styles.filterPriceSliderListHidden}`}>
+                    <div className={styles.filterPriceForm}>
+                        <input className={styles.inputMin} type="number" value={minInputValue} max={MAX_PRICE} min={MIN_PRICE}
+                               onBlur={(e) => onInputBlur(e)}
+                               onFocus={(e) => onFocusInput(e)}
+                               onKeyDown={(e) => onInputMin(e)}
+                               onChange={(e) => dispatch(setMinInputValue(e.target.value))}/>
+                        <input className={styles.inputMax} type="number" value={maxInputValue} max={MAX_PRICE} min={MIN_PRICE}
+                               onBlur={(e) => onInputBlur(e)}
+                               onFocus={(e) => onFocusInput(e)}
+                               onKeyDown={(e) => onInputMax(e)}
+                               onChange={(e) => dispatch(setMaxInputValue(e.target.value))}/>
+                    </div>
+                    <div className={styles.filterPriceSlider}>
+                        <div ref={progress} className={styles.filterPriceSliderProgress}/>
+                    </div>
+                    <div className={styles.rangeInput}>
+                        <input type='range' className={styles.rangeMin} min={MIN_PRICE} max={MAX_PRICE} value={minSliderValue}
+                               step={'100'} onChange={(e) => onRangeMinSlider(e)}/>
+                        <input type='range' className={styles.rangeMax} min={MIN_PRICE} max={MAX_PRICE} value={maxSliderValue}
+                               step={'100'} onChange={(e) => onRangeMaxSlider(e)}/>
+                    </div>
                 </div>
-                <div className={styles.filterPriceSlider}>
-                    <div ref={progress} className={styles.filterPriceSliderProgress}/>
-                </div>
-                <div className={styles.rangeInput}>
-                    <input type='range' className={styles.rangeMin} min={MIN_PRICE} max={MAX_PRICE} value={minSliderValue}
-                           step={'100'} onChange={(e) => onRangeMinSlider(e)}/>
-                    <input type='range' className={styles.rangeMax} min={MIN_PRICE} max={MAX_PRICE} value={maxSliderValue}
-                           step={'100'} onChange={(e) => onRangeMaxSlider(e)}/>
-                </div>
+
             </div>
         </div>
     );

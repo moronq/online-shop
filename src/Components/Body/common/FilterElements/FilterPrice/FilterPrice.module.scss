@@ -34,20 +34,23 @@
 }
 
 .filterPriceSliderPart{
-  margin-bottom: 0;
-  transition: margin-bottom 1s ease 0s;
+  overflow: hidden;
+  //transition: margin-bottom 1s ease 0s;
+  //padding-bottom: 30px;
 }
 
+.filterPriceSliderList{
+  transition: all 1s ease 0s;
+}
 
-.filterPriceSliderPartHidden{
-  margin-bottom: -44%;
+.filterPriceSliderListHidden{
+  margin-bottom: -100%;
 }
 
 .filterPriceForm{
   outline: 1px solid #CBCBCB;
   border-radius: 2px;
-  height: 42px;
-  width: 312px;
+  width: auto;
   display: flex;
   justify-content: space-between;
   margin-bottom: 30px;

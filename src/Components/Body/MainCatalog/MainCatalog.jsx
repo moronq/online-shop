@@ -2,9 +2,10 @@ import React, {useCallback, useEffect, useState} from 'react';
 import styles from '../Body.module.scss';
 import ContentItem from "../common/ContentItem/ContentItem";
 import FilterPrice from "../common/FilterElements/FilterPrice/FilterPrice";
-import FilterSteel from "../common/FilterElements/FilterSteel";
+import FilterSteel from "../common/FilterElements/FilterSteel/FilterSteel";
 import {useSelector} from "react-redux";
 import Paginator from "../common/Paginator/Paginator";
+import FilterSort from "../common/FilterElements/FilterSort/FilterSort";
 
 
 const MainCatalog = () => {
@@ -21,7 +22,7 @@ const MainCatalog = () => {
     const [, updateState] = useState()
     const forceUpdate = useCallback(() => updateState({}), [])
 
-    const [sortCatalogByOption, setSortCatalogByOption] = useState('')
+    const [sortCatalogByOption, setSortCatalogByOption] = useState('popular')
 
     let catalogMain = [...catalog]
 
@@ -87,23 +88,20 @@ const MainCatalog = () => {
         <main className={styles.body}>
             <div className={styles.bodyContainer}>
                 <div className={styles.bodyCategory}>
-                    <div className={styles.bodyNavigate}>
-                        <h2 className={styles.bodyNavigateTitle}>Каталог ножей</h2>
-                        <ul className={styles.bodyNavigatePathList}>
-                            <li className={styles.bodyNavigatePathItem}>
-                                <a className={styles.bodyNavigatePathLink} href="">Главная</a>
-                            </li>
-                            <li className={styles.bodyNavigatePathItem}>
-                                <a className={styles.bodyNavigatePathLink} href="">Каталог ножей</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className={styles.bodySort} action="select">
-                        <select onChange={(e) => sortCatalog(e)} className={styles.bodySortCategory} type="list">
-                            <option value="popular">По популярности</option>
-                            <option value="price_up">По возрастанию цены</option>
-                            <option value="price_down">По убыванию цены</option>
-                        </select>
+                    <h2 className={styles.bodyNavigateTitle}>Каталог ножей</h2>
+                    <div className={styles.secondRowMenu}>
+                        <div className={styles.bodyNavigate}>
+                            <ul className={styles.bodyNavigatePathList}>
+                                <li className={styles.bodyNavigatePathItem}>
+                                    <a className={styles.bodyNavigatePathLink} href="">Главная</a>
+                                </li>
+                                <li className={styles.bodyNavigatePathItem}>
+                                    <a className={styles.bodyNavigatePathLink} href="">Каталог ножей</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <FilterSort sortCatalogByOption={sortCatalogByOption}
+                                    setSortCatalogByOption={setSortCatalogByOption}/>
                     </div>
                 </div>
                 <div className={styles.contentContainer}>
