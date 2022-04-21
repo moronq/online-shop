@@ -6,26 +6,18 @@ import cartWhite from "../../../../img/icons/cart-white.svg";
 import compare from "../../../../img/icons/compare.svg";
 import {useDispatch, useSelector} from "react-redux";
 import {addItemToCart, removeItemFromCart} from "../../../../redux/catalogReducer";
+import {NavLink} from "react-router-dom";
+import AddToCartButton from "../AddToCartButton/AddToCartButton";
 
 const ContentItem = ({id, el, title, price, steel}) => {
-
-    const addedItemsToCart = useSelector(state => state.catalogPage.addedItemsToCart)
-    const dispatch = useDispatch()
-
-    let addToCart = () => {
-        dispatch(addItemToCart(el))
-    }
-    let removeFromCart = () => {
-        dispatch(removeItemFromCart(el))
-    }
 
     return (
         <li className={styles.contentItem}>
             <div className={styles.contentItemPreview} href="">
-                <a className={styles.contentItemPreviewLink} href="">
+                <NavLink to={`itempage/${id}`} className={styles.contentItemPreviewLink} href="">
                     <img className={styles.contentItemPreviewImage} src={contentKnifePreview} alt="" width='374'
                          height='295'/>
-                </a>
+                </NavLink>
                 <p className={styles.contentItemTitle}>{title}</p>
                 <div className={styles.contentItemProperty}>
                     <span className={styles.contentItemPropertySteal}>{steel}</span>
@@ -67,15 +59,7 @@ const ContentItem = ({id, el, title, price, steel}) => {
                         </button>
                     </div>
                 </div>
-                <button onClick={addedItemsToCart.includes(el) ? removeFromCart : addToCart}
-                        className={`${styles.contentItemButtonCart} ${addedItemsToCart.includes(el)
-                            ? styles.contentItemButtonCartRemove : ''}`}>
-                    <span
-                        className={styles.contentItemButtonCartText}>{addedItemsToCart.includes(el)
-                        ? 'Убрать из корзины' : 'В корзину'}
-                    </span>
-                    <img className={styles.contentItemButtonCartImage} width={'19'} src={cartWhite} alt={'cart'}/>
-                </button>
+                <AddToCartButton el={el}/>
             </div>
         </li>
     );

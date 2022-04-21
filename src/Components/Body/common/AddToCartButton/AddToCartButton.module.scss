@@ -1,0 +1,28 @@
+@import '/src/constants';
+
+.contentItemButtonCart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 320px;
+  height: 50px;
+  background: $mainOrangeColor;
+  margin: 0 auto;
+  border-radius: 3px;
+  box-shadow: 0 4px 20px rgba(232, 170, 49, 0.43);
+  gap: 16px;
+  &Remove {
+    background: #a5a5a5;
+    box-shadow: 0 4px 20px rgba(165, 165, 165, 0.43);
+  }
+}
+
+.contentItemButtonCartText{
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 2.56;
+  color: white;
+}
+.contentItemButtonCartImage{
+  vertical-align: center;
+}
