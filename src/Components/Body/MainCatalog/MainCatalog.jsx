@@ -6,6 +6,7 @@ import FilterSteel from "../common/FilterElements/FilterSteel/FilterSteel";
 import {useSelector} from "react-redux";
 import Paginator from "../common/Paginator/Paginator";
 import FilterSort from "../common/FilterElements/FilterSort/FilterSort";
+import BreadCrumbs from "../common/BreadCrumbs/BreadCrumbs";
 
 
 const MainCatalog = () => {
@@ -16,7 +17,6 @@ const MainCatalog = () => {
     const maxInputValue = useSelector(state => state.catalogPage.maxInputValue)
     const searchValue = useSelector(state => state.catalogPage.searchValue)
     const selectedCheckboxes = useSelector(state => state.catalogPage.selectedCheckboxes)
-
 
     let [currentPage, setCurrentPage] = useState(1)
     const [, updateState] = useState()
@@ -31,11 +31,6 @@ const MainCatalog = () => {
             top: 0,
         })
     }, [currentPage])
-
-    const sortCatalog = (e) => {
-        let value = e.target.value
-        setSortCatalogByOption(value)
-    }
 
     if (searchValue.length > 0) {
         catalogMain = catalogMain.filter(item => {
@@ -80,7 +75,7 @@ const MainCatalog = () => {
     let totalItemsCount = catalogMain.length
     let catalogItems = catalogMain
         .slice(startPageItem, endPageItem + 1)
-        .map(el => <ContentItem key={el.id} el={el} id={el.id}
+        .map(el => <ContentItem key={el.id} el={el} id={el.id} link={el.link}
                                 title={el.title} price={el.price} steel={el.steel}/>
         )
 
@@ -90,16 +85,7 @@ const MainCatalog = () => {
                 <div className={styles.bodyCategory}>
                     <h2 className={styles.bodyNavigateTitle}>Каталог ножей</h2>
                     <div className={styles.secondRowMenu}>
-                        <div className={styles.bodyNavigate}>
-                            <ul className={styles.bodyNavigatePathList}>
-                                <li className={styles.bodyNavigatePathItem}>
-                                    <a className={styles.bodyNavigatePathLink} href="">Главная</a>
-                                </li>
-                                <li className={styles.bodyNavigatePathItem}>
-                                    <a className={styles.bodyNavigatePathLink} href="">Каталог ножей</a>
-                                </li>
-                            </ul>
-                        </div>
+                        <BreadCrumbs/>
                         <FilterSort sortCatalogByOption={sortCatalogByOption}
                                     setSortCatalogByOption={setSortCatalogByOption}/>
                     </div>

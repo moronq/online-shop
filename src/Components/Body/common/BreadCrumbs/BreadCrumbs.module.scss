@@ -1,0 +1,56 @@
+@import '/src/constants';
+
+.bodyNavigate {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bodyNavigatePathList {
+  margin-bottom: 10px;
+  display: flex;
+  column-gap: 42px;
+  justify-content: flex-start;
+  flex: 0 1 auto;
+  @media(max-width: 819px){
+    display: none;
+  }
+}
+
+.bodyNavigatePathItem:not(:last-child) {
+  position: relative;
+  &:after,
+  &:before {
+    content: '';
+    position: absolute;
+    background-color: rgb(138, 138, 138);
+    height: 2px;
+    width: 9px;
+    border-radius: 1px;
+    right: -25px;
+  }
+}
+//
+//.bodyNavigatePathList :last-child{
+//  color: $mainOrangeColor;
+//}
+
+.bodyNavigatePathItem:after {
+  transform: rotate(40deg);
+  top: 31%;
+}
+
+.bodyNavigatePathItem:before {
+  transform: rotate(-40deg);
+  bottom: 31%;
+}
+
+.bodyNavigatePathLink {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(20, 20, 20, 0.5);
+}
+
+.bodyNavigatePathList li:last-child .bodyNavigatePathLink{
+  color: $mainOrangeColor;
+}

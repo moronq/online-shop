@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
 import AddToCartButton from "../common/AddToCartButton/AddToCartButton";
 import styles from './ItemPage.module.scss';
-import cartWhite from "../../../img/icons/cart-white.svg";
+import preview_1 from './../../../img/preview/preview_1.jpg'
+import preview_2 from './../../../img/preview/preview_2.jpg'
+import preview_3 from './../../../img/preview/preview_3.jpg'
+import preview_4 from './../../../img/preview/preview_4.jpg'
+import BreadCrumbs from "../common/BreadCrumbs/BreadCrumbs";
 
 const ItemPage = () => {
 
@@ -12,17 +16,24 @@ const ItemPage = () => {
     const itemInfo = catalog.filter(item => item.id === parseInt(itemId.id))
     const item = itemInfo[0]
 
+    const [activePreview, setActivePreview] = useState(0)
+
+    const previewArray = [preview_1, preview_2, preview_3, preview_4,]
+
+    console.log(itemId)
+
     return (
         <div className={styles.itemPageContainer}>
             <div className={styles.itemInfoWrapper}>
+                <BreadCrumbs/>
                 <section className={styles.itemPreview}>
-                    <img src="" alt=""/>
-                    <div>
-                        <img src="" alt=""/>
-                        <img src="" alt=""/>
-                        <img src="" alt=""/>
-                        <img src="" alt=""/>
-                    </div>
+                    <img src={previewArray[activePreview]} alt=""/>
+                    <ul>
+                        {previewArray.map((el, index)=><li key={index}
+                                                           onClick={()=>{setActivePreview(index)}}>
+                            <img src={el} alt=""/>
+                        </li>)}
+                    </ul>
                 </section>
                 <section className={styles.itemInfo}>
                     <div>

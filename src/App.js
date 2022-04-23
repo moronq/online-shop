@@ -17,9 +17,9 @@ function App() {
             <Header searchValue={searchValue} setSearchValue={setSearchValue}/>
             <main className={styles.mainContent}>
                 <Routes>
-                    <Route path={'itempage/:id'} element={<ItemPage/>}/>
+                    <Route path={'/:maincatalog/:id'} element={<ItemPage/>}/>
                     <Route path={'/'} element={<MainCatalog searchValue={searchValue}/>}/>
-                    <Route path={'maincatalog'} element={<MainCatalog/>}/>
+                    <Route path={'/:maincatalog'} element={<MainCatalog/>}/>
                 </Routes>
             </main>
             <Footer/>

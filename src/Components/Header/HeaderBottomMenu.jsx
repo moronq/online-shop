@@ -1,16 +1,12 @@
 import React from 'react';
 import styles from "./Header.module.scss";
 import {NavLink} from "react-router-dom";
-
-const navBarItems = [
-    {title:'Каталог ножей', link:'maincatalog'},
-    {title:'Клинковое оружие', link:'bladeweapon'},
-    {title:'Сувенирные изделия', link:'souvenirs'},
-    {title:'Фонари ARMYTEK', link:'flashlight'},
-    {title:'Сопуствующие товары', link:'accessories'},
-]
+import {useSelector} from "react-redux";
 
 const HeaderBottomMenu = () => {
+
+    const navBarItems = useSelector(state=> state.catalogPage.navBarItems)
+
     return (
         <div className={styles.bottomHeaderMenu}>
             <nav className={styles.bottomHeaderMenuContainer}>

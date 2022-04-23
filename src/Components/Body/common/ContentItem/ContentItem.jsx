@@ -1,20 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import styles from "../../Body.module.scss";
 import contentKnifePreview from "../../../../img/content/content-knife-preview.jpg";
 import star from "../../../../img/icons/star.svg";
-import cartWhite from "../../../../img/icons/cart-white.svg";
 import compare from "../../../../img/icons/compare.svg";
-import {useDispatch, useSelector} from "react-redux";
-import {addItemToCart, removeItemFromCart} from "../../../../redux/catalogReducer";
 import {NavLink} from "react-router-dom";
 import AddToCartButton from "../AddToCartButton/AddToCartButton";
 
-const ContentItem = ({id, el, title, price, steel}) => {
+const ContentItem = ({id, el, title, price, steel, link}) => {
 
     return (
         <li className={styles.contentItem}>
             <div className={styles.contentItemPreview} href="">
-                <NavLink to={`itempage/${id}`} className={styles.contentItemPreviewLink} href="">
+                <NavLink to={link} className={styles.contentItemPreviewLink} href="">
                     <img className={styles.contentItemPreviewImage} src={contentKnifePreview} alt="" width='374'
                          height='295'/>
                 </NavLink>
