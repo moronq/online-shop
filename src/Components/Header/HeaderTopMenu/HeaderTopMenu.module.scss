@@ -1,0 +1,78 @@
+@import '/src/constants';
+
+
+.topHeaderMenu {
+  background-color: $mainDarkColor;
+}
+
+.topHeaderMenuContainer {
+  max-width: $containerWidth;
+  padding: 10px 15px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 70px;
+  @media (max-width: 650px) {
+    justify-content: space-between;
+    padding: 10px 25px;
+  }
+}
+
+.navBar{
+  margin: 0 15px 0 5px;
+  @media (max-width: 650px) {
+    display: none;
+  }
+}
+
+.navBarList {
+  @media (max-width: 650px) {
+    display: none;
+  }
+  color: white;
+  display: flex;
+  @include adaptive-value("column-gap", 60, 20, 1);
+  row-gap: 5px;
+  flex-wrap: wrap;
+}
+.userMenuPhoneTop{
+  display: flex;
+  align-items: center;
+}
+.userMenuCartTop,
+.userMenuFavoriteTop,
+.userMenuPhoneTop {
+  @media (min-width: 650px){
+    display: none;
+  }
+}
+.userMenuCartTop{
+  position: relative;
+}
+
+.userLinkBlock {
+  display: inline-flex;
+  align-items: center;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.userImage {
+  vertical-align: center;
+  margin-top: 4px;
+}
+
+.userLink {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 0 14px;
+  color: white;
+  @media(max-width: 830px){
+    display: none;
+  }
+}
+
+.userMenuFavoriteTop{
+  display: flex;
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import styles from "./HeaderBodyMenu.module.scss";
 import {NavLink} from "react-router-dom";
 import logo from "../../../img/icons/logo.svg";
-import Input from "../Input";
+import Input from "../Input/Input";
 import location from "../../../img/icons/location.svg";
 import arrowBottom from "../../../img/icons/arrow-bottom.svg";
 import phone from "../../../img/icons/phone.svg";

@@ -1,0 +1,62 @@
+@import '/src/constants';
+
+.bottomHeaderMenu {
+  @media(max-width: 650px){
+    display: none;
+  }
+  background-color: $mainDarkColor;
+  color: white;
+  display: flex;
+  &Container{
+    max-width: $containerWidth;
+    margin: 0 auto;
+    padding: 0px 15px;
+    min-height: 100%;
+    flex: 1 1 auto;
+    display: flex;
+  }
+}
+.navBarBottomList {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  min-height: 100%;
+}
+
+
+.navBarBottomItem {
+  padding: 0 5px;
+  position: relative;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  &::after {
+    content: '';
+    position: absolute;
+    width: calc(100% - 10px);
+    height: 2px;
+    background-color: $mainOrangeColor;
+    bottom: 1px;
+    left: 5px;
+    transform: scaleX(0);
+    transition: all 0.2s ease 0s;
+  }
+  &:hover{
+    cursor: pointer;
+    &::after {
+      content: '';
+      transform: scaleX(1);
+    }
+  }
+}
+.activeLink{
+  color: $mainOrangeColor;
+}
+
+.navBarBottomItemLink{
+  color: white;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+}

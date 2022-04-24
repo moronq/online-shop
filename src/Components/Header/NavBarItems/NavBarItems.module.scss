@@ -1,0 +1,20 @@
+@import '/src/constants';
+
+.burgerMenuItem{
+  color: white;
+}
+.navBarItem{
+  text-align: center;
+}
+.burgerMenuLink{
+  color: white;
+}
+.navBarItemLink{
+  color: white;
+  &:hover{
+    text-decoration: underline;
+  }
+  &:active{
+    background-color: transparent;
+  }
+}
