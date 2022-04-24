@@ -1,12 +1,10 @@
-import React, {useState} from 'react'
+import React, {useCallback, useState} from 'react'
 import styles from './App.module.scss';
 import Header from "./Components/Header/Header";
-import MainCatalog from "./Components/Body/MainCatalog/MainCatalog";
+import MainCatalogContainer from "./Components/Body/MainCatalog/MainCatalogContainer";
 import Footer from "./Components/Footer/Footer";
 import {Route, Routes} from "react-router";
 import ItemPage from "./Components/Body/ItemPage/ItemPage";
-
-
 
 function App() {
 
@@ -18,8 +16,8 @@ function App() {
             <main className={styles.mainContent}>
                 <Routes>
                     <Route path={'/:maincatalog/:id'} element={<ItemPage/>}/>
-                    <Route path={'/'} element={<MainCatalog searchValue={searchValue}/>}/>
-                    <Route path={'/:maincatalog'} element={<MainCatalog/>}/>
+                    <Route path={'/'} element={<MainCatalogContainer searchValue={searchValue}/>}/>
+                    <Route path={'/:maincatalog'} element={<MainCatalogContainer/>}/>
                 </Routes>
             </main>
             <Footer/>

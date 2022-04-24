@@ -8,6 +8,8 @@ import preview_2 from './../../../img/preview/preview_2.jpg'
 import preview_3 from './../../../img/preview/preview_3.jpg'
 import preview_4 from './../../../img/preview/preview_4.jpg'
 import BreadCrumbs from "../common/BreadCrumbs/BreadCrumbs";
+import RatingStar from "../common/RatingStar/RatingStar";
+import {setRating} from "../../../redux/catalogReducer";
 
 const ItemPage = () => {
 
@@ -40,8 +42,9 @@ const ItemPage = () => {
                 <section className={styles.itemInfo}>
                     <div className={styles.title}>
                         <div className={styles.titleWrapper}>
-                            <div>
+                            <div className={styles.titleRating}>
                                 <h3 className={styles.itemTitle}>{item.title}</h3>
+                                <RatingStar id={itemId.id} rating={item.rating} setRating={setRating}/>
                             </div>
                             <div>
 

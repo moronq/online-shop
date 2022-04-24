@@ -1,84 +1,13 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import styles from '../Body.module.scss';
-import ContentItem from "../common/ContentItem/ContentItem";
+import React from 'react';
+import styles from "../Body.module.scss";
+import BreadCrumbs from "../common/BreadCrumbs/BreadCrumbs";
+import FilterSort from "../common/FilterElements/FilterSort/FilterSort";
 import FilterPrice from "../common/FilterElements/FilterPrice/FilterPrice";
 import FilterSteel from "../common/FilterElements/FilterSteel/FilterSteel";
-import {useSelector} from "react-redux";
 import Paginator from "../common/Paginator/Paginator";
-import FilterSort from "../common/FilterElements/FilterSort/FilterSort";
-import BreadCrumbs from "../common/BreadCrumbs/BreadCrumbs";
 
-
-const MainCatalog = () => {
-
-    const catalog = useSelector(state => state.catalogPage.catalog)
-    const pageSize = useSelector(state => state.catalogPage.pageSize)
-    const minInputValue = useSelector(state => state.catalogPage.minInputValue)
-    const maxInputValue = useSelector(state => state.catalogPage.maxInputValue)
-    const searchValue = useSelector(state => state.catalogPage.searchValue)
-    const selectedCheckboxes = useSelector(state => state.catalogPage.selectedCheckboxes)
-
-    let [currentPage, setCurrentPage] = useState(1)
-    const [, updateState] = useState()
-    const forceUpdate = useCallback(() => updateState({}), [])
-
-    const [sortCatalogByOption, setSortCatalogByOption] = useState('popular')
-
-    let catalogMain = [...catalog]
-
-    useEffect(() => {
-        window.scrollTo({
-            top: 0,
-        })
-    }, [currentPage])
-
-    if (searchValue.length > 0) {
-        catalogMain = catalogMain.filter(item => {
-            return item.title.toLowerCase().includes(searchValue.toLowerCase())
-        })
-    }
-
-    if (minInputValue || maxInputValue) {
-        catalogMain = catalogMain.filter(item => {
-            if (item.price >= minInputValue && item.price <= maxInputValue) {
-                return item
-            }
-        })
-    }
-
-    if (selectedCheckboxes.length > 0) {
-        catalogMain = catalogMain.filter((el) => {
-            return (
-                selectedCheckboxes.includes(el.steel)
-            )
-        })
-    }
-    if (!selectedCheckboxes) {
-        return catalogMain
-    }
-
-    if (sortCatalogByOption === 'price_up') {
-        catalogMain.sort((a, b) => {
-            return (a.price - b.price)
-        })
-    }
-
-    if (sortCatalogByOption === 'price_down') {
-        catalogMain.sort((a, b) => {
-            return (a.price - b.price)
-        }).reverse()
-    }
-
-    let startPageItem = (currentPage - 1) * pageSize
-    let endPageItem = (currentPage * pageSize) - 1
-
-    let totalItemsCount = catalogMain.length
-    let catalogItems = catalogMain
-        .slice(startPageItem, endPageItem + 1)
-        .map(el => <ContentItem key={el.id} el={el} id={el.id} link={el.link}
-                                title={el.title} price={el.price} steel={el.steel}/>
-        )
-
+const MainCatalog = ({setCurrentPage, forceUpdate, setSortCatalogByOption,
+                         currentPage, totalItemsCount, catalogItems, pageSize, sortCatalogByOption}) => {
     return (
         <main className={styles.body}>
             <div className={styles.bodyContainer}>

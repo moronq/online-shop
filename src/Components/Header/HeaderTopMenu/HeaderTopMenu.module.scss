@@ -40,6 +40,10 @@
   display: flex;
   align-items: center;
 }
+.userMenuFavoriteTop{
+  display: flex;
+}
+
 .userMenuCartTop,
 .userMenuFavoriteTop,
 .userMenuPhoneTop {
@@ -73,6 +77,3 @@
   }
 }
 
-.userMenuFavoriteTop{
-  display: flex;
-}

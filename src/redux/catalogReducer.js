@@ -5,6 +5,8 @@ const SET_MIN_VALUE = 'SET_MIN_VALUE'
 const SET_MAX_VALUE = 'SET_MAX_VALUE'
 const SET_SELECTED_CHECKBOXES = 'SET_SELECTED_CHECKBOXES'
 const REMOVE_SELECTED_CHECKBOXES = 'REMOVE_SELECTED_CHECKBOXES'
+const SET_RATING = 'SET_RATING'
+
 
 const names = ['Лиса', 'Заяц', 'Волк', 'Медведь', 'Собака', 'Ёж', 'Убийца', 'Не нож', 'Бобер',]
 const steel = ['100Х13М', '95x18', 'ELMAX', 'K340', 'M390']
@@ -103,6 +105,13 @@ const catalogReducer = (state = initialState, action) => {
                 ...state,
                 selectedCheckboxes: state.selectedCheckboxes
             }
+        case SET_RATING:
+            let ratingIndex = state.catalog.findIndex(el=>el.id === parseInt(action.id))
+            state.catalog[ratingIndex].rating = action.rating
+            return{
+                ...state,
+                catalog: [...state.catalog]
+            }
         default:
             return state
     }
@@ -110,6 +119,7 @@ const catalogReducer = (state = initialState, action) => {
 
 export default catalogReducer
 
+export const setRating = (id, rating) => ({type: SET_RATING, id, rating})
 export const addItemToCart = (item) => ({type: ADD_TO_CART, item})
 export const removeItemFromCart = (item) => ({type: REMOVE_FROM_CART, item})
 export const setSearchValue = (text) => ({type: SET_SEARCH_VALUE, text})

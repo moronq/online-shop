@@ -1,12 +1,12 @@
 import React from 'react';
-import styles from "../../Body.module.scss";
+import styles from "./ContentItem.module.scss";
 import contentKnifePreview from "../../../../img/content/content-knife-preview.jpg";
-import star from "../../../../img/icons/star.svg";
 import compare from "../../../../img/icons/compare.svg";
 import {NavLink} from "react-router-dom";
 import AddToCartButton from "../AddToCartButton/AddToCartButton";
+import RatingStar from "../RatingStar/RatingStar";
 
-const ContentItem = ({id, el, title, price, steel, link}) => {
+const ContentItem = ({id, el, title, price, steel, link, rating, setRating, forceUpdate}) => {
 
     return (
         <li className={styles.contentItem}>
@@ -21,23 +21,7 @@ const ContentItem = ({id, el, title, price, steel, link}) => {
                     <span className={styles.contentItemPropertyMaterial}>Орех, Алюминий</span>
                 </div>
                 <div className={styles.contentItemRating}>
-                    <ul className={styles.contentItemRatingStarList}>
-                        <li className={styles.contentItemRatingStarItem}>
-                            <img className={styles.contentItemRatingStarImage} src={star} width='21' alt=""/>
-                        </li>
-                        <li className={styles.contentItemRatingStarItem}>
-                            <img className={styles.contentItemRatingStarImage} src={star} width='21' alt=""/>
-                        </li>
-                        <li className={styles.contentItemRatingStarItem}>
-                            <img className={styles.contentItemRatingStarImage} src={star} width='21' alt=""/>
-                        </li>
-                        <li className={styles.contentItemRatingStarItem}>
-                            <img className={styles.contentItemRatingStarImage} src={star} width='21' alt=""/>
-                        </li>
-                        <li className={styles.contentItemRatingStarItem}>
-                            <img className={styles.contentItemRatingStarImage} src={star} width='21' alt=""/>
-                        </li>
-                    </ul>
+                    <RatingStar id={id} rating={rating} setRating={setRating} forceUpdate={forceUpdate}/>
                     <span className={styles.contentItemReviews}>12 отзывов</span>
                 </div>
                 <div className={styles.contentItemUserOptions}>

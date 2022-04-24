@@ -1,0 +1,89 @@
+@import '/src/constants';
+
+.contentItemRatingStarList {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 11px;
+  row-gap: 5px;
+}
+
+.rating{
+  position: relative;
+}
+
+.ratingCaption{
+  visibility: hidden;
+  position: absolute;
+}
+
+.ratingStar{
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+  font-size: inherit;
+  top: 0;
+  left: 0;
+  height: 20px;
+  margin-left: 2.5px;
+  margin-top: 0.5px;
+}
+
+.ratingGroup{
+  position: relative;
+  width: 160px;
+  margin-left: -5.5px;
+  margin-right: -5.5px;
+  height: 20px;
+  background: url("../../../../../src/img/icons/star-test-off.svg");
+  background-size: 31px 19px;
+  background-position: center;
+  background-repeat: repeat-x;
+}
+
+.ratingInput{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.ratingInput:checked + .ratingStar,
+.ratingStar:hover {
+  background: url("../../../../../src/img/icons/star-test.svg");
+  background-size: 31px 19px;
+  background-repeat: repeat-x;
+}
+
+.ratingStar:hover ~ .ratingStar{
+  background: url("../../../../../src/img/icons/star-test-off.svg");
+  background-repeat: repeat-x;
+}
+
+.ratingStar:nth-of-type(1){
+  width: 31px;
+  z-index: 5;
+}
+
+.ratingStar:nth-of-type(2){
+  width: 62px;
+  z-index: 4;
+}
+
+.ratingStar:nth-of-type(3){
+  width: 93px;
+  z-index: 3;
+}
+
+.ratingStar:nth-of-type(4){
+  width: 124px;
+  z-index: 2;
+}
+
+.ratingStar:nth-of-type(5){
+  width: 155px;
+  z-index: 1;
+}
