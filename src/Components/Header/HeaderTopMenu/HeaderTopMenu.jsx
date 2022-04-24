@@ -1,8 +1,8 @@
-import styles from "./Header.module.scss";
-import user from "../../img/icons/user.svg";
+import styles from "../Header.module.scss";
+import user from "../../../img/icons/user.svg";
 import React, {useRef, useState} from "react";
-import MenuBurger from "./MenuBurger";
-import NavBarItems from "./NavBarItems";
+import MenuBurger from "../MenuBurger";
+import NavBarItems from "../NavBarItems";
 import {useSelector} from "react-redux";
 
 const HeaderTopMenu = () => {

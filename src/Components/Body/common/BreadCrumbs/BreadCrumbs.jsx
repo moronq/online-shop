@@ -14,9 +14,6 @@ const BreadCrumbs = () => {
         link: params.id ? + catalog.filter((el) => el.id === parseInt(params.id))[0]['id']: '',
     }
 
-    console.log(params)
-
-
     const breadCrumblesItemList = []
 
     navBarItems.forEach((el)=>{
@@ -43,8 +40,6 @@ const BreadCrumbs = () => {
         id.link = breadCrumbles[0].link + '/' + id.link
         breadCrumbles.push(id)
     }
-
-    console.log(breadCrumbles)
 
     return (
         <div className={styles.bodyNavigate}>

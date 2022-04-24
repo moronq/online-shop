@@ -1,34 +1,15 @@
-import styles from "./Header.module.scss";
-import logo from "../../img/icons/logo.svg";
-import search from "../../img/icons/search.svg";
-import location from "../../img/icons/location.svg";
-import arrowBottom from "../../img/icons/arrow-bottom.svg";
-import favorite from "../../img/icons/favorite.svg";
-import phone from "../../img/icons/phone.svg";
-import cart from "../../img/icons/cart.svg";
-import React, {useState} from "react";
+import React from 'react';
+import styles from "./HeaderBodyMenu.module.scss";
 import {NavLink} from "react-router-dom";
-import Input from "./Input";
-import {useSelector} from "react-redux";
+import logo from "../../../img/icons/logo.svg";
+import Input from "../Input";
+import location from "../../../img/icons/location.svg";
+import arrowBottom from "../../../img/icons/arrow-bottom.svg";
+import phone from "../../../img/icons/phone.svg";
+import favorite from "../../../img/icons/favorite.svg";
+import cart from "../../../img/icons/cart.svg";
 
-const HeaderBodyMenu = () => {
-
-    const addedItemsToCart = useSelector(state => state.catalogPage.addedItemsToCart)
-    const searchValue = useSelector(state => state.catalogPage.searchValue)
-
-    let [isSpoilerActive, setIsSpoilerActive] = useState(false)
-
-    let price = 0
-
-    for (let i = 0; i < addedItemsToCart.length; i++) {
-        price = price + addedItemsToCart[i].price
-    }
-
-
-    const toggleSpoilerActive = () => {
-        setIsSpoilerActive(prev => !prev)
-    }
-
+const HeaderBodyMenu = ({toggleSpoilerActive, searchValue, isSpoilerActive, addedItemsToCart, price}) => {
     return (
         <div className={styles.midHeaderMenu}>
             <div className={styles.midHeaderMenuContainer}>
@@ -91,7 +72,7 @@ const HeaderBodyMenu = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default HeaderBodyMenu
+export default HeaderBodyMenu;

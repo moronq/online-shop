@@ -2,9 +2,8 @@
 
 .itemPageContainer{
   max-width: 1590px;
-  padding: 0 15px;
+  padding: 0;
   margin: 0 auto;
-  border: 1px solid red;
 }
 
 .buyOneClickButton {
@@ -25,5 +24,113 @@
   line-height: 2.56;
   color: white;
 }
+.breadCrumbsContainer{
+  padding: 0 15px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+.previewMain{
+  max-width: 754px;
+  margin-bottom: 16px;
+}
+.previewList{
+  display: flex;
+  max-width: 754px;
+  gap: 16px;
+}
+.itemInfoWrapper{
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+  column-gap: 15px;
+}
+.previewListItem{
+  max-width: 177px;
+  border-radius: 2px;
+}
 
+.itemInfo{
+  flex: 0 1 806px;
+  box-shadow: 0 4px 20px rgba(0,0,0, 0.1);
+  position: relative;
+}
+.itemTitle{
+  font-weight: 700;
+  font-size: 24px;
+  color: #141414;
+}
 
+.title{
+  position: relative;
+}
+
+.titleWrapper{
+  padding: 30px;
+}
+.inStock{
+  padding: 0 0 30px 30px;
+  color: #24AD53;
+}
+//.inStock:after {
+//  content: '';
+//  width: 93%;
+//  height: 1px;
+//  position: absolute;
+//  background-color: #dedede;
+//  top: 122px;
+//  left: 3.5%;
+//}
+.characteristics{
+  display: flex;
+  padding: 30px;
+  font-weight: 500;
+  font-size: 18px;
+  gap: 30px;
+  position: relative;
+}
+.characteristicsTitle li,
+.characteristicsValue li {
+  margin-bottom: 20px;
+}
+.characteristicsTitle li:last-child,
+.characteristicsValue li:last-child {
+  margin-bottom: 0;
+}
+.characteristicsValueItem{
+  color: #919191;
+}
+.characteristicsTitleItem{
+  color: #141414;
+}
+
+.underline{
+  width: 93%;
+  height: 1px;
+  background-color: #dedede;
+  position: absolute;
+  bottom: 0;
+  left: 3.5%;
+}
+.price{
+  font-weight: 700;
+  font-size: 30px;
+}
+.priceWrapper{
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bonus{
+  font-size: 14px;
+  color: #919191;
+  font-weight: 600;
+}
+.buyButtonWrapper{
+  display: flex;
+  padding: 0 30px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+}

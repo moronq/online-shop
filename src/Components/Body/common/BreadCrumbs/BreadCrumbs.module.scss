@@ -7,7 +7,6 @@
 }
 
 .bodyNavigatePathList {
-  margin-bottom: 10px;
   display: flex;
   column-gap: 42px;
   justify-content: flex-start;
@@ -30,10 +29,6 @@
     right: -25px;
   }
 }
-//
-//.bodyNavigatePathList :last-child{
-//  color: $mainOrangeColor;
-//}
 
 .bodyNavigatePathItem:after {
   transform: rotate(40deg);

@@ -20,42 +20,56 @@ const ItemPage = () => {
 
     const previewArray = [preview_1, preview_2, preview_3, preview_4,]
 
-    console.log(itemId)
-
     return (
         <div className={styles.itemPageContainer}>
-            <div className={styles.itemInfoWrapper}>
+            <div className={styles.breadCrumbsContainer}>
                 <BreadCrumbs/>
+            </div>
+            <div className={styles.itemInfoWrapper}>
                 <section className={styles.itemPreview}>
-                    <img src={previewArray[activePreview]} alt=""/>
-                    <ul>
-                        {previewArray.map((el, index)=><li key={index}
-                                                           onClick={()=>{setActivePreview(index)}}>
-                            <img src={el} alt=""/>
+                    <img className={styles.previewMain} src={previewArray[activePreview]} alt=""/>
+                    <ul className={styles.previewList}>
+                        {previewArray.map((el, index) => <li key={index}
+                                                             onClick={() => {
+                                                                 setActivePreview(index)
+                                                             }}>
+                            <img className={styles.previewListItem} src={el} alt=""/>
                         </li>)}
                     </ul>
                 </section>
                 <section className={styles.itemInfo}>
-                    <div>
-                        <div>
-                            <h3>{item.title}</h3>
-                        </div>
-                        <div>
+                    <div className={styles.title}>
+                        <div className={styles.titleWrapper}>
+                            <div>
+                                <h3 className={styles.itemTitle}>{item.title}</h3>
+                            </div>
+                            <div>
 
+                            </div>
                         </div>
+                        <p className={styles.inStock}>В наличии</p>
+                        <span className={styles.underline}/>
                     </div>
-                    <div>
-                        список с характеристиками
+                    <div className={styles.characteristics}>
+                        <ul className={styles.characteristicsTitle}>
+                            <li className={styles.characteristicsTitleItem}>Артикул:</li>
+                            <li>Торговая марка:</li>
+                            <li>Серия:</li>
+                            <li>Бонусные баллы:</li>
+                        </ul>
+                        <ul className={styles.characteristicsValue}>
+                            <li className={styles.characteristicsValueItem}>AF0000001952</li>
+                            <li className={styles.characteristicsValueItem}>WUESTHOF (Германия)</li>
+                            <li className={styles.characteristicsValueItem}>Ножи серии Classic Ikon</li>
+                            <li className={styles.characteristicsValueItem}>38</li>
+                        </ul>
+                        <span className={styles.underline}/>
                     </div>
-                    <div>
-                        <div>
-                            <h3></h3>
-                            <span>
-                                + 449 баллов за покупку
-                            </span>
-                        </div>
+                    <div className={styles.priceWrapper}>
+                        <h3 className={styles.price}>{item.price}₽</h3>
+                        <span className={styles.bonus}>+ 449 баллов за покупку</span>
                     </div>
-                    <div>
+                    <div className={styles.buyButtonWrapper}>
                         <AddToCartButton el={item}/>
                         <button className={styles.buyOneClickButton}>
                             <span className={styles.buyOneClickButtonText}>

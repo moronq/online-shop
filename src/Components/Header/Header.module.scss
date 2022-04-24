@@ -85,32 +85,9 @@ text-align: center;
 }
 //------------MidHeaderMenu--------------------------
 
-.midHeaderMenu{
-  background-color: #ECF1F2;
-}
-.midHeaderMenuContainer{
-  max-width: $containerWidth;
-  margin: 0 auto;
-  padding: 10px 15px;
-  min-height: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  @media (max-width: 650px) {
-    flex-direction: column;
-    height: 120px;
-    justify-content: space-around;
-  }
-}
-.userMenu{
-  display: flex;
-  justify-content: space-between;
-  flex: 0 1 621px;
-}
 
-.imageLogo{
-  margin-right: 10px;
-}
+
+
 
 .searchBar{
   height: 41px;
@@ -134,9 +111,8 @@ text-align: center;
   }
   &Button{
     position: absolute;
-    //border: 1px solid red;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     height: 39px;
     width: 40px;
     background-color: transparent;
@@ -148,89 +124,7 @@ text-align: center;
     //border: 1px solid red;
   }
 }
-.userMenuLocation{
-  @media (max-width: 700px) {
-    display: none;
-  }
-  display: flex;
-  align-items: center;
-  flex: 0 1 auto;
-  &City{
-    margin-left: 9px;
-    color: black;
-    font-size: 18px;
-    font-weight: 600;
-  }
-}
-.userMenuNumber {
-  display: flex;
-  justify-content: space-between;
-  flex: 0 1 186px;
-  position: relative;
-}
-.userMenuCallback{
-  color: $mainOrangeColor;
-  font-weight: bold;
-  font-size: 18px;
-  white-space: nowrap;
-}
-.userMenuMainNumber {
-  color: black;
-  font-weight: 600;
-  font-size: 18px;
-}
 
-.userMenuCallOption {
-  display: flex;
-  min-height: 47px;
-  justify-content: center;
-  flex-direction: column;
-  row-gap: 7px;
-}
-
-.userMenuOrder{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  &Text{
-    color: $mainOrangeColor;
-    white-space: nowrap;
-  }
-  @media(max-width: 1150px){
-    display: none;
-  }
-}
-
-.price{
-  padding-left: 10px;
-}
-
-.userMenuPhone,
-.userMenuFavorite,
-.userMenuCart{
-  @media (max-width: 650px) {
-    display: none;
-  }
-}
-
-.userMenuFavorite{
-  margin-left: 5px;
-}
-
-.userMenuFavorite,
-.cartImage,
-.userMenuPhoneImage{
-  align-self: center;
-}
-
-.userMenuPhone .topHeaderMenu{
-
-}
-
-.userMenuPhoneImage{
-  fill: black;
-}
 .userMenuPhoneTop{
   display: flex;
   align-items: center;
@@ -238,15 +132,6 @@ text-align: center;
 
 .userMenuFavoriteTop{
   display: flex;
-}
-
-.userMenuCart{
-  position: relative;
-  align-self: center;
-  margin-left: 5px;
-  @media(max-width: 830px){
-    top: 0;
-  }
 }
 
 .userMenuCartTop,
@@ -259,98 +144,6 @@ text-align: center;
 
 .userMenuCartTop{
   position: relative;
-}
-
-.userMenuOrder span {
-  line-height: 20px;
-  &:first-child{
-    margin-left: 1px;
-    letter-spacing: 2px;
-  }
-}
-
-.cartCount {
-  position: absolute;
-  top: -2px;
-  left: 23px;
-  background-color: $mainOrangeColor;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  color: white;
-  font-size: 8px;
-  text-align: center;
-  vertical-align: center;
-  line-height: 14px;
-}
-
-.userMenuFlexContainer {
-  display: flex;
-  flex: 0 1 306px;
-  justify-content: space-between;
-  margin: 0 10px;
-}
-.userMenuNumberChooseButton{
-  align-self: center;
-  margin-top: 5px;
-}
-
-.spoilerNumberList{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  transition: all 0.2s ease 0s;
-  &Hidden {
-    margin-bottom: -100%;
-  }
-}
-
-.spoilerNumberItem:not(:last-child){
-  margin-bottom: 10px;
-}
-
-.spoilerNumberContainer{
-  position: absolute;
-  padding: 10px;
-  overflow: hidden;
-  background-color: white;
-  top: 30px;
-  left: -10px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(20, 20, 20, 0.1);
-  transition: all 0.2s ease 0s;
-  z-index: 999;
-  &Hidden {
-    padding: 0 10px;
-  }
-}
-
-.userMenuMainNumber{
-  white-space: nowrap;
-}
-
-.userMenuNumberChooseButton{
-  transition: all 0.6s ease 0s;
-  transform-origin: 50% 30% 0;
-  &Rotated {
-    transform: rotate(540deg);
-  //transform: scaleY(-1);
-  }
-}
-
-.userMenuNumber {
-  @media (max-width: 830px){
-    display: none;
-  }
-}
-
-.userMenuPhone{
-  align-self: center;
-  margin-left: 5px;
-  @media(min-width: 830px){
-    display: none;
-  }
 }
 
 //----------NavBarBottom--------------------------
