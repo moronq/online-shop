@@ -87,6 +87,9 @@
   font-weight: 600;
   margin: 0 0 0 14px;
   color: white;
+  &:hover{
+    text-decoration: underline;
+  }
   @media(max-width: 830px){
     display: none;
   }
