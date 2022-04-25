@@ -1,9 +1,12 @@
 @import '/src/constants';
 
 .itemPageContainer{
-  max-width: 1590px;
+  max-width: 1625px;
   padding: 0;
   margin: 0 auto;
+  @media(max-width: 819px){
+    padding-top: 30px;
+  }
 }
 
 .buyOneClickButton {
@@ -29,9 +32,17 @@
   height: 80px;
   display: flex;
   align-items: center;
+  @media(max-width: 819px){
+    display: none;
+  }
 }
+
+.itemPreview{
+  max-width: 100%;
+}
+
 .previewMain{
-  max-width: 754px;
+  max-width: 100%;
   margin-bottom: 16px;
 }
 .previewList{
@@ -40,13 +51,18 @@
   gap: 16px;
 }
 .itemInfoWrapper{
+  padding: 0 15px;
   display: flex;
   justify-content: space-between;
   background-color: transparent;
-  column-gap: 15px;
+  gap: 15px;
+  @media(max-width: 1300px){
+    flex-direction: column;
+    align-items: center;
+  }
 }
 .previewListItem{
-  max-width: 177px;
+  max-width: 100%;
   border-radius: 2px;
 }
 
@@ -54,6 +70,9 @@
   flex: 0 1 806px;
   box-shadow: 0 4px 20px rgba(0,0,0, 0.1);
   position: relative;
+  @media(max-width: 1300px){
+    flex: 1 1 auto;
+  }
 }
 .itemTitle{
   font-weight: 700;
@@ -64,6 +83,7 @@
 .titleRating{
   display: flex;
   gap: 25px;
+  flex-wrap: wrap;
 }
 
 .title{
@@ -72,20 +92,15 @@
 
 .titleWrapper{
   padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
 }
 .inStock{
   padding: 0 0 30px 30px;
   color: #24AD53;
 }
-//.inStock:after {
-//  content: '';
-//  width: 93%;
-//  height: 1px;
-//  position: absolute;
-//  background-color: #dedede;
-//  top: 122px;
-//  left: 3.5%;
-//}
+
 .characteristics{
   display: flex;
   padding: 30px;
@@ -138,4 +153,5 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 15px;
+  margin-bottom: 30px;
 }

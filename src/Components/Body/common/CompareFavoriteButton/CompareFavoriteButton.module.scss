@@ -1,0 +1,15 @@
+@import '/src/constants';
+
+.contentItemUserOptionsContainer {
+  display: flex;
+  column-gap: 15px;
+  align-items: center;
+}
+
+.contentItemCompare,
+.contentItemFavorite {
+  background-color: transparent;
+}
+.contentItemFavorite{
+  display: flex;
+}

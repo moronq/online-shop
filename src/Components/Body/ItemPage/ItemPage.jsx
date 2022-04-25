@@ -10,6 +10,7 @@ import preview_4 from './../../../img/preview/preview_4.jpg'
 import BreadCrumbs from "../common/BreadCrumbs/BreadCrumbs";
 import RatingStar from "../common/RatingStar/RatingStar";
 import {setRating} from "../../../redux/catalogReducer";
+import CompareFavoriteButton from "../common/CompareFavoriteButton/CompareFavoriteButton";
 
 const ItemPage = () => {
 
@@ -46,8 +47,8 @@ const ItemPage = () => {
                                 <h3 className={styles.itemTitle}>{item.title}</h3>
                                 <RatingStar id={itemId.id} rating={item.rating} setRating={setRating}/>
                             </div>
-                            <div>
-
+                            <div className={styles.itemPageCompareFavorite}>
+                                <CompareFavoriteButton/>
                             </div>
                         </div>
                         <p className={styles.inStock}>В наличии</p>

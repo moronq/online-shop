@@ -20,7 +20,7 @@ const MainCatalogContainer = () => {
     const forceUpdate = useCallback(() => updateState({}), [])
 
 
-    const [sortCatalogByOption, setSortCatalogByOption] = useState('popular')
+    const [sortCatalogByOption, setSortCatalogByOption] = useState('default')
 
     let catalogMain = [...catalog]
 
@@ -66,11 +66,11 @@ const MainCatalogContainer = () => {
             return (a.price - b.price)
         }).reverse()
     }
-    // if (sortCatalogByOption === 'popular') {
-    //     catalogMain.sort((a, b) => {
-    //         return (a.rating - b.rating)
-    //     }).reverse()
-    // }
+    if (sortCatalogByOption === 'popular') {
+        catalogMain.sort((a, b) => {
+            return (a.rating - b.rating)
+        }).reverse()
+    }
 
 
     let startPageItem = (currentPage - 1) * pageSize

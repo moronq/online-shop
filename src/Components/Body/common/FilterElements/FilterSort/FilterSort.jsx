@@ -16,7 +16,8 @@ const FilterSort = ({sortCatalogByOption, setSortCatalogByOption}) => {
     return (
         <div className={styles.bodySort}>
             <button onClick={onSpoilerClick}
-                    className={styles.chooseOptionButton}>{sortCatalogByOption === 'popular' ? 'По популярности' : sortCatalogByOption === 'price_up'
+                    className={styles.chooseOptionButton}>{sortCatalogByOption === 'popular' ? 'По популярности' :
+                sortCatalogByOption === 'default' ? 'По умолчанию' : sortCatalogByOption === 'price_up'
                 ? 'По возрастанию цены' : sortCatalogByOption === 'price_down' ? 'По убыванию цены'
                     : ''}
                 <svg className={`${styles.arrowButton} ${isSpoilerActive ? styles.arrowButtonRotated : ''}`} width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,15 +26,25 @@ const FilterSort = ({sortCatalogByOption, setSortCatalogByOption}) => {
             </button>
             <div className={styles.spoilerContainer}>
                 <div className={`${styles.filterSortDropdown} ${isSpoilerActive ? '' : styles.hidden}`}>
-                    <input onClick={(e)=>onOptionClick(e)} className={styles.option} id={'popular'} type={'radio'} name={'where'} value={'popular'}/>
+                    <input onClick={(e)=>onOptionClick(e)} className={styles.option}
+                           id={'default'} type={'radio'} name={'sort'}
+                           value={'default'}/>
+                    <label className={styles.selectItem} htmlFor="default">По умолчанию</label>
+
+                    <input onClick={(e)=>onOptionClick(e)} className={styles.option}
+                           id={'popular'} type={'radio'} name={'sort'} value={'popular'}/>
                     <label className={styles.selectItem} htmlFor="popular">По популярности</label>
 
-                    <input onClick={(e)=>onOptionClick(e)} className={styles.option} id={'price_up'} type={'radio'} name={'where'} value={'price_up'}/>
+                    <input onClick={(e)=>onOptionClick(e)} className={styles.option}
+                           id={'price_up'} type={'radio'} name={'sort'} value={'price_up'}/>
                     <label className={styles.selectItem} htmlFor="price_up">По возрастанию цены</label>
 
-                    <input onClick={(e)=>onOptionClick(e)} className={styles.option} id={'price_down'} type={'radio'} name={'where'}
+                    <input onClick={(e)=>onOptionClick(e)} className={styles.option}
+                           id={'price_down'} type={'radio'} name={'sort'}
                            value={'price_down'}/>
                     <label className={styles.selectItem} htmlFor="price_down">По убыванию цены</label>
+
+
                 </div>
             </div>
         </div>

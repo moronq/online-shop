@@ -55,6 +55,21 @@
   position: relative;
 }
 
+.cartCount {
+  position: absolute;
+  top: -2px;
+  left: 23px;
+  background-color: $mainOrangeColor;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  color: white;
+  font-size: 8px;
+  text-align: center;
+  vertical-align: center;
+  line-height: 14px;
+}
+
 .userLinkBlock {
   display: inline-flex;
   align-items: center;
