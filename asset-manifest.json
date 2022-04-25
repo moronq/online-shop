@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.css": "/online-shop/static/css/main.a7f6e80e.css",
+    "main.js": "/online-shop/static/js/main.4461d66e.js",
+    "static/js/787.a8723d96.chunk.js": "/online-shop/static/js/787.a8723d96.chunk.js",
+    "static/media/preview_4.jpg": "/online-shop/static/media/preview_4.88a3a064d0e3f7928a88.jpg",
+    "static/media/preview_1.jpg": "/online-shop/static/media/preview_1.4491cf83d04c6d09dc73.jpg",
+    "static/media/preview_3.jpg": "/online-shop/static/media/preview_3.8e2e4a5c8b3c6ce10efc.jpg",
+    "static/media/preview_2.jpg": "/online-shop/static/media/preview_2.5648b8a6e80488315a1d.jpg",
+    "static/media/logo.svg": "/online-shop/static/media/logo.b4b20b90cd4fedba30efa28a6e07019d.svg",
+    "static/media/content-knife-preview.jpg": "/online-shop/static/media/content-knife-preview.5524e7bec148543db5b2.jpg",
+    "static/media/user.svg": "/online-shop/static/media/user.892997f9eb9769f3e95084f6703c9556.svg",
+    "static/media/cart-white.svg": "/online-shop/static/media/cart-white.1f280e2335f5e1f7e688baaf836f0f7d.svg",
+    "static/media/cart.svg": "/online-shop/static/media/cart.ec14ddfb772481287cff52347823b160.svg",
+    "static/media/compare.svg": "/online-shop/static/media/compare.fac7dfa9b90294196dbd7e203267b9f4.svg",
+    "static/media/footer-phone.svg": "/online-shop/static/media/footer-phone.28828e27f8f1c6d32da5afe73a784f86.svg",
+    "static/media/phone.svg": "/online-shop/static/media/phone.ec623ecbacbfc0ca0778f0ff7b0e4e35.svg",
+    "static/media/footer-location.svg": "/online-shop/static/media/footer-location.d4d61f95d4c8bb46baedd1a31b73d4cc.svg",
+    "static/media/location.svg": "/online-shop/static/media/location.9486fd4bc73fcfac9013686e298b94fe.svg",
+    "static/media/favorite.svg": "/online-shop/static/media/favorite.7ba3c3961e58fd6d94f5eb330afd418c.svg",
+    "index.html": "/online-shop/index.html",
+    "static/media/clock.svg": "/online-shop/static/media/clock.a2afd03e14d89ca185f179ddec05b61f.svg",
+    "static/media/mail.svg": "/online-shop/static/media/mail.cbd80dff443db20744468bfb65144c5b.svg",
+    "static/media/search.svg": "/online-shop/static/media/search.bf095aee495d2cf20357cf4b52bd2426.svg",
+    "static/media/arrow-bottom.svg": "/online-shop/static/media/arrow-bottom.f5bf6f1d6fe4c4dc11a0536bd678cb59.svg",
+    "static/media/arrow-bottom-white.svg": "/online-shop/static/media/arrow-bottom-white.93963bb3c9c5d92eb90f26a3c2627021.svg",
+    "static/media/star-test-off.svg": "/online-shop/static/media/star-test-off.285089e26a42cb1dd6e7.svg",
+    "static/media/arrow-back.svg": "/online-shop/static/media/arrow-back.c9c74e4c1b317c75c4de2f9e80b04d19.svg",
+    "static/media/star-test.svg": "/online-shop/static/media/star-test.d10a53bfe33554281635.svg",
+    "static/media/checked.svg": "/online-shop/static/media/checked.214dc17b5b3775803897.svg",
+    "main.a7f6e80e.css.map": "/online-shop/static/css/main.a7f6e80e.css.map",
+    "main.4461d66e.js.map": "/online-shop/static/js/main.4461d66e.js.map",
+    "787.a8723d96.chunk.js.map": "/online-shop/static/js/787.a8723d96.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a7f6e80e.css",
+    "static/js/main.4461d66e.js"
+  ]
+}
