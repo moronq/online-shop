@@ -1,0 +1,80 @@
+@import '/src/constants';
+
+.filterSteel{
+  display: flex;
+  flex-direction: column;
+}
+
+.filterSteelTitleContainer{
+  background-color: $mainDarkColor;
+  width: 100%;
+  min-height: 50px;
+  padding: 5px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &:hover{
+    cursor: pointer;
+  }
+}
+.filterSteelTitle{
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+}
+.filterSliderButton{
+  background-color: transparent;
+}
+.filterSteelSpoilerPart{
+  padding: 0 30px;
+  overflow: hidden;
+
+}
+
+.filterSteelList{
+  display: flex;
+  flex-direction: column;
+  row-gap: 22px;
+  transition: all 1s ease 0s;
+  margin: 21px 0;
+}
+.filterSteelListHidden {
+  margin-top: 0;
+  margin-bottom: -100%;
+}
+.filterSteelCheckbox{
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.filterSteelCheckbox+label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  &:hover{
+    cursor: pointer;
+  }
+  &:before{
+    content: '';
+    width: 18px;
+    height: 18px;
+    border-radius: 2px;
+    border: 1px solid rgba(0,0,0, 0.2);
+    margin-right: 15px;
+    box-sizing: border-box;
+  }
+}
+.filterSteelCheckbox:checked+label:before {
+  border: 1px solid $mainOrangeColor;
+  background: url('../../../../../img/icons/checked.svg') no-repeat center;
+  background-size: 67% 67%;
+}
+
+.filterSteelCheckbox:not(:disabled):not(:checked)+label:hover::before {
+  border-color: $mainOrangeColor;
+}
+
+.filterSteelCheckbox:not(:disabled):active+label::before {
+  background-color: $mainOrangeColor;
+  border-color: $mainOrangeColor;
+}

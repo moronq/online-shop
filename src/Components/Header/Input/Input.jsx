@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from "./Header.module.scss";
-import search from "../../img/icons/search.svg";
+import styles from "./Input.module.scss";
+import search from "../../../img/icons/search.svg";
 import {useDispatch} from "react-redux";
-import {setSearchValue} from "../../redux/catalogReducer";
+import {setSearchValue} from "../../../redux/catalogReducer";
 
 const Input = ({searchValue}) => {
 

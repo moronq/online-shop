@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import styles from "../../../Body.module.scss";
+import styles from "./FilterSteel.module.scss";
 import arrow from "../../../../../img/icons/arrow-bottom.svg";
 import {useDispatch, useSelector} from "react-redux";
 import {removeSelectedCheckboxes, setSelectedCheckboxes} from "../../../../../redux/catalogReducer";

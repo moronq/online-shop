@@ -4,7 +4,7 @@ import arrow from "../../../../../img/icons/arrow-bottom.svg";
 import {useDispatch, useSelector} from "react-redux";
 import {setMaxInputValue, setMinInputValue} from "../../../../../redux/catalogReducer";
 
-const FilterPrice = () => {
+const FilterPrice = ({setCurrentPage}) => {
     const PRICE_GAP = 100
 
     const minInputValue = useSelector(state => state.catalogPage.minInputValue)
@@ -20,6 +20,8 @@ const FilterPrice = () => {
     const [maxSliderValue, setMaxSliderValue] = useState(MAX_PRICE)
 
     const progress = useRef(null)
+
+    useEffect(()=>{setCurrentPage(1)},[minInputValue, maxInputValue])
 
     const onPriceSpoilerClick = () => {
         setIsSpoilerActive(prev => !prev)

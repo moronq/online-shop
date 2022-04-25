@@ -1,21 +1,21 @@
 import React, {useState} from 'react';
-import styles from "./Header.module.scss"
-import NavBarItems from "./NavBarItems";
+import styles from "./MenuBurger.module.scss"
+import NavBarItems from "../NavBarItems/NavBarItems";
 import cn from 'classnames'
-import arrowBack from '../../img/icons/arrow-back.svg'
+import arrowBack from '../../../img/icons/arrow-back.svg'
 
 
 const MenuBurger = () => {
 
     let [isBurgerActive, setIsBurgerActive] = useState(false)
-    let [isKatalogActive, setIsKatalogActive] = useState(false)
+    let [isCatalogActive, setIsCatalogActive] = useState(false)
 
     const onBurgerClick = () => {
         setIsBurgerActive(prev => !prev)
-        setIsKatalogActive(false)
+        setIsCatalogActive(false)
     }
-    const onKatalogClick = () => {
-        setIsKatalogActive(true)
+    const onCatalogClick = () => {
+        setIsCatalogActive(true)
     }
 
     return (
@@ -24,8 +24,8 @@ const MenuBurger = () => {
                  onClick={onBurgerClick}>
                 <span className={styles.burgerMenuButtonSpan}/>
             </div>
-            {isKatalogActive &&
-                <div className={styles.burgerMenuButtonBack} onClick={() => setIsKatalogActive(false)}>
+            {isCatalogActive &&
+                <div className={styles.burgerMenuButtonBack} onClick={() => setIsCatalogActive(false)}>
                     <img src={arrowBack} className={styles.burgerMenuButtonSpanBackArrow} width="20"/>
                     <span className={styles.burgerMenuButtonSpanBack}>Назад</span>
                 </div>
@@ -38,7 +38,7 @@ const MenuBurger = () => {
                             <li className={styles.burgerMenuItem}>
                                 <a className={styles.burgerMenuLink} href="">Личный кабинет</a>
                             </li>
-                            <li onClick={onKatalogClick}
+                            <li onClick={onCatalogClick}
                                 className={cn(styles.burgerMenuItem, styles.burgerMenuItemStuff)}>
                                 <a className={styles.burgerMenuLink}>Каталог товаров</a>
                                 <svg className={styles.burgerMenuItemStuffArrow} width="16" height="10"
@@ -53,7 +53,7 @@ const MenuBurger = () => {
                     </nav>
                 </div>
                 <div
-                    className={`${styles.burgerMenuContainer} ${isKatalogActive ? '' : styles.burgerMenuContainerHidden}`}>
+                    className={`${styles.burgerMenuContainer} ${isCatalogActive ? '' : styles.burgerMenuContainerHidden}`}>
                     <nav className={styles.burgerMenuNavigation}>
                         <ul className={styles.burgerMenuList}>
                             <li className={styles.burgerMenuItem}>
