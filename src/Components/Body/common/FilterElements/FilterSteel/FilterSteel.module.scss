@@ -78,3 +78,10 @@
   background-color: $mainOrangeColor;
   border-color: $mainOrangeColor;
 }
+.filterSliderImage{
+  margin-top: 2px;
+  transition: all 0.6s ease 0s;
+  &Opened{
+    transform: rotate(540deg);
+  }
+}
