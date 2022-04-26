@@ -36,7 +36,8 @@ const Paginator = ({totalItemsCount, pageSize, currentPage, setCurrentPage, port
                     {pages.filter(p => p >= leftPortionCount && p <= rightPortionCount)
                         .map(el => {
                             return <li
-                                className={cn({[styles.pageSelectorActive]: currentPage === el}, styles.pageSelector)}
+                                className={cn({[styles.pageSelectorActive]: currentPage === el},
+                                    styles.pageSelector)}
                                 key={el} onClick={() => setCurrentPage(el)}>{el}</li>
                         })}
                 </ul>

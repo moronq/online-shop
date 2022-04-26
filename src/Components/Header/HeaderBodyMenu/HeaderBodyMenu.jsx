@@ -16,7 +16,7 @@ const HeaderBodyMenu = ({toggleSpoilerActive, searchValue, isSpoilerActive, adde
                 <NavLink to={'/'} className={styles.imageLogo}><img src={logo} alt=""/></NavLink>
                 <Input searchValue={searchValue}/>
                 <div className={styles.userMenu}>
-                    <a className={styles.userMenuLocation} href="">
+                    <a className={styles.userMenuLocation} href="#">
                         <img src={location} width={'17px'} alt="your city"/>
                         <span className={styles.userMenuLocationCity}>Санкт-Петербург</span>
                     </a>
@@ -54,7 +54,7 @@ const HeaderBodyMenu = ({toggleSpoilerActive, searchValue, isSpoilerActive, adde
                                 </ul>
                             </div>
                         </div>
-                        <a className={styles.userMenuPhone} href="">
+                        <a className={styles.userMenuPhone} href="#">
                             <img className={styles.userMenuPhoneImage} width={'23px'} src={phone} alt=""/>
                         </a>
                         <a className={styles.userMenuFavorite} href="">

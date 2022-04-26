@@ -113,19 +113,23 @@ const FilterPrice = ({setCurrentPage}) => {
                 <p className={styles.filterPriceTitle}>Цена</p>
                 <button className={styles.filterSliderButton}>
                     <img
-                        className={`${styles.filterSliderImage} ${isSpoilerActive ? styles.filterSliderImageOpened : ''}`}
+                        className={`${styles.filterSliderImage} ${isSpoilerActive 
+                            ? styles.filterSliderImageOpened : ''}`}
                         src={arrow} alt=""/>
                 </button>
             </div>
             <div className={styles.filterPriceSliderPart}>
-                <div className={`${styles.filterPriceSliderList} ${isSpoilerActive? '' : styles.filterPriceSliderListHidden}`}>
+                <div className={`${styles.filterPriceSliderList} ${isSpoilerActive? '' 
+                    : styles.filterPriceSliderListHidden}`}>
                     <div className={styles.filterPriceForm}>
-                        <input className={styles.inputMin} type="number" value={minInputValue} max={MAX_PRICE} min={MIN_PRICE}
+                        <input className={styles.inputMin} type="number" value={minInputValue} max={MAX_PRICE}
+                               min={MIN_PRICE}
                                onBlur={(e) => onInputBlur(e)}
                                onFocus={(e) => onFocusInput(e)}
                                onKeyDown={(e) => onInputMin(e)}
                                onChange={(e) => dispatch(setMinInputValue(e.target.value))}/>
-                        <input className={styles.inputMax} type="number" value={maxInputValue} max={MAX_PRICE} min={MIN_PRICE}
+                        <input className={styles.inputMax} type="number" value={maxInputValue} max={MAX_PRICE}
+                               min={MIN_PRICE}
                                onBlur={(e) => onInputBlur(e)}
                                onFocus={(e) => onFocusInput(e)}
                                onKeyDown={(e) => onInputMax(e)}
@@ -135,9 +139,11 @@ const FilterPrice = ({setCurrentPage}) => {
                         <div ref={progress} className={styles.filterPriceSliderProgress}/>
                     </div>
                     <div className={styles.rangeInput}>
-                        <input type='range' className={styles.rangeMin} min={MIN_PRICE} max={MAX_PRICE} value={minSliderValue}
+                        <input type='range' className={styles.rangeMin} min={MIN_PRICE} max={MAX_PRICE}
+                               value={minSliderValue}
                                step={'100'} onChange={(e) => onRangeMinSlider(e)}/>
-                        <input type='range' className={styles.rangeMax} min={MIN_PRICE} max={MAX_PRICE} value={maxSliderValue}
+                        <input type='range' className={styles.rangeMax} min={MIN_PRICE} max={MAX_PRICE}
+                               value={maxSliderValue}
                                step={'100'} onChange={(e) => onRangeMaxSlider(e)}/>
                     </div>
                 </div>

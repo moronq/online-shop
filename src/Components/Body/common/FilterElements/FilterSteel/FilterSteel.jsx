@@ -28,7 +28,8 @@ const FilterSteel = ({forceUpdate, setCurrentPage}) => {
                 <p className={styles.filterSteelTitle}>Сталь</p>
                 <button className={styles.filterSliderButton}>
                     <img
-                        className={`${styles.filterSliderImage} ${isSpoilerActive ? styles.filterSliderImageOpened : ''}`}
+                        className={`${styles.filterSliderImage} ${isSpoilerActive 
+                            ? styles.filterSliderImageOpened : ''}`}
                         src={arrow} alt=""/>
                 </button>
             </div>

@@ -37,25 +37,6 @@ const RatingStar = ({id, rating, setRating}) => {
             </fieldset>
         </div>
     )
-
-    // <ul className={styles.contentItemRatingStarList}>
-    //     <li className={styles.contentItemRatingStarItem}>
-    //         <img className={styles.contentItemRatingStarImage} src={star} width='21' alt=""/>
-    //     </li>
-    //     <li className={styles.contentItemRatingStarItem}>
-    //         <img className={styles.contentItemRatingStarImage} src={star} width='21' alt=""/>
-    //     </li>
-    //     <li className={styles.contentItemRatingStarItem}>
-    //         <img className={styles.contentItemRatingStarImage} src={star} width='21' alt=""/>
-    //     </li>
-    //     <li className={styles.contentItemRatingStarItem}>
-    //         <img className={styles.contentItemRatingStarImage} src={star} width='21' alt=""/>
-    //     </li>
-    //     <li className={styles.contentItemRatingStarItem}>
-    //         <img className={styles.contentItemRatingStarImage} src={star} width='21' alt=""/>
-    //     </li>
-    // </ul>
-
 };
 
 export default RatingStar;

@@ -8,13 +8,13 @@ const NavBarItems = ({isBurgerActive}) => {
 
     return (
         <>
-            <li className={style}><a className={styleLink} href="">О нас</a>
+            <li className={style}><a className={styleLink} href="#">О нас</a>
             </li>
-            <li className={style}><a className={styleLink} href="">Оплата и
+            <li className={style}><a className={styleLink} href="#">Оплата и
                 доставка</a></li>
-            <li className={style}><a className={styleLink} href="">Новости</a>
+            <li className={style}><a className={styleLink} href="#">Новости</a>
             </li>
-            <li className={style}><a className={styleLink} href="">Контакты</a>
+            <li className={style}><a className={styleLink} href="#">Контакты</a>
             </li>
         </>
     );

@@ -36,11 +36,11 @@ const MenuBurger = () => {
                     <nav className={styles.burgerMenuNavigation}>
                         <ul className={styles.burgerMenuList}>
                             <li className={styles.burgerMenuItem}>
-                                <a className={styles.burgerMenuLink} href="">Личный кабинет</a>
+                                <a className={styles.burgerMenuLink} href="#">Личный кабинет</a>
                             </li>
                             <li onClick={onCatalogClick}
                                 className={cn(styles.burgerMenuItem, styles.burgerMenuItemStuff)}>
-                                <a className={styles.burgerMenuLink}>Каталог товаров</a>
+                                <a href="#" className={styles.burgerMenuLink}>Каталог товаров</a>
                                 <svg className={styles.burgerMenuItemStuffArrow} width="16" height="10"
                                      viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -57,19 +57,19 @@ const MenuBurger = () => {
                     <nav className={styles.burgerMenuNavigation}>
                         <ul className={styles.burgerMenuList}>
                             <li className={styles.burgerMenuItem}>
-                                <a className={styles.burgerMenuLink} href="">Каталог ножей</a>
+                                <a className={styles.burgerMenuLink} href="#">Каталог ножей</a>
                             </li>
                             <li className={styles.burgerMenuItem}>
-                                <a className={styles.burgerMenuLink} href="">Клинковое оружие</a>
+                                <a className={styles.burgerMenuLink} href="#">Клинковое оружие</a>
                             </li>
                             <li className={styles.burgerMenuItem}>
-                                <a className={styles.burgerMenuLink} href="">Сувенирные изделия</a>
+                                <a className={styles.burgerMenuLink} href="#">Сувенирные изделия</a>
                             </li>
                             <li className={styles.burgerMenuItem}>
-                                <a className={styles.burgerMenuLink} href="">Фонари ARMYTEK</a>
+                                <a className={styles.burgerMenuLink} href="#">Фонари ARMYTEK</a>
                             </li>
                             <li className={styles.burgerMenuItem}>
-                                <a className={styles.burgerMenuLink} href="">Сопуствующие товары</a>
+                                <a className={styles.burgerMenuLink} href="#">Сопуствующие товары</a>
                             </li>
                         </ul>
                     </nav>
