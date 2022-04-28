@@ -104,8 +104,9 @@
   overflow: auto;
   z-index: 10;
   transition: all 1s ease 0s;
-  &Hidden {
-    margin-left: 100%;
+  margin-left: 100%;
+  &Active {
+    margin-left: 0;
   }
   :before {
     content: '';

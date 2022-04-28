@@ -32,7 +32,7 @@ const MenuBurger = () => {
             }
             <div className={`${styles.burgerMenu} ${isBurgerActive ? styles.burgerMenuActive : ''}`}>
                 <div onClick={onBurgerClick} className={styles.burgerMenuBackground}/>
-                <div className={`${styles.burgerMenuContainer} ${isBurgerActive ? '' : styles.burgerMenuContainerHidden}`}>
+                <div className={`${styles.burgerMenuContainer} ${isBurgerActive ? styles.burgerMenuContainerActive : ''}`}>
                     <nav className={styles.burgerMenuNavigation}>
                         <ul className={styles.burgerMenuList}>
                             <li className={styles.burgerMenuItem}>
