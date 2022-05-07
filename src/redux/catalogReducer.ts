@@ -61,7 +61,7 @@ const MAX_PRICE = maxPriceItem.price
 
 let initialState = {
     catalog: catalog,
-    addedItemsToCart: [] as Array<CatalogItemType> | [],
+    addedItemsToCart: [] as Array<CatalogItemType>,
     pageSize: 12,
     searchValue: '',
     minInputValue: typeof MIN_PRICE,
@@ -69,13 +69,13 @@ let initialState = {
     MAX_PRICE: typeof MAX_PRICE,
     MIN_PRICE: typeof MIN_PRICE,
     checkboxesFilter: checkboxesFilter,
-    selectedCheckboxes: [] as Array<string> | [],
+    selectedCheckboxes: [] as Array<string>,
     navBarItems: navBarItems,
 }
 
 export type InitialStateType = typeof initialState
 
-const catalogReducer = (state = initialState, action):InitialStateType => {
+const catalogReducer = (state = initialState, action:any):InitialStateType => {
 
     switch (action.type) {
         case ADD_TO_CART:
