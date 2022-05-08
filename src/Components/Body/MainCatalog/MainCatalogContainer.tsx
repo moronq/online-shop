@@ -1,10 +1,9 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import ContentItem from "../common/ContentItem/ContentItem";
-import {useSelector} from "react-redux";
-import MainCatalog from "./MainCatalog";
-import {setRating} from "../../../redux/catalogReducer";
-import {AppStateType} from "../../../redux/store";
-
+import React, {useCallback, useEffect, useState} from 'react'
+import ContentItem from "../common/ContentItem/ContentItem"
+import {useSelector} from "react-redux"
+import MainCatalog from "./MainCatalog"
+import {setRating} from "../../../redux/catalogReducer"
+import {AppStateType} from "../../../redux/store"
 
 const MainCatalogContainer = () => {
 
@@ -17,7 +16,7 @@ const MainCatalogContainer = () => {
 
     let [currentPage, setCurrentPage] = useState(1)
 
-    const [, updateState] = useState()
+    const [, updateState] = useState({})
     const forceUpdate = useCallback(() => updateState({}), [])
 
     const [sortCatalogByOption, setSortCatalogByOption] = useState('default')
@@ -38,7 +37,7 @@ const MainCatalogContainer = () => {
 
     if (minInputValue || maxInputValue) {
         catalogMain = catalogMain.filter(item => {
-            if (item.price >= parseInt(minInputValue) && item.price <= parseInt(maxInputValue)) {
+            if (item.price >= minInputValue && item.price <= maxInputValue) {
                 return item
             }
         })

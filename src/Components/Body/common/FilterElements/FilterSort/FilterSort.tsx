@@ -13,8 +13,8 @@ const FilterSort: React.FC<PropsType> = ({sortCatalogByOption, setSortCatalogByO
         setIsSpoilerActive(prev => !prev)
     }
 
-    const onOptionClick = (e: any) => {
-        setSortCatalogByOption(e.target.value)
+    const onOptionClick = (e: React.MouseEvent<HTMLInputElement> ) => {
+        setSortCatalogByOption(e.currentTarget.value)
         setIsSpoilerActive(false)
     }
 

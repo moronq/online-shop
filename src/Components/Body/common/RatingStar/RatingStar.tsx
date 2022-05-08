@@ -1,4 +1,4 @@
-import React, {useCallback, useRef, useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import styles from "./RatingStar.module.scss";
 import {useDispatch} from "react-redux";
 import { SetRatingType } from '../../../../redux/catalogReducer';
@@ -10,14 +10,14 @@ type PropsType = {
 }
 
 const RatingStar: React.FC<PropsType> = ({id, rating, setRating}) => {
-    const [, updateState] = useState()
+    const [, updateState] = useState({})
     const forceUpdate = useCallback(() => updateState({}), [])
 
     const dispatch = useDispatch()
 
     let arr = [1, 2, 3, 4, 5]
 
-    let onChangeRating = (e) => {
+    let onChangeRating = (e: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(setRating(id, parseInt(e.target.value)))
         forceUpdate()
     }

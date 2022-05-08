@@ -15,13 +15,13 @@ const BreadCrumbs = () => {
         link: params.id ? + catalog.filter((el) => el.id === parseInt(params.id))[0]['id']: '',
     }
 
-    const breadCrumblesItemList = []
+    const breadCrumblesItemList: Array<string> = []
 
     navBarItems.forEach((el)=>{
         breadCrumblesItemList.push(el.link)
     })
 
-    const filteredItemsList = []
+    const filteredItemsList: Array<string> = []
 
     for (let i=0; i < breadCrumblesItemList.length; i++){
         if(params.hasOwnProperty(breadCrumblesItemList[i])){
@@ -29,7 +29,7 @@ const BreadCrumbs = () => {
         }
     }
 
-    const breadCrumbles = []
+    const breadCrumbles: Array<string> = []
 
     navBarItems.forEach((el)=>{
         if(el.link === filteredItemsList[0]){

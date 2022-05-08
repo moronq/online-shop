@@ -6,16 +6,16 @@ import {setMaxInputValue, setMinInputValue} from "../../../../../redux/catalogRe
 import {AppStateType} from "../../../../../redux/store";
 
 type PropsType = {
-    setCurrentPage: (arg0: number)=>void
+    setCurrentPage: (arg0: number) => void
 }
 
 const FilterPrice: React.FC<PropsType> = ({setCurrentPage}) => {
     const PRICE_GAP = 100
 
-    const minInputValue = useSelector((state:AppStateType) => state.catalogPage.minInputValue)
-    const maxInputValue = useSelector((state:AppStateType) => state.catalogPage.maxInputValue)
-    const MIN_PRICE = useSelector((state:AppStateType)=>state.catalogPage.MIN_PRICE)
-    const MAX_PRICE = useSelector((state:AppStateType)=>state.catalogPage.MAX_PRICE)
+    const minInputValue = useSelector((state: AppStateType) => state.catalogPage.minInputValue)
+    const maxInputValue = useSelector((state: AppStateType) => state.catalogPage.maxInputValue)
+    const MIN_PRICE = useSelector((state: AppStateType) => state.catalogPage.MIN_PRICE)
+    const MAX_PRICE = useSelector((state: AppStateType) => state.catalogPage.MAX_PRICE)
 
     const dispatch = useDispatch()
 
@@ -24,15 +24,17 @@ const FilterPrice: React.FC<PropsType> = ({setCurrentPage}) => {
     const [minSliderValue, setMinSliderValue] = useState(MIN_PRICE)
     const [maxSliderValue, setMaxSliderValue] = useState(MAX_PRICE)
 
-    const progress = useRef(null)
+    const progress = useRef<HTMLDivElement>(null)
 
-    useEffect(()=>{setCurrentPage(1)},[minInputValue, maxInputValue])
+    useEffect(() => {
+        setCurrentPage(1)
+    }, [minInputValue, maxInputValue])
 
     const onPriceSpoilerClick = () => {
         setIsSpoilerActive(prev => !prev)
     }
 
-    const onInputBlur = (e:any) => {
+    const onInputBlur = (e: React.FocusEvent<HTMLInputElement>) => {
         let value = e.target.value
         let className = e.target.className
         if (value === '' && className === styles.inputMin) {
@@ -42,7 +44,7 @@ const FilterPrice: React.FC<PropsType> = ({setCurrentPage}) => {
         }
     }
 
-    const onFocusInput = (e) => {
+    const onFocusInput = (e: React.FocusEvent<HTMLInputElement>) => {
         let value = e.target.value
         let className = e.target.className
         if (value === '0' && className === styles.inputMin) {
@@ -52,62 +54,70 @@ const FilterPrice: React.FC<PropsType> = ({setCurrentPage}) => {
         }
     }
 
-    const onRangeMinSlider = (e) => {
-        let minVal = e.target.value
+    const onRangeMinSlider = (e: React.ChangeEvent<HTMLInputElement>) => {
+        let minVal = parseInt(e.target.value)
         setMinSliderValue(minVal)
         if (maxSliderValue - minVal < PRICE_GAP) {
             setMinSliderValue(+maxSliderValue - PRICE_GAP)
         } else {
-            progress.current.style.left = ((minVal-MIN_PRICE) / (MAX_PRICE-MIN_PRICE)) * 100 + '%'
-            dispatch(setMinInputValue(minVal));
-        }
-    }
-
-    const onRangeMaxSlider = (e) => {
-        let maxVal = e.target.value
-        setMaxSliderValue(maxVal)
-        if (maxVal - minSliderValue < PRICE_GAP) {
-            setMaxSliderValue(+minSliderValue + PRICE_GAP)
-        } else {
-            progress.current.style.right =((MAX_PRICE-maxVal) / (MAX_PRICE-MIN_PRICE)) * 100 + '%'
-            dispatch(setMaxInputValue(maxVal));
-        }
-    }
-
-    const onInputMin = (e) => {
-        let minVal = e.target.value
-        if (e.key === 'Enter') {
-            if ((maxInputValue - minVal >= PRICE_GAP) && minVal >= MIN_PRICE) {
-                progress.current.style.left = ((minVal-MIN_PRICE) / (MAX_PRICE-MIN_PRICE)) * 100 + '%'
-                setMinSliderValue(+minVal)
-            } else if (minVal < MIN_PRICE) {
-                progress.current.style.left = 0
-                setMinSliderValue(MIN_PRICE)
-                dispatch(setMinInputValue(MIN_PRICE))
-            } else {
-                let currentMinValue = minInputValue + PRICE_GAP
-                dispatch(setMinInputValue(currentMinValue))
-                progress.current.style.left = ((currentMinValue-MIN_PRICE) / (MAX_PRICE-MIN_PRICE)) * 100 + '%'
-                setMinSliderValue(currentMinValue)
+            if (null !== progress.current) {
+                progress.current.style.left = ((minVal - MIN_PRICE) / (MAX_PRICE - MIN_PRICE)) * 100 + '%'
+                dispatch(setMinInputValue(minVal));
             }
         }
     }
 
-    const onInputMax = (e) => {
-        let maxVal = e.target.value
-        if (e.key === 'Enter') {
-            if ((maxVal - minInputValue >= PRICE_GAP) && maxVal <= MAX_PRICE) {
-                progress.current.style.right =((MAX_PRICE-maxVal) / (MAX_PRICE-MIN_PRICE)) * 100 + '%'
-                setMaxSliderValue(maxVal)
-            } else if (maxVal > MAX_PRICE) {
-                progress.current.style.right = 0
-                setMaxSliderValue(MAX_PRICE)
-                dispatch(setMaxInputValue(MAX_PRICE))
-            } else if (maxVal - minInputValue < PRICE_GAP) {
-                let currentValue = +minInputValue + PRICE_GAP
-                progress.current.style.right = ((MAX_PRICE-currentValue) / (MAX_PRICE-MIN_PRICE)) * 100 + '%'
-                setMaxSliderValue(currentValue)
-                dispatch(setMaxInputValue(currentValue))
+    const onRangeMaxSlider = (e: React.ChangeEvent<HTMLInputElement>) => {
+        let maxVal = parseInt(e.target.value)
+        setMaxSliderValue(maxVal)
+        if (maxVal - minSliderValue < PRICE_GAP) {
+            setMaxSliderValue(+minSliderValue + PRICE_GAP)
+        } else {
+            if (null !== progress.current) {
+                progress.current.style.right = ((MAX_PRICE - maxVal) / (MAX_PRICE - MIN_PRICE)) * 100 + '%'
+                dispatch(setMaxInputValue(maxVal));
+            }
+        }
+    }
+
+    const onInputMin = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (null !== progress.current) {
+            let minVal = parseInt(e.currentTarget.value)
+            if (e.key === 'Enter') {
+                if ((maxInputValue - minVal >= PRICE_GAP) && minVal >= MIN_PRICE) {
+                    progress.current.style.left = ((minVal - MIN_PRICE) / (MAX_PRICE - MIN_PRICE)) * 100 + '%'
+                    setMinSliderValue(+minVal)
+                } else if (minVal < MIN_PRICE) {
+                    progress.current.style.left = 0..toString()
+                    setMinSliderValue(MIN_PRICE)
+                    dispatch(setMinInputValue(MIN_PRICE))
+                } else {
+                    let currentMinValue = minInputValue + PRICE_GAP
+                    dispatch(setMinInputValue(currentMinValue))
+                    progress.current.style.left = ((currentMinValue - MIN_PRICE) / (MAX_PRICE - MIN_PRICE)) * 100 + '%'
+                    setMinSliderValue(currentMinValue)
+                }
+            }
+        }
+    }
+
+    const onInputMax = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (null !== progress.current) {
+            let maxVal = parseInt(e.currentTarget.value)
+            if (e.key === 'Enter') {
+                if ((maxVal - minInputValue >= PRICE_GAP) && maxVal <= MAX_PRICE) {
+                    progress.current.style.right = ((MAX_PRICE - maxVal) / (MAX_PRICE - MIN_PRICE)) * 100 + '%'
+                    setMaxSliderValue(maxVal)
+                } else if (maxVal > MAX_PRICE) {
+                    progress.current.style.right = 0..toString()
+                    setMaxSliderValue(MAX_PRICE)
+                    dispatch(setMaxInputValue(MAX_PRICE))
+                } else if (maxVal - minInputValue < PRICE_GAP) {
+                    let currentValue = +minInputValue + PRICE_GAP
+                    progress.current.style.right = ((MAX_PRICE - currentValue) / (MAX_PRICE - MIN_PRICE)) * 100 + '%'
+                    setMaxSliderValue(currentValue)
+                    dispatch(setMaxInputValue(currentValue))
+                }
             }
         }
     }
@@ -118,13 +128,13 @@ const FilterPrice: React.FC<PropsType> = ({setCurrentPage}) => {
                 <p className={styles.filterPriceTitle}>Цена</p>
                 <button className={styles.filterSliderButton}>
                     <img
-                        className={`${styles.filterSliderImage} ${isSpoilerActive 
+                        className={`${styles.filterSliderImage} ${isSpoilerActive
                             ? styles.filterSliderImageOpened : ''}`}
                         src={arrow} alt=""/>
                 </button>
             </div>
             <div className={styles.filterPriceSliderPart}>
-                <div className={`${styles.filterPriceSliderList} ${isSpoilerActive? '' 
+                <div className={`${styles.filterPriceSliderList} ${isSpoilerActive ? ''
                     : styles.filterPriceSliderListHidden}`}>
                     <div className={styles.filterPriceForm}>
                         <input className={styles.inputMin} type="number" value={minInputValue} max={MAX_PRICE}

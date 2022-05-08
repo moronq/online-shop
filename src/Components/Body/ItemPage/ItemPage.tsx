@@ -1,21 +1,22 @@
-import React, {useState} from 'react';
-import {useParams} from "react-router-dom";
-import {useSelector} from "react-redux";
-import AddToCartButton from "../common/AddToCartButton/AddToCartButton";
-import styles from './ItemPage.module.scss';
+import React, {useState} from 'react'
+import {useParams} from "react-router-dom"
+import {useSelector} from "react-redux"
+import AddToCartButton from "../common/AddToCartButton/AddToCartButton"
+import styles from './ItemPage.module.scss'
 import preview_1 from './../../../img/preview/preview_1.jpg'
 import preview_2 from './../../../img/preview/preview_2.jpg'
 import preview_3 from './../../../img/preview/preview_3.jpg'
 import preview_4 from './../../../img/preview/preview_4.jpg'
-import BreadCrumbs from "../common/BreadCrumbs/BreadCrumbs";
-import RatingStar from "../common/RatingStar/RatingStar";
-import {setRating} from "../../../redux/catalogReducer";
-import CompareFavoriteButton from "../common/CompareFavoriteButton/CompareFavoriteButton";
+import BreadCrumbs from "../common/BreadCrumbs/BreadCrumbs"
+import RatingStar from "../common/RatingStar/RatingStar"
+import {setRating} from "../../../redux/catalogReducer"
+import CompareFavoriteButton from "../common/CompareFavoriteButton/CompareFavoriteButton"
+import {AppStateType} from "../../../redux/store"
 
 const ItemPage = () => {
 
     const itemId = useParams()
-    const catalog = useSelector(state => state.catalogPage.catalog)
+    const catalog = useSelector((state:AppStateType) => state.catalogPage.catalog)
     const itemInfo = catalog.filter(item => item.id === parseInt(itemId.id))
     const item = itemInfo[0]
 

@@ -9,7 +9,7 @@ type PropsType = {
     pageSize: number
     currentPage: number
     setCurrentPage: (arg0: number)=>void
-    portionSize: number | undefined
+    portionSize?: number | undefined
 }
 
 const Paginator: React.FC<PropsType> = ({totalItemsCount, pageSize, currentPage,
@@ -21,7 +21,7 @@ const Paginator: React.FC<PropsType> = ({totalItemsCount, pageSize, currentPage,
     let leftPortionCount = (portionNumber - 1) * portionSize + 1
     let rightPortionCount = portionNumber * portionSize
 
-    let pages = []
+    let pages: Array<number> = []
 
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
@@ -67,7 +67,6 @@ const Paginator: React.FC<PropsType> = ({totalItemsCount, pageSize, currentPage,
                 </button>}
             </div>
         </div>
-
     );
 };
 
