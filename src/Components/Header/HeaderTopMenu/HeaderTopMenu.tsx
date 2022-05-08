@@ -4,10 +4,11 @@ import React from "react";
 import MenuBurger from "../MenuBurger/MenuBurger";
 import NavBarItems from "../NavBarItems/NavBarItems";
 import {useSelector} from "react-redux";
+import {AppStateType} from "../../../redux/store";
 
 const HeaderTopMenu = () => {
 
-    const addedItemsToCart = useSelector(state => state.catalogPage.addedItemsToCart)
+    const addedItemsToCart = useSelector((state:AppStateType) => state.catalogPage.addedItemsToCart)
 
     return (
         <div className={styles.topHeaderMenu}>

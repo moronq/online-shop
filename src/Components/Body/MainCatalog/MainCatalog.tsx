@@ -6,8 +6,22 @@ import FilterPrice from "../common/FilterElements/FilterPrice/FilterPrice";
 import FilterSteel from "../common/FilterElements/FilterSteel/FilterSteel";
 import Paginator from "../common/Paginator/Paginator";
 
-const MainCatalog = ({setCurrentPage, forceUpdate, setSortCatalogByOption,
-                         currentPage, totalItemsCount, catalogItems, pageSize, sortCatalogByOption}) => {
+type PropsType = {
+    setCurrentPage: (arg0: number) => void
+    forceUpdate: () => void
+    setSortCatalogByOption: (arg0: string) => void
+    currentPage: number
+    totalItemsCount: number
+    catalogItems: Array<any>
+    pageSize: number
+    sortCatalogByOption: string
+}
+
+const MainCatalog: React.FC<PropsType> = ({
+                         setCurrentPage, forceUpdate, setSortCatalogByOption, currentPage,
+                                              totalItemsCount, catalogItems, pageSize,
+                                              sortCatalogByOption
+                     }) => {
     return (
         <main className={styles.body}>
             <div className={styles.bodyContainer}>

@@ -3,11 +3,12 @@ import styles from './BreadCrumbs.module.scss';
 import {useSelector} from "react-redux";
 import {useParams} from "react-router";
 import {NavLink} from "react-router-dom";
+import {AppStateType} from "../../../../redux/store";
 
 const BreadCrumbs = () => {
 
-    const navBarItems = useSelector(state => state.catalogPage.navBarItems)
-    const catalog = useSelector(state => state.catalogPage.catalog)
+    const navBarItems = useSelector((state:AppStateType) => state.catalogPage.navBarItems)
+    const catalog = useSelector((state:AppStateType) => state.catalogPage.catalog)
     const params = useParams()
     const id = {
         title: params.id ? catalog.filter((el) => el.id === parseInt(params.id))[0]['title'] : '',

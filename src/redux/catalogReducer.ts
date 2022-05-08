@@ -131,7 +131,7 @@ const catalogReducer = (state = initialState, action:any):InitialStateType => {
 
 export default catalogReducer
 
-type SetRatingType = {
+export type SetRatingType = {
     type: typeof SET_RATING
     id: number
     rating: number
@@ -158,15 +158,15 @@ export const setSearchValue = (text: string): SetSearchValueType => ({type: SET_
 
 type SetMinInputValueType = {
     type: typeof SET_MIN_VALUE
-    minValue: number
+    minValue: number|string
 }
-export const setMinInputValue = (minValue: number): SetMinInputValueType => ({type: SET_MIN_VALUE, minValue})
+export const setMinInputValue = (minValue: number|string): SetMinInputValueType => ({type: SET_MIN_VALUE, minValue})
 
 type SetMaxInputValueType = {
     type: typeof SET_MAX_VALUE
-    maxValue: number
+    maxValue: number|string
 }
-export const setMaxInputValue = (maxValue: number): SetMaxInputValueType => ({type: SET_MAX_VALUE, maxValue})
+export const setMaxInputValue = (maxValue: number|string): SetMaxInputValueType => ({type: SET_MAX_VALUE, maxValue})
 
 type SetSelectedCheckboxesType = {
     type: typeof SET_SELECTED_CHECKBOXES,

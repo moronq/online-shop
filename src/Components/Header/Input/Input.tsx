@@ -4,11 +4,15 @@ import search from "../../../img/icons/search.svg";
 import {useDispatch} from "react-redux";
 import {setSearchValue} from "../../../redux/catalogReducer";
 
-const Input = ({searchValue}) => {
+type PropsType ={
+    searchValue: string
+}
+
+const Input: React.FC<PropsType> = ({searchValue}) => {
 
     const dispatch = useDispatch()
 
-    const onInputChange = (e)=>{
+    const onInputChange = (e:any) =>{
         dispatch(setSearchValue(e.target.value))
     }
 

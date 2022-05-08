@@ -3,14 +3,19 @@ import styles from "./FilterPrice.module.scss";
 import arrow from "../../../../../img/icons/arrow-bottom.svg";
 import {useDispatch, useSelector} from "react-redux";
 import {setMaxInputValue, setMinInputValue} from "../../../../../redux/catalogReducer";
+import {AppStateType} from "../../../../../redux/store";
 
-const FilterPrice = ({setCurrentPage}) => {
+type PropsType = {
+    setCurrentPage: (arg0: number)=>void
+}
+
+const FilterPrice: React.FC<PropsType> = ({setCurrentPage}) => {
     const PRICE_GAP = 100
 
-    const minInputValue = useSelector(state => state.catalogPage.minInputValue)
-    const maxInputValue = useSelector(state => state.catalogPage.maxInputValue)
-    const MIN_PRICE = useSelector(state=>state.catalogPage.MIN_PRICE)
-    const MAX_PRICE = useSelector(state=>state.catalogPage.MAX_PRICE)
+    const minInputValue = useSelector((state:AppStateType) => state.catalogPage.minInputValue)
+    const maxInputValue = useSelector((state:AppStateType) => state.catalogPage.maxInputValue)
+    const MIN_PRICE = useSelector((state:AppStateType)=>state.catalogPage.MIN_PRICE)
+    const MAX_PRICE = useSelector((state:AppStateType)=>state.catalogPage.MAX_PRICE)
 
     const dispatch = useDispatch()
 
@@ -27,7 +32,7 @@ const FilterPrice = ({setCurrentPage}) => {
         setIsSpoilerActive(prev => !prev)
     }
 
-    const onInputBlur = (e) => {
+    const onInputBlur = (e:any) => {
         let value = e.target.value
         let className = e.target.className
         if (value === '' && className === styles.inputMin) {
