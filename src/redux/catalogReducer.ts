@@ -64,8 +64,8 @@ let initialState = {
     addedItemsToCart: [] as Array<CatalogItemType>,
     pageSize: 12,
     searchValue: '',
-    minInputValue: MIN_PRICE as number,
-    maxInputValue: MAX_PRICE as number,
+    minInputValue: MIN_PRICE as number | string,
+    maxInputValue: MAX_PRICE as number | string,
     MAX_PRICE: MAX_PRICE as number,
     MIN_PRICE: MIN_PRICE as number ,
     checkboxesFilter: checkboxesFilter,
@@ -75,7 +75,7 @@ let initialState = {
 
 export type InitialStateType = typeof initialState
 
-const catalogReducer = (state = initialState, action:any):InitialStateType => {
+const catalogReducer = (state = initialState, action: ActionsType):InitialStateType => {
 
     switch (action.type) {
         case ADD_TO_CART:
@@ -118,7 +118,7 @@ const catalogReducer = (state = initialState, action:any):InitialStateType => {
                 selectedCheckboxes: state.selectedCheckboxes
             }
         case SET_RATING:
-            let ratingIndex = state.catalog.findIndex(el => el.id === parseInt(action.id))
+            let ratingIndex = state.catalog.findIndex(el => el.id === action.id)
             state.catalog[ratingIndex].rating = action.rating
             return {
                 ...state,
@@ -130,6 +130,9 @@ const catalogReducer = (state = initialState, action:any):InitialStateType => {
 }
 
 export default catalogReducer
+
+type ActionsType = SetRatingType | AddItemToCart | RemoveItemFromCartType | SetSearchValueType | SetMinInputValueType |
+    SetMaxInputValueType | SetSelectedCheckboxesType | RemoveSelectedCheckboxesType
 
 export type SetRatingType = {
     type: typeof SET_RATING

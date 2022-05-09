@@ -20,6 +20,8 @@ const ItemPage = () => {
     const itemInfo = catalog.filter(item => item.id === parseInt(itemId.id))
     const item = itemInfo[0]
 
+    console.log(itemInfo)
+
     const [activePreview, setActivePreview] = useState(0)
 
     const previewArray = [preview_1, preview_2, preview_3, preview_4,]
