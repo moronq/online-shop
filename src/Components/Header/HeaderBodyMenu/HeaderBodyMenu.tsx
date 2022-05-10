@@ -8,8 +8,19 @@ import arrowBottom from "../../../img/icons/arrow-bottom.svg";
 import phone from "../../../img/icons/phone.svg";
 import favorite from "../../../img/icons/favorite.svg";
 import cart from "../../../img/icons/cart.svg";
+import {CatalogItemType} from "../../../redux/catalogReducer";
 
-const HeaderBodyMenu = ({toggleSpoilerActive, searchValue, isSpoilerActive, addedItemsToCart, price}) => {
+type PropsType ={
+    toggleSpoilerActive: ()=>void
+    searchValue: string
+    isSpoilerActive: boolean
+    addedItemsToCart: Array<CatalogItemType>
+    price: number
+}
+
+const HeaderBodyMenu: React.FC<PropsType> = ({toggleSpoilerActive, searchValue,
+                                                 isSpoilerActive, addedItemsToCart,
+                                                 price}) => {
     return (
         <div className={styles.midHeaderMenu}>
             <div className={styles.midHeaderMenuContainer}>

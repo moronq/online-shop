@@ -3,12 +3,18 @@ import {applyMiddleware, combineReducers, createStore} from "redux";
 import thunk from "redux-thunk";
 
 
-let reducers = combineReducers({
+let rootReducers = combineReducers({
     catalogPage: catalogReducer,
 })
 
-let store = createStore(reducers, applyMiddleware(thunk))
+let store = createStore(rootReducers, applyMiddleware(thunk))
 
+type RootReducerType = typeof rootReducers
+export type AppStateType = ReturnType<RootReducerType>
+
+
+
+// @ts-ignore
 window.store = store
 
 export default store

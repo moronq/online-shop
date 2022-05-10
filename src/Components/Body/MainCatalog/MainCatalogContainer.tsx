@@ -1,24 +1,23 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import ContentItem from "../common/ContentItem/ContentItem";
-import {useDispatch, useSelector} from "react-redux";
-import MainCatalog from "./MainCatalog";
-import {setRating} from "../../../redux/catalogReducer";
-
+import React, {useCallback, useEffect, useState} from 'react'
+import ContentItem from "../common/ContentItem/ContentItem"
+import {useSelector} from "react-redux"
+import MainCatalog from "./MainCatalog"
+import {setRating} from "../../../redux/catalogReducer"
+import {AppStateType} from "../../../redux/store"
 
 const MainCatalogContainer = () => {
 
-    const catalog = useSelector(state => state.catalogPage.catalog)
-    const pageSize = useSelector(state => state.catalogPage.pageSize)
-    const minInputValue = useSelector(state => state.catalogPage.minInputValue)
-    const maxInputValue = useSelector(state => state.catalogPage.maxInputValue)
-    const searchValue = useSelector(state => state.catalogPage.searchValue)
-    const selectedCheckboxes = useSelector(state => state.catalogPage.selectedCheckboxes)
+    const catalog = useSelector((state:AppStateType) => state.catalogPage.catalog)
+    const pageSize = useSelector((state:AppStateType) => state.catalogPage.pageSize)
+    const minInputValue = useSelector((state:AppStateType) => state.catalogPage.minInputValue)
+    const maxInputValue = useSelector((state:AppStateType) => state.catalogPage.maxInputValue)
+    const searchValue = useSelector((state:AppStateType) => state.catalogPage.searchValue)
+    const selectedCheckboxes = useSelector((state:AppStateType) => state.catalogPage.selectedCheckboxes)
 
     let [currentPage, setCurrentPage] = useState(1)
 
-    const [, updateState] = useState()
+    const [, updateState] = useState({})
     const forceUpdate = useCallback(() => updateState({}), [])
-
 
     const [sortCatalogByOption, setSortCatalogByOption] = useState('default')
 
@@ -51,9 +50,6 @@ const MainCatalogContainer = () => {
             )
         })
     }
-    if (!selectedCheckboxes) {
-        return catalogMain
-    }
 
     if (sortCatalogByOption === 'price_up') {
         catalogMain.sort((a, b) => {
@@ -71,7 +67,6 @@ const MainCatalogContainer = () => {
             return (a.rating - b.rating)
         }).reverse()
     }
-
 
     let startPageItem = (currentPage - 1) * pageSize
     let endPageItem = (currentPage * pageSize) - 1

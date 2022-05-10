@@ -2,7 +2,13 @@ import React, {useState} from 'react';
 import styles from "./Footer.module.scss";
 import arrowBottomWhite from '../../img/icons/arrow-bottom-white.svg'
 
-const FooterList = ({title, list, image}) => {
+type PropsType = {
+    title: string
+    list: Array<string>
+    image?: Array<string>
+}
+
+const FooterList: React.FC<PropsType> = ({title, list, image}) => {
 
     let [isSpoilerActive, setIsSpoilerActive] = useState(false)
 

@@ -1,7 +1,11 @@
 import React from 'react';
 import styles from "./NavBarItems.module.scss";
 
-const NavBarItems = ({isBurgerActive}) => {
+type PropsType= {
+    isBurgerActive?: boolean
+}
+
+const NavBarItems: React.FC<PropsType> = ({isBurgerActive}) => {
 
     let style = `${isBurgerActive ? styles.burgerMenuItem : styles.navBarItem}`
     let styleLink = `${isBurgerActive ? styles.burgerMenuLink : styles.navBarItemLink}`

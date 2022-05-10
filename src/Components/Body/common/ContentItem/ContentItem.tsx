@@ -1,20 +1,34 @@
 import React from 'react';
 import styles from "./ContentItem.module.scss";
 import contentKnifePreview from "../../../../img/content/content-knife-preview.jpg";
-import compare from "../../../../img/icons/compare.svg";
 import {NavLink} from "react-router-dom";
 import AddToCartButton from "../AddToCartButton/AddToCartButton";
 import RatingStar from "../RatingStar/RatingStar";
 import CompareFavoriteButton from "../CompareFavoriteButton/CompareFavoriteButton";
+import {CatalogItemType, SetRatingType} from "../../../../redux/catalogReducer";
 
-const ContentItem = ({id, el, title, price, steel, link, rating, setRating, forceUpdate}) => {
+type PropsType = {
+    id: number
+    el: CatalogItemType
+    title: string
+    price: number
+    steel: string
+    link: string
+    rating: number
+    setRating: (id:number, rating:number)=>SetRatingType
+    forceUpdate: ()=>void
+}
+
+const ContentItem: React.FC<PropsType>= ({id, el, title,
+                                             price, steel, link,
+                                             rating, setRating, forceUpdate}) => {
 
     return (
         <li className={styles.contentItem}>
-            <div className={styles.contentItemPreview} href="">
-                <NavLink to={link} className={styles.contentItemPreviewLink} href="">
-                    <img className={styles.contentItemPreviewImage} src={contentKnifePreview} alt="" width='374'
-                         height='295'/>
+            <div className={styles.contentItemPreview}>
+                <NavLink to={link} className={styles.contentItemPreviewLink}>
+                    <img className={styles.contentItemPreviewImage} src={contentKnifePreview}
+                         alt="content-item=preview" width='374' height='295'/>
                 </NavLink>
                 <p className={styles.contentItemTitle}>{title}</p>
                 <div className={styles.contentItemProperty}>
@@ -22,7 +36,7 @@ const ContentItem = ({id, el, title, price, steel, link, rating, setRating, forc
                     <span className={styles.contentItemPropertyMaterial}>Орех, Алюминий</span>
                 </div>
                 <div className={styles.contentItemRating}>
-                    <RatingStar id={id} rating={rating} setRating={setRating} forceUpdate={forceUpdate}/>
+                    <RatingStar id={id} rating={rating} setRating={setRating}/>
                     <span className={styles.contentItemReviews}>12 отзывов</span>
                 </div>
                 <div className={styles.contentItemUserOptions}>

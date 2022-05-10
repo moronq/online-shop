@@ -3,19 +3,26 @@ import styles from "./FilterSteel.module.scss";
 import arrow from "../../../../../img/icons/arrow-bottom.svg";
 import {useDispatch, useSelector} from "react-redux";
 import {removeSelectedCheckboxes, setSelectedCheckboxes} from "../../../../../redux/catalogReducer";
+import {AppStateType} from "../../../../../redux/store";
 
-const FilterSteel = ({forceUpdate, setCurrentPage}) => {
+type PropsType = {
+    forceUpdate: ()=> void
+    setCurrentPage: (arg0: number)=>void
+}
+
+const FilterSteel: React.FC<PropsType> = ({forceUpdate, setCurrentPage}) => {
 
     let [isSpoilerActive, setIsSpoilerActive] = useState(false)
 
-    const checkboxesFilter = useSelector(state => state.catalogPage.checkboxesFilter)
+    const checkboxesFilter = useSelector((state:AppStateType) => state.catalogPage.checkboxesFilter)
     const dispatch = useDispatch()
 
     const onPriceSpoilerClick = () => {
         setIsSpoilerActive(prev => !prev)
     }
 
-    const handleCheckbox =(e, el)=>{
+
+    const handleCheckbox =(e: any, el: string) =>{
         let statusInput = e.target.checked
         statusInput ? dispatch(setSelectedCheckboxes(el)) : dispatch(removeSelectedCheckboxes(el))
         setCurrentPage(1)

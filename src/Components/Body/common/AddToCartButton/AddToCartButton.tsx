@@ -1,12 +1,17 @@
 import React from 'react';
 import styles from "./AddToCartButton.module.scss";
 import cartWhite from "../../../../img/icons/cart-white.svg";
-import {addItemToCart, removeItemFromCart} from "../../../../redux/catalogReducer";
+import {addItemToCart, CatalogItemType, removeItemFromCart} from "../../../../redux/catalogReducer";
 import {useDispatch, useSelector} from "react-redux";
+import { AppStateType } from '../../../../redux/store';
 
-const AddToCartButton = ({el}) => {
+type PropsType = {
+    el: CatalogItemType
+}
 
-    const addedItemsToCart = useSelector(state => state.catalogPage.addedItemsToCart)
+const AddToCartButton: React.FC<PropsType> = ({el}) => {
+
+    const addedItemsToCart = useSelector((state:AppStateType) => state.catalogPage.addedItemsToCart)
     const dispatch = useDispatch()
 
     let addToCart = () => {
