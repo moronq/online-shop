@@ -58,8 +58,8 @@ const MenuBurger = () => {
                     </nav>
                 </div>
                 <div
-                    className={`${styles.burgerMenuContainer} ${isCatalogActive ? '' 
-                        : styles.burgerMenuContainerHidden}`}>
+                    className={`${styles.burgerMenuContainer} ${isCatalogActive ? styles.burgerMenuContainerActive 
+                        : ''}`}>
                     <nav className={styles.burgerMenuNavigation}>
                         <ul className={styles.burgerMenuList}>
                             <li className={styles.burgerMenuItem}>

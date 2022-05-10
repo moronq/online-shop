@@ -5,11 +5,10 @@
   font-size: 24px;
   color: white;
   left: 20%;
-  z-index: 10;
+  z-index: 20;
   margin-left: 30px;
   display: flex;
   align-items: center;
-  top: 3%;
 }
 
 .burgerMenuButtonSpanBackArrow {
@@ -103,7 +102,7 @@
   width: 100%;
   padding: 70px 0 0 30px;
   overflow: auto;
-  z-index: 10;
+  z-index: 22;
   transition: all 1s ease 0s;
   margin-left: 100%;
   &Active {
