@@ -5,7 +5,8 @@ import {NavLink} from "react-router-dom";
 import AddToCartButton from "../AddToCartButton/AddToCartButton";
 import RatingStar from "../RatingStar/RatingStar";
 import CompareFavoriteButton from "../CompareFavoriteButton/CompareFavoriteButton";
-import {CatalogItemType, SetRatingType} from "../../../../redux/catalogReducer";
+import {SetRatingType} from "../../../../redux/catalogReducer";
+import {CatalogItemType} from "../../../../types/types";
 
 type PropsType = {
     id: number

@@ -8,7 +8,7 @@ import arrowBottom from "../../../img/icons/arrow-bottom.svg";
 import phone from "../../../img/icons/phone.svg";
 import favorite from "../../../img/icons/favorite.svg";
 import cart from "../../../img/icons/cart.svg";
-import {CatalogItemType} from "../../../redux/catalogReducer";
+import {CatalogItemType} from "../../../types/types";
 
 type PropsType ={
     toggleSpoilerActive: ()=>void

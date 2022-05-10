@@ -1,9 +1,10 @@
 import React from 'react';
 import styles from "./AddToCartButton.module.scss";
 import cartWhite from "../../../../img/icons/cart-white.svg";
-import {addItemToCart, CatalogItemType, removeItemFromCart} from "../../../../redux/catalogReducer";
+import {addItemToCart, removeItemFromCart} from "../../../../redux/catalogReducer";
 import {useDispatch, useSelector} from "react-redux";
 import { AppStateType } from '../../../../redux/store';
+import {CatalogItemType} from "../../../../types/types";
 
 type PropsType = {
     el: CatalogItemType
