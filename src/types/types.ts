@@ -10,3 +10,11 @@ export type ParamsType = {
     accessories?: string
     id: string | undefined
 }
+export type CatalogItemType = {
+    id: number
+    title: string
+    price: number
+    steel: string
+    rating: number
+    link: string
+}

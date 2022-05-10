@@ -1,4 +1,4 @@
-import { NavBarType } from "../types/types"
+import {CatalogItemType, NavBarType} from "../types/types"
 
 const ADD_TO_CART = 'ADD_TO_CART'
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
@@ -182,15 +182,3 @@ type RemoveSelectedCheckboxesType = {
 }
 export const removeSelectedCheckboxes = (checkbox: string): RemoveSelectedCheckboxesType => (
     {type: REMOVE_SELECTED_CHECKBOXES, checkbox})
-
-
-export type CatalogItemType = {
-    id: number
-    title: string
-    price: number
-    steel: string
-    rating: number
-    link: string
-}
-
-

@@ -16,7 +16,6 @@ import {ParamsType} from "../../../types/types";
 
 const ItemPage = () => {
 
-
     const itemId = useParams<ParamsType>()
     const catalog = useSelector((state:AppStateType) => state.catalogPage.catalog)
     const itemInfo = itemId.id ? catalog.filter(item => item.id.toString() === itemId.id) : []

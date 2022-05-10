@@ -12,8 +12,10 @@ const BreadCrumbs = () => {
     const catalog = useSelector((state:AppStateType) => state.catalogPage.catalog)
     const params = useParams<ParamsType>()
     const id: NavBarType = {
-        title: params.id ? catalog.filter((el) => el.id.toString() === params.id)[0]['title'] : '',
-        link: params.id ? catalog.filter((el) => el.id.toString() === params.id)[0]['id'].toString(): '',
+        title: params.id
+            ? catalog.filter((el) => el.id.toString() === params.id)[0]['title'] : '',
+        link: params.id
+            ? catalog.filter((el) => el.id.toString() === params.id)[0]['id'].toString(): '',
     }
 
     const breadCrumbsItemList: Array<string> = []

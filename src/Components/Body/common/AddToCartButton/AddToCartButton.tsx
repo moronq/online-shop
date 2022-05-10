@@ -9,7 +9,6 @@ type PropsType = {
     el: CatalogItemType
 }
 
-
 const AddToCartButton: React.FC<PropsType> = ({el}) => {
 
     const addedItemsToCart = useSelector((state:AppStateType) => state.catalogPage.addedItemsToCart)
