@@ -36,7 +36,7 @@ const ContentItem: React.FC<PropsType>= ({id, el, title,
                     <span className={styles.contentItemPropertyMaterial}>Орех, Алюминий</span>
                 </div>
                 <div className={styles.contentItemRating}>
-                    <RatingStar id={id} rating={rating} setRating={setRating} forceUpdate={forceUpdate}/>
+                    <RatingStar id={id} rating={rating} setRating={setRating}/>
                     <span className={styles.contentItemReviews}>12 отзывов</span>
                 </div>
                 <div className={styles.contentItemUserOptions}>

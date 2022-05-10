@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styles from './App.module.scss'
 import Header from "./Components/Header/Header"
 import MainCatalogContainer from "./Components/Body/MainCatalog/MainCatalogContainer"

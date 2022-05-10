@@ -50,9 +50,6 @@ const MainCatalogContainer = () => {
             )
         })
     }
-    if (!selectedCheckboxes) {
-        return catalogMain
-    }
 
     if (sortCatalogByOption === 'price_up') {
         catalogMain.sort((a, b) => {

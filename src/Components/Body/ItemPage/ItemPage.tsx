@@ -12,15 +12,15 @@ import RatingStar from "../common/RatingStar/RatingStar"
 import {setRating} from "../../../redux/catalogReducer"
 import CompareFavoriteButton from "../common/CompareFavoriteButton/CompareFavoriteButton"
 import {AppStateType} from "../../../redux/store"
+import {ParamsType} from "../../../types/types";
 
 const ItemPage = () => {
 
-    const itemId = useParams()
-    const catalog = useSelector((state:AppStateType) => state.catalogPage.catalog)
-    const itemInfo = catalog.filter(item => item.id === parseInt(itemId.id))
-    const item = itemInfo[0]
 
-    console.log(itemInfo)
+    const itemId = useParams<ParamsType>()
+    const catalog = useSelector((state:AppStateType) => state.catalogPage.catalog)
+    const itemInfo = itemId.id ? catalog.filter(item => item.id.toString() === itemId.id) : []
+    const item = itemInfo[0]
 
     const [activePreview, setActivePreview] = useState(0)
 
@@ -48,7 +48,8 @@ const ItemPage = () => {
                         <div className={styles.titleWrapper}>
                             <div className={styles.titleRating}>
                                 <h3 className={styles.itemTitle}>{item.title}</h3>
-                                <RatingStar id={itemId.id} rating={item.rating} setRating={setRating}/>
+                                <RatingStar id={itemId.id ? parseInt(itemId.id) : 0} rating={item.rating}
+                                            setRating={setRating}/>
                             </div>
                             <div className={styles.itemPageCompareFavorite}>
                                 <CompareFavoriteButton/>

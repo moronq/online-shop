@@ -84,7 +84,7 @@ const FilterPrice: React.FC<PropsType> = ({setCurrentPage}) => {
         if (null !== progress.current) {
             let minVal = parseInt(e.currentTarget.value)
             if (e.key === 'Enter') {
-                if ((maxInputValue - minVal >= PRICE_GAP) && minVal >= MIN_PRICE) {
+                if ((+maxInputValue - minVal >= PRICE_GAP) && minVal >= MIN_PRICE) {
                     progress.current.style.left = ((minVal - MIN_PRICE) / (MAX_PRICE - MIN_PRICE)) * 100 + '%'
                     setMinSliderValue(+minVal)
                 } else if (minVal < MIN_PRICE) {
@@ -92,7 +92,7 @@ const FilterPrice: React.FC<PropsType> = ({setCurrentPage}) => {
                     setMinSliderValue(MIN_PRICE)
                     dispatch(setMinInputValue(MIN_PRICE))
                 } else {
-                    let currentMinValue = minInputValue + PRICE_GAP
+                    let currentMinValue = +minInputValue + PRICE_GAP
                     dispatch(setMinInputValue(currentMinValue))
                     progress.current.style.left = ((currentMinValue - MIN_PRICE) / (MAX_PRICE - MIN_PRICE)) * 100 + '%'
                     setMinSliderValue(currentMinValue)
@@ -105,14 +105,14 @@ const FilterPrice: React.FC<PropsType> = ({setCurrentPage}) => {
         if (null !== progress.current) {
             let maxVal = parseInt(e.currentTarget.value)
             if (e.key === 'Enter') {
-                if ((maxVal - minInputValue >= PRICE_GAP) && maxVal <= MAX_PRICE) {
+                if ((maxVal - (+minInputValue) >= PRICE_GAP) && maxVal <= MAX_PRICE) {
                     progress.current.style.right = ((MAX_PRICE - maxVal) / (MAX_PRICE - MIN_PRICE)) * 100 + '%'
                     setMaxSliderValue(maxVal)
                 } else if (maxVal > MAX_PRICE) {
                     progress.current.style.right = 0..toString()
                     setMaxSliderValue(MAX_PRICE)
                     dispatch(setMaxInputValue(MAX_PRICE))
-                } else if (maxVal - minInputValue < PRICE_GAP) {
+                } else if (maxVal - (+minInputValue) < PRICE_GAP) {
                     let currentValue = +minInputValue + PRICE_GAP
                     progress.current.style.right = ((MAX_PRICE - currentValue) / (MAX_PRICE - MIN_PRICE)) * 100 + '%'
                     setMaxSliderValue(currentValue)

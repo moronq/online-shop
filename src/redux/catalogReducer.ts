@@ -1,3 +1,5 @@
+import { NavBarType } from "../types/types"
+
 const ADD_TO_CART = 'ADD_TO_CART'
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 const SET_SEARCH_VALUE = 'SET_SEARCH_VALUE'
@@ -12,10 +14,6 @@ const names: Array<string> = ['Лиса', 'Заяц', 'Волк', 'Медвед�
 const steel: Array<string> = ['100Х13М', '95x18', 'ELMAX', 'K340', 'M390']
 const catalog: Array<CatalogItemType> = []
 
-type NavBarType = {
-    title: string
-    link: string
-}
 
 const navBarItems: Array<NavBarType> = [
     {title: 'Каталог ножей', link: 'maincatalog'},
@@ -163,13 +161,13 @@ type SetMinInputValueType = {
     type: typeof SET_MIN_VALUE
     minValue: number|string
 }
-export const setMinInputValue = (minValue: number|string): SetMinInputValueType => ({type: SET_MIN_VALUE, minValue})
+export const setMinInputValue = (minValue: number | string): SetMinInputValueType => ({type: SET_MIN_VALUE, minValue})
 
 type SetMaxInputValueType = {
     type: typeof SET_MAX_VALUE
     maxValue: number|string
 }
-export const setMaxInputValue = (maxValue: number|string): SetMaxInputValueType => ({type: SET_MAX_VALUE, maxValue})
+export const setMaxInputValue = (maxValue: number | string): SetMaxInputValueType => ({type: SET_MAX_VALUE, maxValue})
 
 type SetSelectedCheckboxesType = {
     type: typeof SET_SELECTED_CHECKBOXES,

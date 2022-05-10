@@ -4,42 +4,44 @@ import {useSelector} from "react-redux";
 import {useParams} from "react-router";
 import {NavLink} from "react-router-dom";
 import {AppStateType} from "../../../../redux/store";
+import {NavBarType, ParamsType} from "../../../../types/types";
 
 const BreadCrumbs = () => {
 
     const navBarItems = useSelector((state:AppStateType) => state.catalogPage.navBarItems)
     const catalog = useSelector((state:AppStateType) => state.catalogPage.catalog)
-    const params = useParams()
-    const id = {
-        title: params.id ? catalog.filter((el) => el.id === parseInt(params.id))[0]['title'] : '',
-        link: params.id ? + catalog.filter((el) => el.id === parseInt(params.id))[0]['id']: '',
+    const params = useParams<ParamsType>()
+    const id: NavBarType = {
+        title: params.id ? catalog.filter((el) => el.id.toString() === params.id)[0]['title'] : '',
+        link: params.id ? catalog.filter((el) => el.id.toString() === params.id)[0]['id'].toString(): '',
     }
 
-    const breadCrumblesItemList: Array<string> = []
+    const breadCrumbsItemList: Array<string> = []
 
     navBarItems.forEach((el)=>{
-        breadCrumblesItemList.push(el.link)
+        breadCrumbsItemList.push(el.link)
     })
 
     const filteredItemsList: Array<string> = []
 
-    for (let i=0; i < breadCrumblesItemList.length; i++){
-        if(params.hasOwnProperty(breadCrumblesItemList[i])){
-            filteredItemsList.push(breadCrumblesItemList[i])
+    for (let i=0; i < breadCrumbsItemList.length; i++){
+        if(params.hasOwnProperty(breadCrumbsItemList[i])){
+            filteredItemsList.push(breadCrumbsItemList[i])
         }
     }
 
-    const breadCrumbles: Array<string> = []
+    const breadCrumbs: Array<NavBarType> = []
 
     navBarItems.forEach((el)=>{
         if(el.link === filteredItemsList[0]){
-            breadCrumbles.push(el)
+            breadCrumbs.push(el)
+
         }
     })
 
     if(id.title){
-        id.link = breadCrumbles[0].link + '/' + id.link
-        breadCrumbles.push(id)
+        id.link = breadCrumbs[0].link + '/' + id.link
+        breadCrumbs.push(id)
     }
 
     return (
@@ -48,9 +50,9 @@ const BreadCrumbs = () => {
                 <li className={styles.bodyNavigatePathItem}>
                     <NavLink to={'/'} className={styles.bodyNavigatePathLink} >Главная</NavLink>
                 </li>
-                {breadCrumbles.map((el,index)=>{
+                {breadCrumbs.map((el,index)=>{
                     return <li key={index} className={styles.bodyNavigatePathItem}>
-                        <NavLink to={`/${el.link}`} href={el.link} className={styles.bodyNavigatePathLink}>{el.title}</NavLink>
+                        <NavLink to={`/${el.link}`} className={styles.bodyNavigatePathLink}>{el.title}</NavLink>
                     </li>
                 })}
             </ul>
