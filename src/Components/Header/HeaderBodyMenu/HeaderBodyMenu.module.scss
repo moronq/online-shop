@@ -13,6 +13,7 @@
   align-items: center;
   justify-content: space-between;
   @media (max-width: 650px) {
+    margin-top: 70px;
     flex-direction: column;
     height: 120px;
     justify-content: space-around;
