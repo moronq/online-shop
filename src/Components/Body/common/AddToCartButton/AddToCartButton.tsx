@@ -1,10 +1,9 @@
 import React from 'react';
 import styles from "./AddToCartButton.module.scss";
 import cartWhite from "../../../../img/icons/cart-white.svg";
-import {addItemToCart, removeItemFromCart} from "../../../../redux/catalogReducer";
-import {useDispatch, useSelector} from "react-redux";
-import { AppStateType } from '../../../../redux/store';
+import {catalogSlice} from "../../../../redux/catalogSlice";
 import {CatalogItemType} from "../../../../types/types";
+import {useAppDispatch, useAppSelector} from "../../../../hook/hook";
 
 type PropsType = {
     el: CatalogItemType
@@ -12,18 +11,20 @@ type PropsType = {
 
 const AddToCartButton: React.FC<PropsType> = ({el}) => {
 
-    const addedItemsToCart = useSelector((state:AppStateType) => state.catalogPage.addedItemsToCart)
-    const dispatch = useDispatch()
+    const {addedItemsToCart} = useAppSelector(state => state.catalogPage)
+    const dispatch = useAppDispatch()
+    const {addToCart, removeFromCart} = catalogSlice.actions
 
-    let addToCart = () => {
-        dispatch(addItemToCart(el))
+
+    let addItemToCart = () => {
+        dispatch(addToCart(el))
     }
-    let removeFromCart = () => {
-        dispatch(removeItemFromCart(el))
+    let removeItemFromCart = () => {
+        dispatch(removeFromCart(el))
     }
 
     return (
-        <button onClick={addedItemsToCart.includes(el) ? removeFromCart : addToCart}
+        <button onClick={addedItemsToCart.includes(el) ? removeItemFromCart : addItemToCart}
                 className={`${styles.contentItemButtonCart} ${addedItemsToCart.includes(el)
                     ? styles.contentItemButtonCartRemove : ''}`}>
                     <span

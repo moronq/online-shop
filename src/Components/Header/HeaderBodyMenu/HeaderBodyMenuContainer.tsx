@@ -1,12 +1,10 @@
 import React, {useState} from "react";
-import {useSelector} from "react-redux";
 import HeaderBodyMenu from "./HeaderBodyMenu";
-import {AppStateType} from '../../../redux/store'
+import {useAppSelector} from "../../../hook/hook";
 
 const HeaderBodyMenuContainer = () => {
 
-    const addedItemsToCart = useSelector((state: AppStateType) => state.catalogPage.addedItemsToCart)
-    const searchValue = useSelector((state:AppStateType) => state.catalogPage.searchValue)
+    const {addedItemsToCart,searchValue} = useAppSelector(state=>state.catalogPage)
 
     let [isSpoilerActive, setIsSpoilerActive] = useState(false)
 

@@ -1,17 +1,18 @@
-import catalogReducer from "./catalogReducer";
-import {applyMiddleware, combineReducers, createStore} from "redux";
-import thunk from "redux-thunk";
+import catalogReducer from "./catalogSlice";
+import {combineReducers} from "redux";
+import {configureStore} from "@reduxjs/toolkit";
 
 
-let rootReducers = combineReducers({
+let rootReducer = combineReducers({
     catalogPage: catalogReducer,
 })
 
-let store = createStore(rootReducers, applyMiddleware(thunk))
+export const store = configureStore({
+    reducer: rootReducer
+})
 
-type RootReducerType = typeof rootReducers
-export type AppStateType = ReturnType<RootReducerType>
-
+export type AppStateType = ReturnType<typeof store.getState>
+export type AppDispatchType = typeof store.dispatch
 
 
 // @ts-ignore
