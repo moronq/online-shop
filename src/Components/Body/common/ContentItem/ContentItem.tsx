@@ -5,7 +5,6 @@ import {NavLink} from "react-router-dom";
 import AddToCartButton from "../AddToCartButton/AddToCartButton";
 import RatingStar from "../RatingStar/RatingStar";
 import CompareFavoriteButton from "../CompareFavoriteButton/CompareFavoriteButton";
-import {SetRatingType} from "../../../../redux/catalogReducer";
 import {CatalogItemType} from "../../../../types/types";
 
 type PropsType = {
@@ -16,13 +15,11 @@ type PropsType = {
     steel: string
     link: string
     rating: number
-    setRating: (id:number, rating:number)=>SetRatingType
-    forceUpdate: ()=>void
 }
 
 const ContentItem: React.FC<PropsType>= ({id, el, title,
                                              price, steel, link,
-                                             rating, setRating, forceUpdate}) => {
+                                             rating}) => {
 
     return (
         <li className={styles.contentItem}>
@@ -37,7 +34,7 @@ const ContentItem: React.FC<PropsType>= ({id, el, title,
                     <span className={styles.contentItemPropertyMaterial}>Орех, Алюминий</span>
                 </div>
                 <div className={styles.contentItemRating}>
-                    <RatingStar id={id} rating={rating} setRating={setRating}/>
+                    <RatingStar id={id} rating={rating}/>
                     <span className={styles.contentItemReviews}>12 отзывов</span>
                 </div>
                 <div className={styles.contentItemUserOptions}>

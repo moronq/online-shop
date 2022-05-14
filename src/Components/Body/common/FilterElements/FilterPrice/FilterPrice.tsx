@@ -1,9 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styles from "./FilterPrice.module.scss";
 import arrow from "../../../../../img/icons/arrow-bottom.svg";
-import {useDispatch, useSelector} from "react-redux";
-import {setMaxInputValue, setMinInputValue} from "../../../../../redux/catalogReducer";
-import {AppStateType} from "../../../../../redux/store";
+import {catalogSlice} from "../../../../../redux/catalogSlice";
+import {useAppDispatch, useAppSelector} from "../../../../../hook/hook";
 
 type PropsType = {
     setCurrentPage: (arg0: number) => void
@@ -12,12 +11,10 @@ type PropsType = {
 const FilterPrice: React.FC<PropsType> = ({setCurrentPage}) => {
     const PRICE_GAP = 100
 
-    const minInputValue = useSelector((state: AppStateType) => state.catalogPage.minInputValue)
-    const maxInputValue = useSelector((state: AppStateType) => state.catalogPage.maxInputValue)
-    const MIN_PRICE = useSelector((state: AppStateType) => state.catalogPage.MIN_PRICE)
-    const MAX_PRICE = useSelector((state: AppStateType) => state.catalogPage.MAX_PRICE)
+    const {minInputValue, maxInputValue, MIN_PRICE, MAX_PRICE} = useAppSelector(state => state.catalogPage)
+    const {setMaxValue, setMinValue} = catalogSlice.actions
 
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     const [isSpoilerActive, setIsSpoilerActive] = useState(false)
 
@@ -38,9 +35,9 @@ const FilterPrice: React.FC<PropsType> = ({setCurrentPage}) => {
         let value = e.target.value
         let className = e.target.className
         if (value === '' && className === styles.inputMin) {
-            dispatch(setMinInputValue(0))
+            dispatch(setMinValue(0))
         } else if (value === '' && className === styles.inputMax) {
-            dispatch(setMaxInputValue(0))
+            dispatch(setMaxValue(0))
         }
     }
 
@@ -48,9 +45,9 @@ const FilterPrice: React.FC<PropsType> = ({setCurrentPage}) => {
         let value = e.target.value
         let className = e.target.className
         if (value === '0' && className === styles.inputMin) {
-            dispatch(setMinInputValue(''))
+            dispatch(setMinValue(''))
         } else if (value === '0' && className === styles.inputMax) {
-            dispatch(setMaxInputValue(''))
+            dispatch(setMaxValue(''))
         }
     }
 
@@ -62,7 +59,7 @@ const FilterPrice: React.FC<PropsType> = ({setCurrentPage}) => {
         } else {
             if (null !== progress.current) {
                 progress.current.style.left = ((minVal - MIN_PRICE) / (MAX_PRICE - MIN_PRICE)) * 100 + '%'
-                dispatch(setMinInputValue(minVal));
+                dispatch(setMinValue(minVal));
             }
         }
     }
@@ -75,7 +72,7 @@ const FilterPrice: React.FC<PropsType> = ({setCurrentPage}) => {
         } else {
             if (null !== progress.current) {
                 progress.current.style.right = ((MAX_PRICE - maxVal) / (MAX_PRICE - MIN_PRICE)) * 100 + '%'
-                dispatch(setMaxInputValue(maxVal));
+                dispatch(setMaxValue(maxVal));
             }
         }
     }
@@ -90,10 +87,10 @@ const FilterPrice: React.FC<PropsType> = ({setCurrentPage}) => {
                 } else if (minVal < MIN_PRICE) {
                     progress.current.style.left = 0..toString()
                     setMinSliderValue(MIN_PRICE)
-                    dispatch(setMinInputValue(MIN_PRICE))
+                    dispatch(setMinValue(MIN_PRICE))
                 } else {
                     let currentMinValue = +minInputValue + PRICE_GAP
-                    dispatch(setMinInputValue(currentMinValue))
+                    dispatch(setMinValue(currentMinValue))
                     progress.current.style.left = ((currentMinValue - MIN_PRICE) / (MAX_PRICE - MIN_PRICE)) * 100 + '%'
                     setMinSliderValue(currentMinValue)
                 }
@@ -111,12 +108,12 @@ const FilterPrice: React.FC<PropsType> = ({setCurrentPage}) => {
                 } else if (maxVal > MAX_PRICE) {
                     progress.current.style.right = 0..toString()
                     setMaxSliderValue(MAX_PRICE)
-                    dispatch(setMaxInputValue(MAX_PRICE))
+                    dispatch(setMaxValue(MAX_PRICE))
                 } else if (maxVal - (+minInputValue) < PRICE_GAP) {
                     let currentValue = +minInputValue + PRICE_GAP
                     progress.current.style.right = ((MAX_PRICE - currentValue) / (MAX_PRICE - MIN_PRICE)) * 100 + '%'
                     setMaxSliderValue(currentValue)
-                    dispatch(setMaxInputValue(currentValue))
+                    dispatch(setMaxValue(currentValue))
                 }
             }
         }
@@ -142,13 +139,13 @@ const FilterPrice: React.FC<PropsType> = ({setCurrentPage}) => {
                                onBlur={(e) => onInputBlur(e)}
                                onFocus={(e) => onFocusInput(e)}
                                onKeyDown={(e) => onInputMin(e)}
-                               onChange={(e) => dispatch(setMinInputValue(e.target.value))}/>
+                               onChange={(e) => dispatch(setMinValue(e.target.value))}/>
                         <input className={styles.inputMax} type="number" value={maxInputValue} max={MAX_PRICE}
                                min={MIN_PRICE}
                                onBlur={(e) => onInputBlur(e)}
                                onFocus={(e) => onFocusInput(e)}
                                onKeyDown={(e) => onInputMax(e)}
-                               onChange={(e) => dispatch(setMaxInputValue(e.target.value))}/>
+                               onChange={(e) => dispatch(setMaxValue(e.target.value))}/>
                     </div>
                     <div className={styles.filterPriceSlider}>
                         <div ref={progress} className={styles.filterPriceSliderProgress}/>

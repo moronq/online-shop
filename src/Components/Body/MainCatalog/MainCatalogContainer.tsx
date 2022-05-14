@@ -1,20 +1,14 @@
 import React, {useCallback, useEffect, useState} from 'react'
 import ContentItem from "../common/ContentItem/ContentItem"
-import {useSelector} from "react-redux"
 import MainCatalog from "./MainCatalog"
-import {setRating} from "../../../redux/catalogReducer"
-import {AppStateType} from "../../../redux/store"
+import {useAppSelector} from "../../../hook/hook";
 
 const MainCatalogContainer = () => {
 
-    const catalog = useSelector((state:AppStateType) => state.catalogPage.catalog)
-    const pageSize = useSelector((state:AppStateType) => state.catalogPage.pageSize)
-    const minInputValue = useSelector((state:AppStateType) => state.catalogPage.minInputValue)
-    const maxInputValue = useSelector((state:AppStateType) => state.catalogPage.maxInputValue)
-    const searchValue = useSelector((state:AppStateType) => state.catalogPage.searchValue)
-    const selectedCheckboxes = useSelector((state:AppStateType) => state.catalogPage.selectedCheckboxes)
+    const {catalog, pageSize, minInputValue,
+        maxInputValue, searchValue, selectedCheckboxes} = useAppSelector(state=>state.catalogPage)
 
-    let [currentPage, setCurrentPage] = useState(1)
+    const [currentPage, setCurrentPage] = useState(1)
 
     const [, updateState] = useState({})
     const forceUpdate = useCallback(() => updateState({}), [])
@@ -75,8 +69,6 @@ const MainCatalogContainer = () => {
     let catalogItems = catalogMain
         .slice(startPageItem, endPageItem + 1)
         .map(el => <ContentItem key={el.id} el={el} id={el.id} link={el.link} rating={el.rating}
-                                setRating = {setRating}
-                                forceUpdate={forceUpdate}
                                 title={el.title} price={el.price} steel={el.steel}/>
         )
 

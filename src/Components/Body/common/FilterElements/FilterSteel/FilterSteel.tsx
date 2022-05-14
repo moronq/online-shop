@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import styles from "./FilterSteel.module.scss";
 import arrow from "../../../../../img/icons/arrow-bottom.svg";
-import {useDispatch, useSelector} from "react-redux";
-import {removeSelectedCheckboxes, setSelectedCheckboxes} from "../../../../../redux/catalogReducer";
-import {AppStateType} from "../../../../../redux/store";
+import {catalogSlice} from "../../../../../redux/catalogSlice";
+import {useAppDispatch, useAppSelector} from "../../../../../hook/hook";
 
 type PropsType = {
     forceUpdate: ()=> void
@@ -12,15 +11,15 @@ type PropsType = {
 
 const FilterSteel: React.FC<PropsType> = ({forceUpdate, setCurrentPage}) => {
 
-    let [isSpoilerActive, setIsSpoilerActive] = useState(false)
+    const [isSpoilerActive, setIsSpoilerActive] = useState(false)
 
-    const checkboxesFilter = useSelector((state:AppStateType) => state.catalogPage.checkboxesFilter)
-    const dispatch = useDispatch()
+    const {checkboxesFilter}= useAppSelector(state => state.catalogPage)
+    const {removeSelectedCheckboxes, setSelectedCheckboxes} = catalogSlice.actions
+    const dispatch = useAppDispatch()
 
     const onPriceSpoilerClick = () => {
         setIsSpoilerActive(prev => !prev)
     }
-
 
     const handleCheckbox =(e: any, el: string) =>{
         let statusInput = e.target.checked

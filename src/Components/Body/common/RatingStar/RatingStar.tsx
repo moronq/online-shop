@@ -1,24 +1,24 @@
 import React, {useCallback, useState} from 'react';
 import styles from "./RatingStar.module.scss";
-import {useDispatch} from "react-redux";
-import { SetRatingType } from '../../../../redux/catalogReducer';
+import {catalogSlice} from '../../../../redux/catalogSlice';
+import {useAppDispatch} from "../../../../hook/hook";
 
 type PropsType = {
     id: number
     rating: number
-    setRating: (id:number, rating:number)=>SetRatingType
 }
 
-const RatingStar: React.FC<PropsType> = ({id, rating, setRating}) => {
+const RatingStar: React.FC<PropsType> = ({id, rating}) => {
+    const {setRating} = catalogSlice.actions
     const [, updateState] = useState({})
     const forceUpdate = useCallback(() => updateState({}), [])
 
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     let arr = [1, 2, 3, 4, 5]
 
     let onChangeRating = (e: React.ChangeEvent<HTMLInputElement>) => {
-        dispatch(setRating(id, parseInt(e.target.value)))
+        dispatch(setRating({id, rating: parseInt(e.target.value)}))
         forceUpdate()
     }
 

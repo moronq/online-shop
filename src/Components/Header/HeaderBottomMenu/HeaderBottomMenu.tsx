@@ -1,12 +1,11 @@
 import React from 'react';
 import styles from "./HeaderBottomMenu.module.scss";
 import {NavLink} from "react-router-dom";
-import {useSelector} from "react-redux";
-import {AppStateType} from "../../../redux/store";
+import {useAppSelector} from "../../../hook/hook";
 
 const HeaderBottomMenu = () => {
 
-    const navBarItems = useSelector((state:AppStateType)=> state.catalogPage.navBarItems)
+    const {navBarItems} = useAppSelector(state=>state.catalogPage)
 
     return (
         <div className={styles.bottomHeaderMenu}>
