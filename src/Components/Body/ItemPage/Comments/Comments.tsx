@@ -1,4 +1,6 @@
 import React from 'react';
+import user from '../../../../img/icons/user-image-profile.webp'
+import styles from '../ItemPage.module.scss'
 
 type CommentsPropsType = {
     name: string
@@ -7,13 +9,13 @@ type CommentsPropsType = {
 
 const Comments: React.FC<CommentsPropsType> = ({name, body}) => {
     return (
-        <div>
-            <img src="" alt=""/>
-            <div>
-                <p>{name}</p>
-                <p>{body}</p>
+        <li className={styles.commentItem}>
+            <img className={styles.userProfileImage} src={user} alt="user-image" width={'80px'} height={'80px'}/>
+            <div className={styles.commentBodyContainer}>
+                <p className={styles.userName}>{name}</p>
+                <p className={styles.commentBody}>{body}</p>
             </div>
-        </div>
+        </li>
     );
 };
 

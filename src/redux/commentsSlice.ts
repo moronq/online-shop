@@ -4,7 +4,7 @@ import {CommentsAPI} from "../api/api";
 
 type initialStateType = {
     status: 'idlk' | 'loading' | 'succeeded' | 'failed'
-    comments: Array<CommentType>
+    comments: Array<CommentType> | string
     error: string
 }
 
@@ -30,7 +30,11 @@ export const commentsSlice = createSlice({
             })
             .addCase(fetchComments.fulfilled, (state, action: any) => {
                 state.status = 'succeeded'
-                state.comments = state.comments.concat(action.payload)
+                if (action.payload.length > 0){
+                    state.comments = state.comments.concat(action.payload)
+                } else {
+                    state.comments = 'Нет отзывов'
+                }
             })
             .addCase(fetchComments.rejected, (state, action: any)=>{
                 state.status = 'failed'

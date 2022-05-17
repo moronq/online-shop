@@ -28,21 +28,28 @@ const ItemPage = () => {
         if(status === 'idlk'){
             dispatch(fetchComments(parseInt(itemId.id as string)))
         }
+        window.scrollTo({
+            top: 0,
+        })
         return ()=>{
             dispatch(nullStatus())
         }
     },[])
 
-    let content
+
+    let content: any
 
     if(status === 'loading'){
         content = <p>Загрузка...</p>
     } else if (status === 'succeeded') {
-        const commentList = comments.filter((el)=>{
-            return el.postId === parseInt(itemId.id as string)
-        })
-        console.log(commentList)
-        content = commentList.map((el)=><Comments key={el.id} name={el.name} body = {el.body}/>)
+        if(Array.isArray(comments)){
+            const commentList = comments.filter((el)=>{
+                return el.postId === parseInt(itemId.id as string)
+            })
+            content = commentList.map((el)=><Comments key={el.id} name={el.name} body = {el.body}/>)
+        } else {
+            content = comments
+        }
     } else if(status === 'failed'){
         content = <p>{error}</p>
     }
@@ -112,8 +119,11 @@ const ItemPage = () => {
                 </section>
             </div>
             <section className={styles.commentsWrapper}>
-                <h4>Отзывы</h4>
-                {content}
+                <h4 className={styles.commentsTitle}>Отзывы</h4>
+                <span className={styles.commentsLine}/>
+                <ul className={styles.commentsList}>
+                    {content}
+                </ul>
             </section>
         </div>
     );

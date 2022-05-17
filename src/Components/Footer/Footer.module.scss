@@ -17,13 +17,15 @@
   column-gap: 10px;
   display: flex;
   justify-content: flex-start;
-  margin-bottom: 35px;
+  &:not(:last-child){
+    margin-bottom: 35px;
+  }
   @media (max-width: 900px){
     flex-direction: column;
     justify-content: center;
   }
   position: relative;
-  &:after {
+  &:not(:last-child):after {
     content: '';
     width: 99%;
     height: 2px;
@@ -31,8 +33,12 @@
     position: absolute;
     bottom: 0;
   }
+  @media(max-width: 900px){
+    &:not(:last-child):after{
+      bottom: -20px;
+    }
+  }
 }
-
 
 .footerListContainer{
   flex: 1 1 367px;
