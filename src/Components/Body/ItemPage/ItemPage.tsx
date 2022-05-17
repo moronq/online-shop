@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useParams} from "react-router-dom"
 import AddToCartButton from "../common/AddToCartButton/AddToCartButton"
 import styles from './ItemPage.module.scss'
@@ -10,14 +10,42 @@ import BreadCrumbs from "../common/BreadCrumbs/BreadCrumbs"
 import RatingStar from "../common/RatingStar/RatingStar"
 import CompareFavoriteButton from "../common/CompareFavoriteButton/CompareFavoriteButton"
 import {ParamsType} from "../../../types/types";
-import {useAppSelector} from "../../../hook/hook";
+import {useAppDispatch, useAppSelector} from "../../../hook/hook";
+import Comments from "./Comments/Comments";
+import {commentsSlice, fetchComments} from "../../../redux/commentsSlice";
 
 const ItemPage = () => {
 
     const itemId = useParams<ParamsType>()
+    const dispatch = useAppDispatch()
     const {catalog} = useAppSelector(state=>state.catalogPage)
+    const {status, comments, error} = useAppSelector(state => state.comments)
+    const {nullStatus} = commentsSlice.actions
     const itemInfo = itemId.id ? catalog.filter(item => item.id.toString() === itemId.id) : []
     const item = itemInfo[0]
+
+    useEffect(()=>{
+        if(status === 'idlk'){
+            dispatch(fetchComments(parseInt(itemId.id as string)))
+        }
+        return ()=>{
+            dispatch(nullStatus())
+        }
+    },[])
+
+    let content
+
+    if(status === 'loading'){
+        content = <p>Загрузка...</p>
+    } else if (status === 'succeeded') {
+        const commentList = comments.filter((el)=>{
+            return el.postId === parseInt(itemId.id as string)
+        })
+        console.log(commentList)
+        content = commentList.map((el)=><Comments key={el.id} name={el.name} body = {el.body}/>)
+    } else if(status === 'failed'){
+        content = <p>{error}</p>
+    }
 
     const [activePreview, setActivePreview] = useState(0)
 
@@ -83,6 +111,10 @@ const ItemPage = () => {
                     </div>
                 </section>
             </div>
+            <section className={styles.commentsWrapper}>
+                <h4>Отзывы</h4>
+                {content}
+            </section>
         </div>
     );
 };

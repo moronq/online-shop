@@ -1,10 +1,12 @@
 import catalogReducer from "./catalogSlice";
+import commentsReducer from "./commentsSlice";
 import {combineReducers} from "redux";
 import {configureStore} from "@reduxjs/toolkit";
 
 
 let rootReducer = combineReducers({
     catalogPage: catalogReducer,
+    comments: commentsReducer
 })
 
 export const store = configureStore({
