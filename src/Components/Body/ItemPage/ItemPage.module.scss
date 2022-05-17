@@ -2,7 +2,7 @@
 
 .itemPageContainer{
   max-width: 1625px;
-  padding: 0;
+  padding: 0 15px;
   margin: 0 auto;
   @media(max-width: 819px){
     padding-top: 30px;
@@ -28,7 +28,6 @@
   color: white;
 }
 .breadCrumbsContainer{
-  padding: 0 15px;
   height: 80px;
   display: flex;
   align-items: center;
@@ -51,11 +50,11 @@
   gap: 16px;
 }
 .itemInfoWrapper{
-  padding: 0 15px;
   display: flex;
   justify-content: space-between;
   background-color: transparent;
   gap: 15px;
+  margin-bottom: 120px;
   @media(max-width: 1300px){
     flex-direction: column;
     align-items: center;
@@ -154,4 +153,55 @@
   flex-wrap: wrap;
   gap: 15px;
   margin-bottom: 30px;
+}
+
+.commentsWrapper{
+  box-shadow: 0 4px 20px rgba(0,0,0, 0.1);
+  padding: 30px;
+}
+
+.commentsTitle{
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.commentsLine{
+  display: block;
+  background: #dedede;
+  height: 1px;
+  width: 100%;
+}
+.commentItem{
+  padding: 30px 0;
+  display: flex;
+  gap: 30px;
+  position: relative;
+  &:last-child{
+    padding-bottom: 0;
+  }
+}
+
+.commentsList li:not(:last-child):after {
+  content: '';
+  height: 1px ;
+  width: 100%;
+  background: #dedede;
+  position: absolute;
+  bottom: 0;
+}
+
+.userProfileImage{
+  border-radius: 50%;
+}
+.userName{
+  font-weight: 600;
+}
+.commentBodyContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.commentBody{
+  font-weight: 500;
+  line-height: 27px;
 }
