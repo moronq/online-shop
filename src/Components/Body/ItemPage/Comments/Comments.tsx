@@ -1,21 +1,32 @@
-import React from 'react';
-import user from '../../../../img/icons/user-image-profile.webp'
-import styles from '../ItemPage.module.scss'
+import React, {FC, useState} from 'react';
+import styles from "./Comments.module.scss";
+import CommonButton from "../../../../common/CommonButton/CommonButton";
+import CommentInput from "./CommentInput/CommentInput";
 
-type CommentsPropsType = {
-    name: string
-    body: string
+type CommentsType = {
+    content: React.ReactNode,
+    itemId: string
 }
 
-const Comments: React.FC<CommentsPropsType> = ({name, body}) => {
+const Comments: FC<CommentsType> = ({content,itemId}) => {
+
+    const [showInput, setShowInput] = useState(false)
+    const onButtonClick = () => {
+        setShowInput(true)
+    }
+
     return (
-        <li className={styles.commentItem}>
-            <img className={styles.userProfileImage} src={user} alt="user-image" width={'80px'} height={'80px'}/>
-            <div className={styles.commentBodyContainer}>
-                <p className={styles.userName}>{name}</p>
-                <p className={styles.commentBody}>{body}</p>
+        <section className={styles.commentsWrapper}>
+            <div className={styles.commentsTitleWrapper}>
+                <h4 className={styles.commentsTitle}>Отзывы</h4>
+                {showInput || <CommonButton onClickFn={onButtonClick}>Написать отзыв</CommonButton>}
             </div>
-        </li>
+            {showInput && <CommentInput itemId={itemId}/>}
+            <span className={styles.commentsLine}/>
+            <ul className={styles.commentsList}>
+                {content}
+            </ul>
+        </section>
     );
 };
 

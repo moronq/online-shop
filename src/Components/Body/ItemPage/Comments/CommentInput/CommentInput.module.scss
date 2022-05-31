@@ -1,0 +1,63 @@
+.commentInputContainer{
+  padding: 20px 0;
+}
+.commentInputForm{
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  justify-content: space-between;
+  width: 100%;
+}
+.commentLabelFormItem{
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 150px;
+  gap: 60px;
+  padding: 0 5px;
+}
+.labelName{
+  margin-top: -30px;
+}
+.labelEmail{
+  margin-top: -15px;
+}
+.labelComment{
+  margin-top: -20px;
+}
+
+.commentLabelFormItem{
+  @media(max-width: 750px) {
+    display: none;
+  }
+}
+
+.commentInputFormItem{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 30px;
+  min-height: 50px;
+  @media(max-width: 745px){
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+.commentInput{
+  flex: 1 1 auto;
+  outline: 1px solid black;
+  font-size: inherit;
+  padding: 5px 15px;
+  border-radius: 2px;
+  max-width: 1400px;
+  width: 100%;
+  @media(max-width: 745px){
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+.buttonContainer{
+  display: flex;
+  justify-content: center;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "./Input.module.scss";
 import search from "../../../img/icons/search.svg";
-import {catalogSlice} from "../../../redux/catalogSlice";
+import {catalogSlice} from "../../../store/catalogSlice";
 import {useAppDispatch} from "../../../hook/hook";
 
 type PropsType ={
