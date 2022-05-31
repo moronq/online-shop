@@ -1,207 +1,38 @@
 @import '/src/constants';
 
-.itemPageContainer{
+.itemPageContainer {
   max-width: 1625px;
   padding: 0 15px;
   margin: 0 auto;
-  @media(max-width: 819px){
+  @media(max-width: 819px) {
     padding-top: 30px;
   }
 }
 
-.buyOneClickButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 320px;
-  height: 50px;
-  background: $mainDarkColor;
-  margin: 0 auto;
-  border-radius: 3px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  gap: 16px;
-}
-.buyOneClickButtonText{
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 2.56;
-  color: white;
-}
-.breadCrumbsContainer{
+.breadCrumbsContainer {
   height: 80px;
   display: flex;
   align-items: center;
-  @media(max-width: 819px){
+  @media(max-width: 819px) {
     display: none;
   }
 }
 
-.itemPreview{
-  max-width: 100%;
-}
-
-.previewMain{
-  max-width: 100%;
-  margin-bottom: 16px;
-}
-.previewList{
-  display: flex;
-  max-width: 754px;
-  gap: 16px;
-}
-.itemInfoWrapper{
+.itemInfoWrapper {
   display: flex;
   justify-content: space-between;
   background-color: transparent;
   gap: 15px;
   margin-bottom: 120px;
-  @media(max-width: 1300px){
+  @media(max-width: 1300px) {
     flex-direction: column;
     align-items: center;
   }
 }
-.previewListItem{
-  max-width: 100%;
-  border-radius: 2px;
-}
 
-.itemInfo{
-  flex: 0 1 806px;
-  box-shadow: 0 4px 20px rgba(0,0,0, 0.1);
-  position: relative;
-  @media(max-width: 1300px){
-    flex: 1 1 auto;
-  }
-}
-.itemTitle{
-  font-weight: 700;
-  font-size: 24px;
-  color: #141414;
-}
 
-.titleRating{
-  display: flex;
-  gap: 25px;
-  flex-wrap: wrap;
-}
 
-.title{
-  position: relative;
-}
 
-.titleWrapper{
-  padding: 30px;
-  display: flex;
-  justify-content: space-between;
-  gap: 30px;
-}
-.inStock{
-  padding: 0 0 30px 30px;
-  color: #24AD53;
-}
 
-.characteristics{
-  display: flex;
-  padding: 30px;
-  font-weight: 500;
-  font-size: 18px;
-  gap: 30px;
-  position: relative;
-}
-.characteristicsTitle li,
-.characteristicsValue li {
-  margin-bottom: 20px;
-}
-.characteristicsTitle li:last-child,
-.characteristicsValue li:last-child {
-  margin-bottom: 0;
-}
-.characteristicsValueItem{
-  color: #919191;
-}
-.characteristicsTitleItem{
-  color: #141414;
-}
 
-.underline{
-  width: 93%;
-  height: 1px;
-  background-color: #dedede;
-  position: absolute;
-  bottom: 0;
-  left: 3.5%;
-}
-.price{
-  font-weight: 700;
-  font-size: 30px;
-}
-.priceWrapper{
-  padding: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.bonus{
-  font-size: 14px;
-  color: #919191;
-  font-weight: 600;
-}
-.buyButtonWrapper{
-  display: flex;
-  padding: 0 30px;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-bottom: 30px;
-}
 
-.commentsWrapper{
-  box-shadow: 0 4px 20px rgba(0,0,0, 0.1);
-  padding: 30px;
-}
-
-.commentsTitle{
-  font-weight: 700;
-  margin-bottom: 25px;
-}
-
-.commentsLine{
-  display: block;
-  background: #dedede;
-  height: 1px;
-  width: 100%;
-}
-.commentItem{
-  padding: 30px 0;
-  display: flex;
-  gap: 30px;
-  position: relative;
-  &:last-child{
-    padding-bottom: 0;
-  }
-}
-
-.commentsList li:not(:last-child):after {
-  content: '';
-  height: 1px ;
-  width: 100%;
-  background: #dedede;
-  position: absolute;
-  bottom: 0;
-}
-
-.userProfileImage{
-  border-radius: 50%;
-}
-.userName{
-  font-weight: 600;
-}
-.commentBodyContainer{
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-.commentBody{
-  font-weight: 500;
-  line-height: 27px;
-}

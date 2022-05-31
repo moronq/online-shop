@@ -1,0 +1,28 @@
+.commentsWrapper{
+  box-shadow: 0 4px 20px rgba(0,0,0, 0.1);
+  padding: 30px;
+}
+
+.commentsTitleWrapper{
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  justify-content: space-between;
+}
+.commentsTitle{
+  font-weight: 700;
+}
+.commentsLine{
+  display: block;
+  background: #dedede;
+  height: 1px;
+  width: 100%;
+}
+.commentsList li:not(:last-child):after {
+  content: '';
+  height: 1px ;
+  width: 100%;
+  background: #dedede;
+  position: absolute;
+  bottom: 0;
+}

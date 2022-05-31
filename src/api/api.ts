@@ -8,6 +8,9 @@ export const CommentsAPI = {
     getComments: (itemId: number) => {
         return axios.get(`https://jsonplaceholder.typicode.com/posts/${itemId}/comments`)
             .then((response:AxiosResponse<Array<CommentType>>) => response.data)
+    },
+    addComments: (initialPost:CommentType) =>{
+        return axios.post(`https://jsonplaceholder.typicode.com/posts`, initialPost)
+            .then((response:AxiosResponse) => response.data)
     }
 }
-

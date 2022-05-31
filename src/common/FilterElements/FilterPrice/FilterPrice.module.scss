@@ -1,0 +1,126 @@
+@import "../../../constants";
+
+.filterPrice {
+  display: flex;
+  flex-direction: column;
+  padding: 0 30px;
+  overflow: hidden;
+}
+.filterTitleContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 -30px;
+  padding: 25px 30px 25px 30px;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.filterPriceTitle{
+  color: $mainDarkColor;
+  font-weight: 600;
+  font-size: 20px;
+}
+.filterSliderButton{
+  background-color: transparent;
+}
+.filterSliderImage{
+  margin-top: 2px;
+  transition: all 0.6s ease 0s;
+  &Opened{
+    transform: rotate(540deg);
+  }
+}
+
+.filterPriceSliderPart{
+  overflow: hidden;
+  //transition: margin-bottom 1s ease 0s;
+  //padding-bottom: 30px;
+}
+
+.filterPriceSliderList{
+  transition: all 1s ease 0s;
+}
+
+.filterPriceSliderListHidden{
+  margin-bottom: -100%;
+}
+
+.filterPriceForm{
+  border: 1px solid #CBCBCB;
+  border-radius: 2px;
+  width: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.filterPriceSlider{
+  display: inline-block;
+  height: 2px;
+  width: 100%;
+  background-color: $mainOrangeColor;
+  position: relative;
+  margin-bottom: 55px;
+}
+
+.filterPriceSliderProgress{
+  height: 2px;
+  background-color: $mainDarkColor;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.inputMin,
+.inputMax {
+  width: 100%;
+  padding: 10px 35px;
+  text-align: center;
+  font-size: 16px;
+  -moz-appearance: textfield;
+}
+.inputMin {
+  border-right: 1px solid #CBCBCB;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input {
+  -moz-appearance: none;
+}
+.rangeInput{
+  position: relative;
+}
+.rangeInput input{
+  position: absolute;
+  top: -60px;
+  height: 2px;
+  width: 100%;
+  background: none;
+  pointer-events: none;
+  -webkit-appearance: none;
+}
+input[type='range']::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  pointer-events: auto;
+  background-color: $mainDarkColor;
+  border: 3px solid $mainOrangeColor;
+}
+input[type='range']::-moz-range-thumb{
+  -moz-appearance: none;
+  height: 18px;
+  border: none;
+  width: 18px;
+  border-radius: 50%;
+  pointer-events: auto;
+  background-color: $mainOrangeColor;
+}
+
+

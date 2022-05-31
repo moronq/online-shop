@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react'
-import ContentItem from "../common/ContentItem/ContentItem"
+import ContentItem from "../../../common/ContentItem/ContentItem"
 import MainCatalog from "./MainCatalog"
 import {useAppSelector} from "../../../hook/hook";
 

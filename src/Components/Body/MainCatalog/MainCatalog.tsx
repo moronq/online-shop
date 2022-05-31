@@ -1,10 +1,10 @@
 import React from 'react'
 import styles from "../Body.module.scss"
-import BreadCrumbs from "../common/BreadCrumbs/BreadCrumbs"
-import FilterSort from "../common/FilterElements/FilterSort/FilterSort"
-import FilterPrice from "../common/FilterElements/FilterPrice/FilterPrice"
-import FilterSteel from "../common/FilterElements/FilterSteel/FilterSteel"
-import Paginator from "../common/Paginator/Paginator"
+import BreadCrumbs from "../../../common/BreadCrumbs/BreadCrumbs"
+import FilterSort from "../../../common/FilterElements/FilterSort/FilterSort"
+import FilterPrice from "../../../common/FilterElements/FilterPrice/FilterPrice"
+import FilterSteel from "../../../common/FilterElements/FilterSteel/FilterSteel"
+import Paginator from "../../../common/Paginator/Paginator"
 
 type PropsType = {
     setCurrentPage: (arg0: number) => void

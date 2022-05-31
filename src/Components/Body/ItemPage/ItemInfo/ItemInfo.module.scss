@@ -1,0 +1,84 @@
+.itemInfo{
+  flex: 0 1 806px;
+  box-shadow: 0 4px 20px rgba(0,0,0, 0.1);
+  position: relative;
+  @media(max-width: 1300px){
+    flex: 1 1 auto;
+  }
+}
+
+.title{
+  position: relative;
+}
+.titleWrapper{
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+.titleRating{
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.itemTitle{
+  font-weight: 700;
+  font-size: 24px;
+  color: #141414;
+}
+.inStock{
+  padding: 0 0 30px 30px;
+  color: #24AD53;
+}
+.underline{
+  width: 93%;
+  height: 1px;
+  background-color: #dedede;
+  position: absolute;
+  bottom: 0;
+  left: 3.5%;
+}
+.characteristics{
+  display: flex;
+  padding: 30px;
+  font-weight: 500;
+  font-size: 18px;
+  gap: 30px;
+  position: relative;
+}
+.characteristicsTitle li,
+.characteristicsValue li {
+  margin-bottom: 20px;
+}
+.characteristicsTitle li:last-child,
+.characteristicsValue li:last-child {
+  margin-bottom: 0;
+}
+.characteristicsValue{
+  color: #919191;
+}
+.priceWrapper{
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.price{
+  font-weight: 700;
+  font-size: 30px;
+}
+.bonus{
+  font-size: 14px;
+  color: #919191;
+  font-weight: 600;
+}
+.buyButtonWrapper{
+  display: flex;
+  padding: 0 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
