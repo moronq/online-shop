@@ -1,8 +1,8 @@
 import React, {FC, useState} from 'react';
-import CommonButton from "../../../../../common/CommonButton/CommonButton";
+import CommonButton from "../../common/CommonButton/CommonButton";
 import styles from './CommentInput.module.scss'
-import {useAppDispatch} from "../../../../../hook/hook";
-import {addItemComments} from "../../../../../store/commentsSlice";
+import {useAppDispatch} from "../../hook/hook";
+import {addItemComments} from "../../store/commentsSlice";
 
 type CommentInputType = {
     itemId: string

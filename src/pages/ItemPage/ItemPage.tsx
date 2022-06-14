@@ -1,14 +1,14 @@
 import React, {useEffect} from 'react'
 import {useParams} from "react-router-dom"
 import styles from './ItemPage.module.scss'
-import BreadCrumbs from "../../../common/BreadCrumbs/BreadCrumbs"
-import {ParamsType} from "../../../types/types";
-import {useAppDispatch, useAppSelector} from "../../../hook/hook";
-import CommentsItem from "./Comments/CommentsItem/CommentsItem";
-import {commentsSlice, fetchComments} from "../../../store/commentsSlice";
-import Comments from "./Comments/Comments";
-import Preview from "./Preview/Preview";
-import ItemInfo from "./ItemInfo/ItemInfo";
+import BreadCrumbs from "../../common/BreadCrumbs/BreadCrumbs"
+import {ParamsType} from "../../types/types";
+import {useAppDispatch, useAppSelector} from "../../hook/hook";
+import CommentsItem from "../../Components/CommentsItem/CommentsItem";
+import {commentsSlice, fetchComments} from "../../store/commentsSlice";
+import Comments from "../../Components/Comments/Comments";
+import Preview from "../../Components/Preview/Preview";
+import ItemInfo from "../../Components/ItemInfo/ItemInfo";
 
 const ItemPage = () => {
 

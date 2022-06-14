@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import styles from "./FilterSteel.module.scss";
-import arrow from "../../../img/icons/arrow-bottom.svg";
-import {catalogSlice} from "../../../store/catalogSlice";
-import {useAppDispatch, useAppSelector} from "../../../hook/hook";
+import arrow from "../../img/icons/arrow-bottom.svg";
+import {catalogSlice} from "../../store/catalogSlice";
+import {useAppDispatch, useAppSelector} from "../../hook/hook";
 
 type PropsType = {
     forceUpdate: ()=> void

@@ -1,4 +1,4 @@
-@import '../../../constants';
+@import '../../constants';
 
 .filterSteel{
   display: flex;
@@ -66,7 +66,7 @@
 }
 .filterSteelCheckbox:checked+label:before {
   border: 1px solid $mainOrangeColor;
-  background: url('../../../img/icons/checked.svg') no-repeat center;
+  background: url('../../img/icons/checked.svg') no-repeat center;
   background-size: 67% 67%;
 }
 

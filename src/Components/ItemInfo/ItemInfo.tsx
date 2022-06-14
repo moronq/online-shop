@@ -1,10 +1,10 @@
 import React, {FC} from 'react';
 import styles from "./ItemInfo.module.scss";
-import RatingStar from "../../../../common/RatingStar/RatingStar";
-import CompareFavoriteButton from "../../../../common/CompareFavoriteButton/CompareFavoriteButton";
-import AddToCartButton from "../../../../common/AddToCartButton/AddToCartButton";
-import CommonButton from "../../../../common/CommonButton/CommonButton";
-import {useAppSelector} from "../../../../hook/hook";
+import RatingStar from "../../common/RatingStar/RatingStar";
+import CompareFavoriteButton from "../../common/CompareFavoriteButton/CompareFavoriteButton";
+import AddToCartButton from "../../common/AddToCartButton/AddToCartButton";
+import CommonButton from "../../common/CommonButton/CommonButton";
+import {useAppSelector} from "../../hook/hook";
 
 type ItemInfoType = {
     itemId: any
