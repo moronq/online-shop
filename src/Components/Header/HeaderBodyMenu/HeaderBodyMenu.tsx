@@ -12,20 +12,20 @@ import {CatalogItemType} from "../../../types/types";
 
 type PropsType ={
     toggleSpoilerActive: ()=>void
-    searchValue: string
     isSpoilerActive: boolean
     addedItemsToCart: Array<CatalogItemType>
     price: number
 }
 
-const HeaderBodyMenu: React.FC<PropsType> = ({toggleSpoilerActive, searchValue,
-                                                 isSpoilerActive, addedItemsToCart,
+const HeaderBodyMenu: React.FC<PropsType> = ({toggleSpoilerActive,
+                                                 isSpoilerActive,
+                                                 addedItemsToCart,
                                                  price}) => {
     return (
         <div className={styles.midHeaderMenu}>
             <div className={styles.midHeaderMenuContainer}>
                 <NavLink to={'/'} className={styles.imageLogo}><img src={logo} alt=""/></NavLink>
-                <Input searchValue={searchValue}/>
+                <Input/>
                 <div className={styles.userMenu}>
                     <a className={styles.userMenuLocation} href="#">
                         <img src={location} width={'17px'} alt="your city"/>

@@ -4,7 +4,7 @@ import {useAppSelector} from "../../../hook/hook";
 
 const HeaderBodyMenuContainer = () => {
 
-    const {addedItemsToCart,searchValue} = useAppSelector(state=>state.catalogPage)
+    const {addedItemsToCart} = useAppSelector(state=>state.catalogPage)
 
     let [isSpoilerActive, setIsSpoilerActive] = useState(false)
 
@@ -19,7 +19,6 @@ const HeaderBodyMenuContainer = () => {
     }
 
     return <HeaderBodyMenu toggleSpoilerActive={toggleSpoilerActive}
-                        searchValue={searchValue}
                         isSpoilerActive={isSpoilerActive}
                         addedItemsToCart={addedItemsToCart}
                         price={price}/>
