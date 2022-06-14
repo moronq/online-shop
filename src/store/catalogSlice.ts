@@ -52,7 +52,6 @@ const initialState = {
     catalog: catalog,
     addedItemsToCart: [] as Array<CatalogItemType>,
     pageSize: 12,
-    searchValue: '',
     minInputValue: MIN_PRICE as number | string,
     maxInputValue: MAX_PRICE as number | string,
     MAX_PRICE: MAX_PRICE as number,
@@ -79,9 +78,6 @@ export const catalogSlice = createSlice({
         removeFromCart: (state, action: PayloadAction<CatalogItemType>) => {
             let index = state.addedItemsToCart.indexOf(action.payload)
             state.addedItemsToCart.splice(index, 1)
-        },
-        setSearchValue: (state, action: PayloadAction<string>) => {
-            state.searchValue = action.payload
         },
         setMinValue: (state, action: PayloadAction<number | string>) => {
             state.minInputValue = action.payload

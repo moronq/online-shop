@@ -59,3 +59,10 @@ export function displayCatalogItems(currentPage: number,
                                 title={el.title} price={el.price} steel={el.steel}/>
         )
 }
+
+export function catalogSearch(catalogMain: Array<CatalogItemType>, searchQuery: string | null){
+    return catalogMain.filter(item => {
+        return item.title.toLowerCase().includes(searchQuery?.toLowerCase() || '')
+    })
+
+}

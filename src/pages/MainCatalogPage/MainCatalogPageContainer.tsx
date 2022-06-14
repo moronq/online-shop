@@ -1,12 +1,21 @@
 import React, {useCallback, useEffect, useState} from 'react'
 import MainCatalogPage from "./MainCatalogPage"
 import {useAppSelector} from "../../hook/hook";
-import {displayCatalogItems, filterByCheckbox, filterByPrice, sortCatalog} from "../../utils/utilsCatalog";
+import {
+    catalogSearch,
+    displayCatalogItems,
+    filterByCheckbox,
+    filterByPrice,
+    sortCatalog
+} from "../../utils/utilsCatalog";
+import {UseSearch} from "../../hook/UseSearch";
 
 const MainCatalogPageContainer = () => {
 
-    const {catalog, pageSize, minInputValue,
-        maxInputValue, searchValue, selectedCheckboxes} = useAppSelector(state=>state.catalogPage)
+    const {
+        catalog, pageSize, minInputValue,
+        maxInputValue, selectedCheckboxes
+    } = useAppSelector(state => state.catalogPage)
 
     const [currentPage, setCurrentPage] = useState(1)
 
@@ -23,11 +32,9 @@ const MainCatalogPageContainer = () => {
         })
     }, [currentPage])
 
-    if (searchValue.length > 0) {
-        catalogMain = catalogMain.filter(item => {
-            return item.title.toLowerCase().includes(searchValue.toLowerCase())
-        })
-    }
+    const {searchQuery} = UseSearch()
+
+    catalogMain = catalogSearch(catalogMain, searchQuery)
 
     catalogMain = filterByPrice(minInputValue, maxInputValue, catalogMain)
     catalogMain = filterByCheckbox(selectedCheckboxes, catalogMain)
