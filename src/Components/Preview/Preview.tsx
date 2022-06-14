@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import styles from "./Preview.module.scss";
-import preview_1 from "../../../../img/preview/preview_1.jpg";
-import preview_2 from "../../../../img/preview/preview_2.jpg";
-import preview_3 from "../../../../img/preview/preview_3.jpg";
-import preview_4 from "../../../../img/preview/preview_4.jpg";
+import preview_1 from "../../img/preview/preview_1.jpg";
+import preview_2 from "../../img/preview/preview_2.jpg";
+import preview_3 from "../../img/preview/preview_3.jpg";
+import preview_4 from "../../img/preview/preview_4.jpg";
 
 const Preview = () => {
 

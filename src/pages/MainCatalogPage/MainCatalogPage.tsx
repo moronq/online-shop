@@ -1,10 +1,10 @@
 import React from 'react'
-import styles from "../Body.module.scss"
-import BreadCrumbs from "../../../common/BreadCrumbs/BreadCrumbs"
-import FilterSort from "../../../common/FilterElements/FilterSort/FilterSort"
-import FilterPrice from "../../../common/FilterElements/FilterPrice/FilterPrice"
-import FilterSteel from "../../../common/FilterElements/FilterSteel/FilterSteel"
-import Paginator from "../../../common/Paginator/Paginator"
+import styles from "../../Components/Body/Body.module.scss"
+import BreadCrumbs from "../../common/BreadCrumbs/BreadCrumbs"
+import FilterSort from "../../common/FilterSort/FilterSort"
+import FilterPrice from "../../common/FilterPrice/FilterPrice"
+import FilterSteel from "../../common/FilterSteel/FilterSteel"
+import Paginator from "../../common/Paginator/Paginator"
 
 type PropsType = {
     setCurrentPage: (arg0: number) => void
@@ -17,7 +17,7 @@ type PropsType = {
     sortCatalogByOption: string
 }
 
-const MainCatalog: React.FC<PropsType> = ({
+const MainCatalogPage: React.FC<PropsType> = ({
                          setCurrentPage, forceUpdate, setSortCatalogByOption, currentPage,
                                               totalItemsCount, catalogItems, pageSize,
                                               sortCatalogByOption
@@ -56,4 +56,4 @@ const MainCatalog: React.FC<PropsType> = ({
     );
 };
 
-export default MainCatalog;
+export default MainCatalogPage;

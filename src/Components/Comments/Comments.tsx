@@ -1,7 +1,7 @@
 import React, {FC, useState} from 'react';
 import styles from "./Comments.module.scss";
-import CommonButton from "../../../../common/CommonButton/CommonButton";
-import CommentInput from "./CommentInput/CommentInput";
+import CommonButton from "../../common/CommonButton/CommonButton";
+import CommentInput from "../CommentInput/CommentInput";
 
 type CommentsType = {
     content: React.ReactNode,

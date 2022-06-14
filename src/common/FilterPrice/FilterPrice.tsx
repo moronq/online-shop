@@ -1,8 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styles from "./FilterPrice.module.scss";
-import arrow from "../../../img/icons/arrow-bottom.svg";
-import {catalogSlice} from "../../../store/catalogSlice";
-import {useAppDispatch, useAppSelector} from "../../../hook/hook";
+import arrow from "../../img/icons/arrow-bottom.svg";
+import {catalogSlice} from "../../store/catalogSlice";
+import {useAppDispatch, useAppSelector} from "../../hook/hook";
 
 type PropsType = {
     setCurrentPage: (arg0: number) => void

@@ -1,5 +1,5 @@
 import React from 'react';
-import user from '../../../../../img/icons/user-image-profile.webp'
+import user from '../../img/icons/user-image-profile.webp'
 import styles from './CommentsItem.module.scss'
 
 type CommentsPropsType = {
